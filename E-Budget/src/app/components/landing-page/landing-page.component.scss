@@ -1,0 +1,47 @@
+@import'../../../scss//base';
+
+.landing_page_logo {
+    font-size: $h1-font-size;
+    margin-left: 2%;
+
+}
+
+section {
+    text-align: center;
+
+    .landing_page_heading {
+        position: relative;
+        margin: 5rem;
+
+        h1 {
+            line-height: 1.1em;
+            font-size: 72px;
+        }
+
+        h3 {
+            font-size: 20px;
+
+        }
+
+        button {
+            width: 210px;
+            height: 60px;
+            border-radius: 50px;
+            font-size: $h3-font-size;
+            background-color: #4284f5
+        }
+    }
+
+    .landing_page_demo_img {
+        background-image: url('../../../app/../assets/images/budget5.jpg');
+        display: flex;
+        width: 92%;
+        margin-left: 8%;
+
+        height: 350px;
+        // margin-top: -2%;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
