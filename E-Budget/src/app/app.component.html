@@ -1,2 +1,18 @@
-hi
-<router-outlet></router-outlet>
+
+<mat-toolbar color="primary">
+    <a class="title" href="/">Budget</a>
+  
+    <div class="toolbar-spacer"></div>
+  
+    <a mat-button [routerLink]="['azure-login']">Profile</a>
+  
+    <button mat-raised-button *ngIf="!isUserLoggedIn">Login</button>
+    <button mat-raised-button *ngIf="isUserLoggedIn">Logout</button>
+  
+  </mat-toolbar>
+  <!-- <div class="container">
+    This is to avoid reload during acquireTokenSilent() because of hidden iframe 
+    <router-outlet *ngIf="!isIframe"></router-outlet>
+  </div> -->
+
+  <router-outlet></router-outlet>
