@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+  <span><img [src]="appLogo.PATH" id="logo" [alt]="appLogo.ALT_TEXT" class="logo" /></span> 
+   <span class="budget"> E-Budget</span>
+   <a mat-button [routerLink]="['profile']" class="profile">Profile</a>
+   <a mat-button *ngIf="!isUserLoggedIn" class="loginButton" (click)="login()">Login</a>
+ 
+   <a mat-button *ngIf="isUserLoggedIn" class="loginButton" (click)="logout()">Logout</a>
+   <span><img [src]="bajajLogo.PATH" id="bajajlogo" [alt]="appLogo.ALT_TEXT" class="bajajlogo" /></span>
+   
+  </mat-toolbar-row>
+</mat-toolbar>

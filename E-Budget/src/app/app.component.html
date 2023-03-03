@@ -1,18 +1,3 @@
-
-<mat-toolbar color="primary">
-    <a class="title" href="/">Budget</a>
-  
-    <div class="toolbar-spacer"></div>
-  
-    <a mat-button [routerLink]="['azure-login']">Profile</a>
-  
-    <button mat-raised-button *ngIf="!isUserLoggedIn" (click)="login()">Login</button>
-    <button mat-raised-button *ngIf="isUserLoggedIn" (click)="logout()">Logout</button>
-  
-  </mat-toolbar>
-  <!-- <div class="container">
-    This is to avoid reload during acquireTokenSilent() because of hidden iframe 
-    <router-outlet *ngIf="!isIframe"></router-outlet>
-  </div> -->
-
-  <router-outlet></router-outlet>
+<router-outlet>
+  <app-landing-page></app-landing-page>
+</router-outlet>

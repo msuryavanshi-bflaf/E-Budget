@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 
+import{MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -13,9 +14,10 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ],
   exports: [
-    CommonModule,
     MatToolbarModule,
-    MatCardModule
-  ]
+    MatCardModule,
+    MatIconModule
+  ],
+  
 })
 export class MaterialModule { }

@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"; // Import 
+import { HTTP_INTERCEPTORS } from "@angular/common/http"; // Import 
 
 
+import { MaterialModule } from './shared/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AzureLoginComponent } from './components/azure-login/azure-login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@azure/msal-angular'; // Import MsalInterceptor
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
-import { MaterialModule } from './shared/material/material.module';
 import { HomeComponent } from './components/home/home.component';
 import { AzureAdDemoService } from './services/azure-ad-demo.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 @NgModule({
   declarations: [
     AppComponent,
-    AzureLoginComponent,
-    HomeComponent
+    HomeComponent,
  
+    HeaderComponent,
+    LandingPageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,6 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
   },
   MsalGuard,AzureAdDemoService
 ],
-  bootstrap: [AppComponent,MsalRedirectComponent]
+  bootstrap: [AppComponent,HeaderComponent,MsalRedirectComponent]
 })
 export class AppModule { }

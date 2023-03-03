@@ -2,20 +2,32 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
 import { BrowserUtils } from '@azure/msal-browser';
-import { AzureLoginComponent } from './components/azure-login/azure-login.component';
+import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   {
-    path: 'azure-login',
-    component: AzureLoginComponent,
+    path: 'profile',
+    component: ProfileComponent,
     canActivate:[MsalGuard]
   },
   {
     path: '',
     component: HomeComponent
   },
+  {
+    path: '',
+    component: LandingPageComponent
+   
+  },
+  {
+    path: '',
+    component: HeaderComponent
+    
+  }
   
 ];
 
