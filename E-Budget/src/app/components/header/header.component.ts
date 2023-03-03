@@ -8,4 +8,5 @@ import { ASSET_IMAGE } from 'src/app/config/asset.config';
 })
 export class HeaderComponent {
   appLogo = ASSET_IMAGE.LOGO_IMG;
+  bajajLogo = ASSET_IMAGE.BAJAJ_LOGO_IMG;
 }

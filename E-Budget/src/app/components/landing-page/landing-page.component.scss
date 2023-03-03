@@ -12,23 +12,14 @@ section {
     .landing_page_heading {
         position: relative;
         margin: 5rem;
-
-        h1 {
-            line-height: 1.1em;
-            font-size: 72px;
-        }
-
-        h3 {
-            font-size: 20px;
-
-        }
-
         button {
             width: 210px;
             height: 60px;
-            border-radius: 50px;
+             border-radius: 50px;
             font-size: $h3-font-size;
-            background-color: #4284f5
+            background-color: #004DA8;
+            color: white;
+            border-color: white;
         }
     }
 
@@ -37,9 +28,7 @@ section {
         display: flex;
         width: 92%;
         margin-left: 8%;
-
-        height: 350px;
-        // margin-top: -2%;
+         height: 370px;
         align-items: center;
         background-repeat: no-repeat;
         background-size: cover;
