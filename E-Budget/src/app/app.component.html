@@ -6,8 +6,8 @@
   
     <a mat-button [routerLink]="['azure-login']">Profile</a>
   
-    <button mat-raised-button *ngIf="!isUserLoggedIn">Login</button>
-    <button mat-raised-button *ngIf="isUserLoggedIn">Logout</button>
+    <button mat-raised-button *ngIf="!isUserLoggedIn" (click)="login()">Login</button>
+    <button mat-raised-button *ngIf="isUserLoggedIn" (click)="logout()">Logout</button>
   
   </mat-toolbar>
   <!-- <div class="container">

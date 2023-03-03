@@ -11,11 +11,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private azureAdDemoService:AzureAdDemoService){}
   ngOnInit(): void {
-    // this.azureAdDemoService.isUserLoggedIn.subscribe(
-    //   x=>{
-    //     this.isUserLoggedIn=x;
-    //   }
-    // )
+    this.azureAdDemoService.isUserLoggedIn.subscribe(
+      x=>{
+        this.isUserLoggedIn=x;
+      }
+    )
   }
 
 }

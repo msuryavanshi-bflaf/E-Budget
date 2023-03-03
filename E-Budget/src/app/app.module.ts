@@ -12,6 +12,7 @@ import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor } from '@
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { MaterialModule } from './shared/material/material.module';
 import { HomeComponent } from './components/home/home.component';
+import { AzureAdDemoService } from './services/azure-ad-demo.service';
 
 
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -30,9 +31,9 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     
    MsalModule.forRoot(new PublicClientApplication({
       auth: {
-        clientId: 'Enter_the_Application_Id_here', // Application (client) ID from the app registration
-        authority: 'Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here', // The Azure cloud instance and the app's sign-in audience (tenant ID, common, organizations, or consumers)
-        redirectUri: 'Enter_the_Redirect_Uri_Here'// This is your redirect URI
+        clientId: 'd5c76229-c095-4515-adc9-2cbfebc1914c', // Application (client) ID from the app registration
+        authority: 'https://login.microsoftonline.com/bb547528-0a7d-4ced-9f34-216a9b7c815d', // The Azure cloud instance and the app's sign-in audience (tenant ID, common, organizations, or consumers)
+        redirectUri: 'http://localhost:4200'// This is your redirect URI
       },
       cache: {
         cacheLocation: 'localStorage',
@@ -46,7 +47,7 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     }, {
       interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
       protectedResourceMap: new Map([ 
-          ['Enter_the_Graph_Endpoint_Here/v1.0/me', ['user.read']]
+          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
       ])
     })
   ],
@@ -55,8 +56,8 @@ const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigato
     useClass: MsalInterceptor,
     multi: true
   },
-  MsalGuard
+  MsalGuard,AzureAdDemoService
 ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,MsalRedirectComponent]
 })
 export class AppModule { }

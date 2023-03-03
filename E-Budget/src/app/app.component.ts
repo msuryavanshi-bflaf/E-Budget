@@ -27,7 +27,7 @@ export class AppComponent implements OnInit,OnDestroy {
     .subscribe(x=>
       {
         this.isUserLoggedIn=this.authService.instance.getAllAccounts().length>0
-        this.azureAdDemoService.isUserLoggedIn.next(this.isUserLoggedIn);
+       this.azureAdDemoService.isUserLoggedIn.next(this.isUserLoggedIn);
       })
   }
   ngOnDestroy(): void {
