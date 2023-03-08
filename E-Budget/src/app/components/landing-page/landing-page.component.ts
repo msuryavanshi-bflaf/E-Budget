@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 
@@ -8,11 +8,10 @@ import { AppConstant } from 'src/app/constants/app.constants';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent {
-constructor(private router:Router){
+  constructor(private router: Router) { }
 
-}
+
   login() {
-
- this.router.navigate([AppConstant.BUDGETCATEGORY])
+    this.router.navigate([`/${AppConstant.NAVBAR}`]);
   }
 }

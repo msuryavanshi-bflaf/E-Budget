@@ -2,7 +2,9 @@
 @import './scss/base';
 @import './scss/custom_material.scss';
 
+
 html,
+
 body {
     height: 100%;
 }
@@ -43,3 +45,51 @@ table {
     width: 215px !important;
     margin: 0 10px;
 }
+
+table {
+
+    td {
+
+        text-align: left;
+
+        vertical-align: baseline;
+
+    }
+
+}
+
+.container {
+  box-shadow: 0 1px 1px 2px rgb(223, 221, 221),
+        0 1px 1px 1px rgb(223, 221, 221),
+        0 1px 1px 1px rgb(223, 221, 221);
+    display: flex;
+
+    justify-content: center;
+
+    /* align horizontal */
+
+    align-items: center;
+
+    /* align vertical */
+
+}
+.error-message {
+
+    color: red;
+
+    padding-left: 1rem;
+
+}
+
+ 
+
+.submit-button {
+
+    width: 215px !important;
+
+    margin: 0 10px;
+
+}
+
+
+ 

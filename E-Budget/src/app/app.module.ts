@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './shared/material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,14 +8,24 @@ import { HeaderComponent } from './components/header/header.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { BudgetCategoryComponent } from './components/budget-category/budget-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { BudgetCreationComponent } from './components/budget-creation/budget-creation.component';
+import { PoGenerateComponent } from './components/po-generate/po-generate.component';
+import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-generate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LandingPageComponent,
-    BudgetCategoryComponent
-    
+    BudgetCategoryComponent,
+
+    NavbarComponent,
+    HomeComponent,
+    BudgetCreationComponent,
+    PoGenerateComponent,
+    InvoiceGenerateComponent
   ],
   imports: [
     BrowserModule,
@@ -25,18 +35,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  exports:[
+  exports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  // schemas: [
-  //   CUSTOM_ELEMENTS_SCHEMA,
-  // ],
+
 })
 export class AppModule { }
