@@ -88,7 +88,7 @@ export class BudgetCategoryComponent {
     this.isValidFile = false;
   }
 
-  goToLogin() {
+  budgetCategory() {
     this.router.navigate([`/${AppConstant.BUDGETCATEGORY}`])
   }
 
