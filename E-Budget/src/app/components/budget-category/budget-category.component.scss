@@ -1,0 +1,29 @@
+.attachment {
+    display: inline-flex;
+
+    .select-file-name {
+        margin: 0 10px;
+        display: block;
+        width: 175px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.budgetCategory-button {
+    width: 225px !important;
+    height :20px;
+    margin: 40px 0 2rem 0;
+}
+
+.invalid-file-error {
+    color: red;
+    width: 235px;
+    padding-left: 10px;
+}
+
+.datepicker{
+    width: 212px;
+    height: 20px;
+}
