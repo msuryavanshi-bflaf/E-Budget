@@ -15,7 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -37,7 +37,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatDatepickerModule,
     MatNativeDateModule,
     MatStepperModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRadioModule
 
 
   ],
@@ -56,7 +57,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatDatepickerModule,
     MatNativeDateModule,
     MatStepperModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRadioModule
 
   ],
 })

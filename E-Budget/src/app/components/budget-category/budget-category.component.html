@@ -14,6 +14,7 @@
                         <td>
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="budgetCategoryName" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
                         </td>
                         <td>
@@ -22,28 +23,31 @@
                         <td>
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="budgetSubCategoryName" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
                             <mat-label>Budget Description</mat-label>
                         </td>
                         <td>
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="budgetDescription" required>
+                                <mat-error>Minimum 40 characters required</mat-error>
                             </mat-form-field>
                         </td>
+                    </tr>
+                    <tr>
+                        
                         <td>
                             <mat-label>Vendor Name</mat-label>
                         </td>
                         <td>
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="vendorName" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
                         </td>
-                    </tr>
-                    <tr>
+                   
                         <td>
                             <mat-label>Email Id</mat-label>
                         </td>
@@ -51,6 +55,7 @@
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="email" type="email" maxlength="30"
                                     pattern=".+@*\.*">
+                                <mat-error>Please enter valid email</mat-error>
                             </mat-form-field>
                         </td>
                         <td>
@@ -69,6 +74,7 @@
                         <td>
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="mobileNumber" required >
+                                <mat-error> 10 digit numbers required</mat-error>
                             </mat-form-field>
                         </td>
                         
@@ -80,9 +86,6 @@
                                 <input matInput formControlName="modifyBy" required>
                             </mat-form-field>
                         </td>
-                    </tr>
-                    <tr>
-                        
                         <td>
                             <mat-label>Created By</mat-label>
                         </td>
@@ -91,32 +94,28 @@
                                 <input matInput formControlName="createdBy" required>
                             </mat-form-field>
                         </td>
+                    </tr>
+                    <tr>
+                        
+                        
                         
                         
                         <td>
                             <mat-label>Modified Date</mat-label>
                         </td>
                         <td>
-                            <!-- <mat-form-field appearance="outline">
-                                <input matInput formControlName="createdDate" required>
-                            </mat-form-field> -->
                             <mat-form-field appearance="outline" class="datepicker">
                                 <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="createdDate" required>
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                               </mat-form-field>
                         </td>
-                        <!-- mobile number -->
-                        
-                    </tr>
-                    <tr>
+                      
                         <td>
                             <mat-label>Created Date</mat-label>
                         </td>
                         <td>
-                            <!-- <mat-form-field appearance="outline">
-                                <input matInput formControlName="createdDate" required>
-                            </mat-form-field> -->
+                            
                             <mat-form-field appearance="outline" class="datepicker">
                                 <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="createdDate" required>
                                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
