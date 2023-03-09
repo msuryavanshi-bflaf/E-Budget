@@ -21,7 +21,8 @@ import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-
     HomeComponent,
     BudgetCreationComponent,
     PoGenerateComponent,
-    InvoiceGenerateComponent
+    InvoiceGenerateComponent,
+    
   ],
   imports: [
     BrowserModule,
