@@ -1,0 +1,50 @@
+
+
+
+.attachment {
+
+    display: inline-flex;
+
+    .select-file-name {
+
+        margin: 0 10px;
+
+        display: block;
+
+        width: 175px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+    }
+
+}
+
+
+.budgetCreation-button {
+
+    width: 215px !important;
+
+    margin: 10px 0 2rem 0;
+
+    background-color: #004DA8;
+}
+
+
+.invalid-file-error {
+
+    color: red;
+
+    width: 235px;
+
+    padding-left: 10px;
+
+}
+.date-picker
+ {
+    width: 212px;
+    height: 65px;
+ }
