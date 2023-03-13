@@ -53,8 +53,11 @@ export class InvoiceGenerateComponent {
 
       'modifyDate': [''],
 
-      'remark': ['']
+      'remark': [''],
 
+      'file':[''],
+
+      'createdDate':['']
 
 
 

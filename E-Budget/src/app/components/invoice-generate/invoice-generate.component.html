@@ -179,7 +179,7 @@
                             <button style="color: white;" class="approvalButton" mat-button
                                 (click)="fileInput.click()">File</button>
                         <td class="attachment">
-                            <input formControlName="resume" hidden (change)="readFile($event)" #fileInput type="file"
+                            <input formControlName="file" hidden (change)="readFile($event)" #fileInput type="file"
                                 id="file" accept=".pdf,.doc,.rtf,.docx">
                             <span class="select-file-name" *ngIf="isValidFile">{{fileName}}</span>
                             <span><i class="material-icons" *ngIf="isValidFile" (click)="removeSelectedFile()"

@@ -3,8 +3,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { AppConfig } from 'src/app/config/app.config';
 
 import { AppConstant } from 'src/app/constants/app.constants';
+import { Messages } from 'src/app/constants/message.constants';
 
 @Component({
   selector: 'app-po-generate',
@@ -14,6 +16,12 @@ import { AppConstant } from 'src/app/constants/app.constants';
 export class PoGenerateComponent {
 
   public generatePOForm !: FormGroup;
+  //attachment
+  attachFile: File | undefined;
+  isValidFile: boolean = false;
+  isValidFileError: boolean = false;
+  fileName: string = "";
+  attachmentErrorMessage: string = "";
 
   constructor(private router: Router, private fb: FormBuilder) { }
 
@@ -34,9 +42,11 @@ export class PoGenerateComponent {
 
       'poStatus': ['', Validators.required],
 
-      'vendorName': ['', [Validators.minLength(4), Validators.maxLength(15)]],
+      'vendorName': ['', [Validators.minLength(4)]],
 
       'createdBy': ['', [Validators.minLength(4)]],
+
+      'createdDate':['',[Validators.required]],
 
       'poAmount': [''],
 
@@ -46,13 +56,56 @@ export class PoGenerateComponent {
 
       'remark': [''],
 
-      'crDescription':['',[Validators.minLength(5)]],
+      'file':['',[Validators.required]],
 
-      'poExpiryDate':['',[Validators.required]]
+      'crDescription': ['', [Validators.minLength(4)]],
+
+      'poExpiryDate': ['', [Validators.required]]
 
     });
 
   }
+  readFile(fileEvent: any) {
+    this.attachFile = fileEvent.target.files[0];
+
+    if (this.attachFile != undefined) {
+      if (this.validateFile(this.attachFile)) {
+        this.fileName = this.attachFile.name;
+        this.isValidFile = true;
+        this.isValidFileError = false;
+      } else {
+        this.isValidFile = false;
+        this.isValidFileError = true;
+      }
+    } else {
+      this.isValidFile = false;
+      this.isValidFileError = true;
+      this.attachmentErrorMessage = Messages.SUPPORTED_FILE_EXTENSIONS;
+    }
+  }
+
+  validateFile(file: File) {
+    const fileExtension = file.name.split('.').pop();
+    console.log("attachResume extensions : " + fileExtension);
+    console.log("attachResume size : " + file.size);
+
+    if (fileExtension != undefined && !AppConfig.FILE_EXTENSION.includes(fileExtension)) {
+      this.attachmentErrorMessage = Messages.SUPPORTED_FILE_EXTENSIONS;
+      return false;
+    } else if (file.size > AppConfig.FILE_SIZE) {
+      this.attachmentErrorMessage = Messages.SUPPORTED_FILE_SIZE;
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  removeSelectedFile() {
+    this.attachFile?.slice;
+    this.isValidFile = false;
+  }
+
+
 
   generatePO() {
 

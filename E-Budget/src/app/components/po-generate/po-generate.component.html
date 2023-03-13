@@ -43,7 +43,9 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="budgetCode" required>
+                                <input matInput formControlName="budgetCode"  minlength="4" required>
+
+                                 <mat-error>Minimum 4 characters required</mat-error>
 
                             </mat-form-field>
 
@@ -91,19 +93,16 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="vendorName">
+                                <mat-select formControlName="vendorName"  minlength="4">
 
                                     <mat-option value="option">Integration wings</mat-option>
 
-                                    <mat-option value="option">Quantafic</mat-option>
-                                    <mat-option value="option">Accenture</mat-option>
-                                    <mat-option value="option">capgemini</mat-option>
-                                    <mat-option value="option">cognizant</mat-option>
-                                    <mat-option value="option">tcs</mat-option>
+                                    <mat-option value="option">Cognizant</mat-option>
+
+                                    <mat-option value="option">tcs </mat-option>
+
                                 </mat-select>
-
-                                <mat-error>please select the vendor name </mat-error>
-
+                                <mat-error>Minimum 4 characteds required.</mat-error>
                             </mat-form-field>
 
                         </td>
@@ -131,7 +130,7 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="crDescription" required>
+                                <input matInput formControlName="crDescription"  minlength="4" required>
                                 <mat-error>Please Enter CR Description</mat-error>
                             </mat-form-field>
 
@@ -246,6 +245,21 @@
 
                         </td>
                     </tr>
+                    <tr>
+
+                        <td>
+                            <button style="color:white" class="approvalButton" mat-button
+                                (click)="fileInput.click()"> Upload File</button>
+                        <td class="attachment">
+                            <input formControlName="file" hidden (change)="readFile($event)" #fileInput type="file"
+                                id="file" accept=".pdf,.doc,.rtf,.docx">
+                            <span class="select-file-name" *ngIf="isValidFile">{{fileName}}</span>
+                            <span><i class="material-icons" *ngIf="isValidFile" (click)="removeSelectedFile()"
+                                    alt="Remove">delete</i></span>
+                            <span class="invalid-file-error" *ngIf="isValidFileError">{{attachmentErrorMessage}}</span>
+                        </td>
+                    </tr>
+                
 
                 </table>
 
