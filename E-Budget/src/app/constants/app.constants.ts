@@ -5,7 +5,6 @@ export class AppConstant {
     public static MASTERS: string = 'master';
     public static GENERATEPO: string = 'generatepo';
     public static GENERATEINVOICE: string = 'generateinvoice';
-    public static BUDGETCREATION: string = 'budget-creation';
-    public static BUDGETCATEGORY: string = 'budget_category';
+    public static BUDGETCREATION: string = 'budgetCreation';
 
 }

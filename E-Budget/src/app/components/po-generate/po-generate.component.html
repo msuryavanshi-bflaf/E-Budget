@@ -1,11 +1,11 @@
-<p>po-generate works!</p>
+<app-home></app-home>
 <div class="center_div top">
 
     <mat-card class="container">
 
         <mat-card-header>
             <!-- title -->
-            <mat-card-title>Generate PO</mat-card-title>
+            <mat-card-title class="titlecard">Generate PO</mat-card-title>
 
         </mat-card-header>
 
@@ -16,43 +16,6 @@
                 <table>
 
                     <tr>
-
-                        <!-- Budget Code -->
-                        <td>
-
-                            <mat-label>PO Number</mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="poNumber" minlength="4" required>
-                                <mat-error>Minimum 4 characters required</mat-error>
-                            </mat-form-field>
-
-                        </td>
-                        <td>
-
-                            <mat-label>Budget Code</mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="budgetCode"  minlength="4" required>
-
-                                 <mat-error>Minimum 4 characters required</mat-error>
-
-                            </mat-form-field>
-
-                        </td>
-
-                        <!-- Budget Type -->
-
                         <td>
 
                             <mat-label>PO Status</mat-label>
@@ -77,10 +40,42 @@
 
                         </td>
 
+
+                        <!-- Budget Code -->
+                        <td>
+
+                            <mat-label>PO No.</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="poNumber" minlength="4" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+
+                        <!-- Budget Type -->
+
+
                     </tr>
 
                     <tr>
-
+                        <td>
+                            <mat-label>PO Date</mat-label>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline" class="date-picker">
+                                <input matInput [matDatepicker]="pickers" placeholder="Choose a date"
+                                    formControlName="createdDate" required>
+                                <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                                <mat-datepicker #pickers></mat-datepicker>
+                            </mat-form-field>
+                        </td>
                         <!-- Budget Description -->
 
                         <td>
@@ -93,7 +88,7 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="vendorName"  minlength="4">
+                                <mat-select formControlName="vendorName" minlength="4">
 
                                     <mat-option value="option">Integration wings</mat-option>
 
@@ -109,6 +104,30 @@
 
                         <!-- Amount-->
 
+
+
+                    </tr>
+
+                    <tr>
+                        <!-- Created By  -->
+                        <td>
+
+                            <mat-label>Budget Code</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetCode" minlength="4" required>
+
+                                <mat-error>Minimum 4 characters required</mat-error>
+
+                            </mat-form-field>
+
+                        </td>
+                        <!-- Created Date -->
                         <td>
 
                             <mat-label> PO Amount</mat-label>
@@ -122,6 +141,10 @@
                             </mat-form-field>
 
                         </td>
+
+
+                    </tr>
+                    <tr>
                         <td>
 
                             <mat-label> CR Description</mat-label>
@@ -130,99 +153,8 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="crDescription"  minlength="4" required>
+                                <input matInput formControlName="crDescription" minlength="4" required>
                                 <mat-error>Please Enter CR Description</mat-error>
-                            </mat-form-field>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <!-- Created By  -->
-                        <td>
-
-                            <mat-label>Created By </mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="createdBy" required>
-
-                            </mat-form-field>
-
-                        </td>
-                        <!-- Created Date -->
-                        <td>
-
-                            <mat-label>Modify By </mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="modifyBy" required>
-
-                            </mat-form-field>
-
-                        </td>
-                        <td>
-
-                            <mat-label>Remark</mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="remark" required>
-
-                            </mat-form-field>
-
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <!-- Modify By -->
-                        <td>
-
-                            <mat-label>Created Date</mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline" class=date-picker>
-
-                                <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-                                    formControlName="createdDate" required>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-
-                            </mat-form-field>
-
-                        </td>
-                        <td>
-                            <!-- Modify Date -->
-                            <mat-label>Modify Date </mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline" class=date-picker>
-
-                                <input matInput [matDatepicker]="picker1" placeholder="Choose a date"
-                                    formControlName="modifyDate">
-                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                <mat-datepicker #picker1></mat-datepicker>
-
                             </mat-form-field>
 
                         </td>
@@ -244,12 +176,15 @@
                             </mat-form-field>
 
                         </td>
+
                     </tr>
+
                     <tr>
 
                         <td>
-                            <button style="color:white" class="approvalButton" mat-button
-                                (click)="fileInput.click()"> Upload File</button>
+                            <button style="color:white" class="approvalButton" mat-button (click)="fileInput.click()">
+                                Upload File</button>
+                        </td>
                         <td class="attachment">
                             <input formControlName="file" hidden (change)="readFile($event)" #fileInput type="file"
                                 id="file" accept=".pdf,.doc,.rtf,.docx">
@@ -259,7 +194,7 @@
                             <span class="invalid-file-error" *ngIf="isValidFileError">{{attachmentErrorMessage}}</span>
                         </td>
                     </tr>
-                
+
 
                 </table>
 
@@ -273,4 +208,3 @@
     </mat-card>
 
 </div>
-

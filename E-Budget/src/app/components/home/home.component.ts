@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { FormBuilder} from '@angular/forms';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,private router: Router) { }
   isLinear = false;
+  
 }
 

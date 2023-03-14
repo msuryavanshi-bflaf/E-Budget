@@ -1,10 +1,11 @@
+<app-home></app-home>
 <div class="center_div top">
 
     <mat-card class="container">
 
         <mat-card-header>
             <!-- title -->
-            <mat-card-title>Generate Invoice</mat-card-title>
+            <mat-card-title class="titlecard">Generate Invoice</mat-card-title>
 
         </mat-card-header>
 
@@ -17,7 +18,7 @@
                     <tr>
                         <td>
 
-                            <mat-label>PO Number</mat-label>
+                            <mat-label>PO No.</mat-label>
 
                         </td>
 
@@ -32,7 +33,7 @@
                         </td>
                         <td>
 
-                            <mat-label>Invoice Number</mat-label>
+                            <mat-label>Invoice No.</mat-label>
 
                         </td>
 
@@ -45,6 +46,12 @@
                             </mat-form-field>
 
                         </td>
+
+
+
+                    </tr>
+
+                    <tr>
                         <td>
                             <mat-label>Invoice Date</mat-label>
                         </td>
@@ -56,12 +63,6 @@
                                 <mat-datepicker #pickers></mat-datepicker>
                             </mat-form-field>
                         </td>
-
-
-                    </tr>
-
-                    <tr>
-
                         <!-- Amount-->
 
                         <td>
@@ -81,78 +82,10 @@
 
 
                         <!-- Created By  -->
-                        <td>
-
-                            <mat-label>Created By </mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="createdBy" required>
-
-                            </mat-form-field>
-
-                        </td>
-                        <!-- Created Date -->
-                        <td>
-
-                            <mat-label>Modify By </mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="modifyBy" required>
-
-                            </mat-form-field>
-
-                        </td>
-
 
                     </tr>
                     <tr>
-                        <!-- Modify By -->
-                        <td>
 
-                            <mat-label>Created Date</mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline" class=date-picker>
-
-                                <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-                                    formControlName="createdDate" required>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-
-                            </mat-form-field>
-
-                        </td>
-                        <td>
-                            <!-- Modify Date -->
-                            <mat-label>Modify Date </mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline" class=date-picker>
-
-                                <input matInput [matDatepicker]="picker1" placeholder="Choose a date"
-                                    formControlName="modifyDate">
-                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                <mat-datepicker #picker1></mat-datepicker>
-
-                            </mat-form-field>
-
-                        </td>
                         <td>
 
                             <mat-label>Remark</mat-label>
@@ -168,28 +101,8 @@
 
                         </td>
 
-
-
-
-
-                    </tr>
-                    <tr>
-
                         <td>
-                            <button style="color: white;" class="approvalButton" mat-button
-                                (click)="fileInput.click()">File</button>
-                        <td class="attachment">
-                            <input formControlName="file" hidden (change)="readFile($event)" #fileInput type="file"
-                                id="file" accept=".pdf,.doc,.rtf,.docx">
-                            <span class="select-file-name" *ngIf="isValidFile">{{fileName}}</span>
-                            <span><i class="material-icons" *ngIf="isValidFile" (click)="removeSelectedFile()"
-                                    alt="Remove">delete</i></span>
-                            <span class="invalid-file-error" *ngIf="isValidFileError">{{attachmentErrorMessage}}</span>
-                        </td>
-                        <td>
-
                             <mat-label>Do yo want to send email?</mat-label>
-
                         </td>
                         <td>
                             <mat-radio-group aria-label="Select an option">
@@ -198,9 +111,22 @@
                             </mat-radio-group>
                         </td>
                     </tr>
+                    <tr>
 
+                        <td>
+                            <button style="color: white;" class="approvalButton" mat-button
+                                (click)="fileInput.click()">File</button>
+                        </td>
+                        <td class="attachment">
+                            <input formControlName="file" hidden (change)="readFile($event)" #fileInput type="file"
+                                id="file" accept=".pdf,.doc,.rtf,.docx">
+                            <span class="select-file-name" *ngIf="isValidFile">{{fileName}}</span>
+                            <span><i class="material-icons" *ngIf="isValidFile" (click)="removeSelectedFile()"
+                                    alt="Remove">delete</i></span>
+                            <span class="invalid-file-error" *ngIf="isValidFileError">{{attachmentErrorMessage}}</span>
+                        </td>
 
-
+                    </tr>
                 </table>
 
             </form>
