@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+
+    <div class="center_div top">
+  
+      <mat-card class="container">
+  
+          <mat-card-header>
+              <!-- title -->
+              <mat-card-title>Budget Sub-Category Master</mat-card-title>
+  
+          </mat-card-header>
+  
+          <mat-card-content>
+  
+              <form [formGroup]="budgetSubCategoryMasterForm">
+  
+                  <table>
+  
+                      <tr>
+                          
+                          <td>
+
+                            <mat-label>Budget category name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <mat-select formControlName="budgetCategoryName">
+
+                                    <mat-option value="option">AMC</mat-option>
+
+                                    <mat-option value="option">License</mat-option>
+
+                                </mat-select>
+
+
+                            </mat-form-field>
+
+                        </td>
+
+                       
+                        <td>
+
+                            <mat-label>Budget Description</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetDescription" minlength="4" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                      </tr>
+
+                      <tr>
+
+                        <td >
+
+                            <mat-label>Budget Remark</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName=remark minlength="4" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                      </tr>
+  
+                  </table>
+  
+              </form>
+  
+          </mat-card-content>
+  
+          <button mat-button style="color: white;" class="budget-sub-category-master-button" (click)="budgetSubCategoryMaster()">Sub Category Master</button>
+  
+      </mat-card>
+  
+  </div>
+

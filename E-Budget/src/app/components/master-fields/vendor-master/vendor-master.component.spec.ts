@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BudgetCategoryComponent } from './budget-category.component';
+import { VendorMasterComponent } from './vendor-master.component';
 
-describe('BudgetCategoryComponent', () => {
-  let component: BudgetCategoryComponent;
-  let fixture: ComponentFixture<BudgetCategoryComponent>;
+describe('VendorMasterComponent', () => {
+  let component: VendorMasterComponent;
+  let fixture: ComponentFixture<VendorMasterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BudgetCategoryComponent ]
+      declarations: [ VendorMasterComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BudgetCategoryComponent);
+    fixture = TestBed.createComponent(VendorMasterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

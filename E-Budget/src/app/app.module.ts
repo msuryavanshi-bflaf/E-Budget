@@ -6,26 +6,29 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { BudgetCategoryComponent } from './components/budget-category/budget-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { BudgetCreationComponent } from './components/budget-creation/budget-creation.component';
 import { PoGenerateComponent } from './components/po-generate/po-generate.component';
 import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-generate.component';
+import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
+import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
+import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LandingPageComponent,
-    BudgetCategoryComponent,
-
     NavbarComponent,
     HomeComponent,
     BudgetCreationComponent,
     PoGenerateComponent,
-    InvoiceGenerateComponent
+    InvoiceGenerateComponent,
+    BudgetCategoryMasterComponent,
+    BudgetSubCategoryMasterComponent,
+    VendorMasterComponent
   ],
   imports: [
     BrowserModule,
