@@ -23,11 +23,34 @@
 
                         </td>
 
+
+
+
                         <td>
 
                             <mat-form-field appearance="outline">
 
                                 <input matInput formControlName="budgetCategoryName" minlength="4" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            <mat-label>Budget Description</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetDescription" minlength="4" required>
                                 <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
 
@@ -41,8 +64,8 @@
 
         </mat-card-content>
 
-        <button mat-button style="color: white;" class="categoryMaster-button" (click)="budgetCategoryMaster()">Budget
-            Category Master</button>
+        <button mat-button style="color: white;" class="categoryMaster-button" (click)="budgetCategoryMaster()"
+            [disabled]=!budgetCategoryMasterForm.valid>Create Budget Master</button>
 
     </mat-card>
 

@@ -27,6 +27,7 @@ export class BudgetCategoryMasterComponent {
       this.budgetCategoryMasterForm = this.fb.group({
   
         'budgetCategoryName': ['', [Validators.minLength(4)]],
+        'budgetDescription':['',[Validators.minLength(4)]]
       });
   
     }
