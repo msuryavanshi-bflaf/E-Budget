@@ -10,35 +10,42 @@ import { AppConstant } from 'src/app/constants/app.constants';
 })
 export class BudgetCategoryMasterComponent {
 
-    public budgetCategoryMasterForm !: FormGroup;
-   
-  
-    constructor(private router: Router, private fb: FormBuilder) { }
-  
-  
-    ngOnInit() {
-  
-      this.initBudgetCategoryMasterForm();
-    }
-  
-  
-    initBudgetCategoryMasterForm() {
-  
-      this.budgetCategoryMasterForm = this.fb.group({
-  
-        'budgetCategoryName': ['', [Validators.minLength(4)]],
-        'budgetDescription':['',[Validators.minLength(4)]]
-      });
-  
-    }
-  
-   
-    budgetCategoryMaster() {
-  
-      this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
-  
-    }
-  
-  
+  public budgetCategoryMasterForm !: FormGroup;
+
+
+  constructor(private router: Router, private fb: FormBuilder) { }
+
+  textArea: any;
+
+  ngOnInit() {
+
+    this.initBudgetCategoryMasterForm();
   }
-  
+
+
+  initBudgetCategoryMasterForm() {
+
+    this.budgetCategoryMasterForm = this.fb.group({
+
+      'budgetCategoryName': ['', [Validators.minLength(4)]],
+      'budgetDescription': ['', [Validators.minLength(4)]]
+    });
+
+  }
+
+
+  budgetCategoryMaster() {
+
+    this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+
+  }
+
+  autogrow() {
+    let textArea = document.getElementById("description")
+    this.textArea.style.overflow = 'hidden';
+    this.textArea.style.height = 'auto';
+    this.textArea.style.height = this.textArea.scrollHeight + 'px';
+  }
+
+}
+

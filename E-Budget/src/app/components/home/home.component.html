@@ -1,9 +1,12 @@
 <app-navbar></app-navbar>
-<nav mat-tab-nav-bar ngClass = "tabs">
-  <a mat-tab-link routerLink="/budgetCategoryMaster" routerLinkActive="active-link">Master Screen</a>
-  <a mat-tab-link routerLink="/budgetCreation" routerLinkActive="active-link">Transaction screen</a>
-</nav>  
-<div>	
- <router-outlet></router-outlet>	
-</div>
 
+<nav mat-tab-nav-bar ngClass="tabs">
+  <a mat-tab-link routerLink="/budgetCategoryMaster" routerLinkActive="active-link"
+    style="background-color: rgb(237, 237, 238);"><u>Master Screen</u></a>
+  <a mat-tab-link routerLink="/budgetCreation" routerLinkActive="active-link"
+    style="background-color: rgb(238, 237, 237);"><u>Transaction screen</u></a>
+</nav>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

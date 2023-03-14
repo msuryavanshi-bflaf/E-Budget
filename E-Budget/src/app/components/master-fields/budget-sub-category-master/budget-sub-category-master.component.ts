@@ -11,6 +11,7 @@ import { AppConstant } from 'src/app/constants/app.constants';
 export class BudgetSubCategoryMasterComponent {
 
   public budgetSubCategoryMasterForm !: FormGroup;
+  textArea: any;
 
   constructor(private router: Router, private fb: FormBuilder) { }
 
@@ -42,7 +43,12 @@ export class BudgetSubCategoryMasterComponent {
     this.router.navigate([`/${AppConstant.VENDORMASTER}`])
 
   }
-
+  autogrow() {
+    let textArea = document.getElementById("description")
+    this.textArea.style.overflow = 'hidden';
+    this.textArea.style.height = 'auto';
+    this.textArea.style.height = this.textArea.scrollHeight + 'px';
+  }
 
 }
 
