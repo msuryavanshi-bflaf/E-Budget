@@ -9,6 +9,9 @@ import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PoGenerateComponent } from './components/po-generate/po-generate.component';
+import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
+import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
+import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
 
 
 const routes: Routes = [
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: AppConstant.HOME, component: HomeComponent },
   { path: AppConstant.GENERATEINVOICE, component: InvoiceGenerateComponent },
   { path: AppConstant.GENERATEPO, component: PoGenerateComponent },
+  { path: AppConstant.BUDGETCATEGORYMASTER, component: BudgetCategoryMasterComponent },
+  { path: AppConstant.BUDGETSUBCATEGORYMASTER, component: BudgetSubCategoryMasterComponent },
+  { path: AppConstant.VENDORMASTER, component: VendorMasterComponent },
 
 
 ];

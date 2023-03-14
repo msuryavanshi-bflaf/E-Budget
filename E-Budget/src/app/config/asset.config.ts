@@ -5,7 +5,7 @@ export const ASSET_IMAGE = {
     ALT_TEXT: ' E-Budget logo not found',
   },
   BAJAJ_LOGO_IMG: {
-    PATH:imageBasePath + '/bajajlogo.png',
+    PATH:imageBasePath + '/bajaj_logo.png',
     ALT_TEXT: ' Bajaj logo not found',
   },
   SYSTEM_ERROR_IMG: {

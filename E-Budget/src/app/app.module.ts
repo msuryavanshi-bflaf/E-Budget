@@ -12,6 +12,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { PoGenerateComponent } from './components/po-generate/po-generate.component';
 import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-generate.component';
+import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
+import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
+import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-
     NavbarComponent,
     HomeComponent,
     PoGenerateComponent,
-    InvoiceGenerateComponent
+    InvoiceGenerateComponent,
+    BudgetCategoryMasterComponent,
+    BudgetSubCategoryMasterComponent,
+    VendorMasterComponent
   ],
   imports: [
     BrowserModule,
