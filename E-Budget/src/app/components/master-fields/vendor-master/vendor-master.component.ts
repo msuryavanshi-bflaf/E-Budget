@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
+import { VendorData } from 'src/app/Model/vendor/vendor.module';
+import { VendorService } from 'src/app/shared/vendor.service';
 
 @Component({
   selector: 'app-vendor-master',
@@ -13,7 +15,7 @@ export class VendorMasterComponent {
   public vendorMasterForm!: FormGroup;
    
   
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder, private VendorService:VendorService) { }
 
 
   ngOnInit() {
@@ -45,6 +47,16 @@ export class VendorMasterComponent {
 
  vendorMaster() {
 
+  let createVendorRequest:VendorData={
+    "vendorName":this.vendorMasterForm.value.vendorName,
+    "contactNumber" :this.vendorMasterForm.value.vendorName,
+    "email":this.vendorMasterForm.value.vendorName,
+    "address":this.vendorMasterForm.value.vendorName,
+    
+  };
+  this.VendorService.createVendor(createVendorRequest).subscribe((data:any)=>{
+    
+  })
     this.router.navigate([`/${AppConstant.VENDORMASTER}`])
 
   }

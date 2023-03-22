@@ -7,5 +7,6 @@ export class Endpoint {
 
     public static readonly SEND_OTP = "/sendOtp";
 
+ 
 }
 
