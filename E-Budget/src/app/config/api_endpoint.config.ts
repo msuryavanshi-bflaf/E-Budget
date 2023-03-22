@@ -1,3 +1,4 @@
 export const API_END_POINTS = {
-    VENDOR: '/vendor'
+    VENDOR: '/vendor',
+    BUDGET_CATEGORY:'/budget_category'
 }

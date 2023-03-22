@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
+import { BudgetCreationData } from 'src/app/model/budget-creation/budget-creation.module';
+import { BudgetCreationService } from '../../services/budget-creation.service';
 
 @Component({
   selector: 'app-budget-category-master',
@@ -13,7 +15,7 @@ export class BudgetCategoryMasterComponent {
   public budgetCategoryMasterForm !: FormGroup;
 
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder,private budgetCategoryService: BudgetCreationService) { }
 
   textArea: any;
 
@@ -35,6 +37,14 @@ export class BudgetCategoryMasterComponent {
 
 
   budgetCategoryMaster() {
+    let createBudgetCategoryRequest:BudgetCreationData={
+      "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
+      "budgetCategoryDescription": this.budgetCategoryMasterForm.value.budgetCategoryDescription
+      
+    };
+    this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data:any)=>{
+      
+    })
 
     this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
 

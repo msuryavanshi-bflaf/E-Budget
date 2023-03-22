@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { VendorData } from 'src/app/Model/vendor/vendor.module';
-import { VendorService } from 'src/app/shared/vendor.service';
+import { VendorService } from 'src/app/components/services/vendor.service';
 
 @Component({
   selector: 'app-vendor-master',

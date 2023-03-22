@@ -1,5 +1,5 @@
 export interface BudgetCreationData {
 
-  BudgetCategoryName: String;
-  BudgetCategoryDescription: String;
+  budgetCategoryName: String;
+  budgetCategoryDescription: String;
 }
