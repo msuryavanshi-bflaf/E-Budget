@@ -30,9 +30,9 @@
 
                                 <mat-select formControlName="budgetCategoryName">
 
-                                    <mat-option value="option">AMC</mat-option>
+                                     <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList" value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
 
-                                    <mat-option value="option">License</mat-option>
+                                    <!-- <mat-option value="option">License</mat-option>  -->
 
                                 </mat-select>
 
@@ -53,7 +53,7 @@
                         <td>
 
                             <mat-form-field appearance="outline">
-                                <textarea matInput style="resize:vertical" formControlName="budgetDescription"
+                                <textarea matInput style="resize:vertical" formControlName="subCategoryDescription"
                                     (keyup)="autogrow()" rows="2" (click)="autogrow()" minlength="4"
                                     required></textarea>
 

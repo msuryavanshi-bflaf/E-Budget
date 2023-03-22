@@ -49,9 +49,9 @@ export class VendorMasterComponent {
 
   let createVendorRequest:VendorData={
     "vendorName":this.vendorMasterForm.value.vendorName,
-    "contactNumber" :this.vendorMasterForm.value.vendorName,
-    "email":this.vendorMasterForm.value.vendorName,
-    "address":this.vendorMasterForm.value.vendorName,
+    "contactNumber" :this.vendorMasterForm.value.contactNumber,
+    "email":this.vendorMasterForm.value.email,
+    "address":this.vendorMasterForm.value.address,
     
   };
   this.VendorService.createVendor(createVendorRequest).subscribe((data:any)=>{

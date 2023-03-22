@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { BudgetCreationData } from 'src/app/model/budget-creation/budget-creation.module';
+import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
+
 import { BudgetCreationService } from '../../services/budget-creation.service';
 
 @Component({
@@ -30,14 +31,14 @@ export class BudgetCategoryMasterComponent {
     this.budgetCategoryMasterForm = this.fb.group({
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
-      'budgetDescription': ['', [Validators.minLength(4)]]
+      'budgetCategoryDescription': ['', [Validators.minLength(4)]]
     });
 
   }
 
 
   budgetCategoryMaster() {
-    let createBudgetCategoryRequest:BudgetCreationData={
+    let createBudgetCategoryRequest:BudgetCategoryData={
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "budgetCategoryDescription": this.budgetCategoryMasterForm.value.budgetCategoryDescription
       
