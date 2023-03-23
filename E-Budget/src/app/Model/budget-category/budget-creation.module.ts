@@ -5,5 +5,8 @@ export interface BudgetCategoryData {
 }
 
 export interface GetBudgetCategoryNameByBudgetCategoryResponse{
+
+  budgetCategoryName: String;
   budgetCategoryDescription: String;
 }
+

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { NumberValidation } from 'src/app/data/utils/number.util';
+import { FindAllBudgetCategoryNameService } from '../services/find-all-budget-category-name.service';
+import { FindAllBudgetDescriptionService } from '../services/find-all-budget-description.service';
 
 @Component({
   selector: 'app-budget-creation',
@@ -19,18 +21,21 @@ export class BudgetCreationComponent {
   isValidFileError: boolean = false;
   fileName: string = "";
   attachmentErrorMessage: string = "";
+  budgetCategoryDescriptionList:String[]=undefined as any;
+  budgetCategoryNameList:String[]=undefined as any;
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
 
   ngOnInit() {
     this.initCreateBudgetCreationForm();
+    this.initBudgetCategotryDescriptionList();
   }
 
   initCreateBudgetCreationForm() {
     this.createBudgetCreationForm = this.fb.group({
       'budgetCategoryName': ['', [Validators.minLength(4)]],
       'budgetSubCategoryName': ['', [Validators.minLength(4)]],
-      'budgetDescription': ['', [Validators.minLength(40)]],
+      'budgetCategoryDescription': [''],
       'vendorName': ['', [Validators.minLength(4)]],
       'createdBy': ['', [Validators.minLength(4)]],
       'createdDate': ['',[Validators.required]],
@@ -38,7 +43,8 @@ export class BudgetCreationComponent {
       'modifyDate': [''],
       'email': ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       'mobileNumber': ['', Validators.minLength(10)],
-      'remark': ['']
+      'remark': [''],
+      'amount':['']
     });
   }
 
@@ -51,6 +57,20 @@ export class BudgetCreationComponent {
     this.router.navigate([`/${AppConstant.GENERATEPO}`])
 
   }
+
+  initBudgetCategotryDescriptionList(){
+    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res:any)=>{
+      this.budgetCategoryNameList =[];
+      for(const item in res){
+        this.budgetCategoryNameList.push(res[item].budgetCategoryDescription);
+      }
+    })
+  }
+
+
+
+
+
 
 
 }
