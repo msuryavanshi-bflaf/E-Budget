@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { VendorData } from 'src/app/Model/vendor/vendor.module';
+// import { VendorData } from 'src/app/Model/vendor/vendor.module';
+
 import { VendorService } from 'src/app/components/services/vendor.service';
+import { VendorData } from 'src/app/Model/vendor/vendor.module';
 
 @Component({
   selector: 'app-vendor-master',

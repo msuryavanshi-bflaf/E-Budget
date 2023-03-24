@@ -62,12 +62,16 @@
 
                 </table>
 
+
             </form>
 
         </mat-card-content>
 
-        <button mat-button style="color: white;" class="categoryMaster-button" (click)="budgetCategoryMaster()"
-            [disabled]=!budgetCategoryMasterForm.valid>Create Budget Master</button>
+
+        <button mat-button style="color: white;" onclick="window.location.reload();" class="categoryMaster-button"
+            (click)="budgetCategoryMaster()" [disabled]="!budgetCategoryMasterForm.valid" type="submit">Create Budget
+            Master</button>
+
 
     </mat-card>
 

@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
-
 import { BudgetCreationService } from '../../services/budget-creation.service';
-
+import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
 @Component({
   selector: 'app-budget-category-master',
   templateUrl: './budget-category-master.component.html',
@@ -14,10 +12,11 @@ import { BudgetCreationService } from '../../services/budget-creation.service';
 export class BudgetCategoryMasterComponent {
 
   public budgetCategoryMasterForm !: FormGroup;
-
+  showMsg: boolean = false;
 
   constructor(private router: Router, private fb: FormBuilder,private budgetCategoryService: BudgetCreationService) { }
 
+ 
   textArea: any;
 
   ngOnInit() {
@@ -36,6 +35,10 @@ export class BudgetCategoryMasterComponent {
 
   }
 
+  // this.budgetCategoryMasterForm.valueChanges 
+  //             .subscribe((changedObj: any) => {
+  //                  this.disableBtn = this.budgetCategoryMasterForm.valid;
+  //             });
 
   budgetCategoryMaster() {
     let createBudgetCategoryRequest:BudgetCategoryData={
@@ -48,6 +51,7 @@ export class BudgetCategoryMasterComponent {
     })
 
     this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+    this.showMsg= true;
 
   }
 
@@ -58,5 +62,6 @@ export class BudgetCategoryMasterComponent {
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
 
+  
 }
 
