@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { NumberValidation } from 'src/app/data/utils/number.util';
+import { BudgetCreation } from 'src/app/Model/budget-category/budget-creation.module';
+import { BudgetCreationService } from '../services/budget-creation.service';
 import { FindAllBudgetCategoryNameService } from '../services/find-all-budget-category-name.service';
 import { FindAllBudgetDescriptionService } from '../services/find-all-budget-description.service';
 
@@ -24,7 +26,7 @@ export class BudgetCreationComponent {
   budgetCategoryDescriptionList:String[]=undefined as any;
   budgetCategoryNameList:String[]=undefined as any;
 
-  constructor(private router: Router, private fb: FormBuilder,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
+  constructor(private router: Router, private fb: FormBuilder,private BudgetCreationService:BudgetCreationService,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
 
   ngOnInit() {
     this.initCreateBudgetCreationForm();
@@ -54,6 +56,15 @@ export class BudgetCreationComponent {
 
   budgetCreation() {
 
+    let createBudgetRequest:BudgetCreation={
+      "amount":this.createBudgetCreationForm.value.amount,
+      "remark" :this.createBudgetCreationForm.value.remark,
+      "budgetCategoryDescription":this.createBudgetCreationForm.value.budgetCategoryNameList.budgetCategoryDescription,
+
+    };
+    this.BudgetCreationService.createBudget(createBudgetRequest).subscribe((data:any)=>{
+      
+    })
     this.router.navigate([`/${AppConstant.GENERATEPO}`])
 
   }

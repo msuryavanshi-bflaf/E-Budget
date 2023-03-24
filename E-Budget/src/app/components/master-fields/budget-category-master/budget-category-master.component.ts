@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
 
-import { BudgetCreationService } from '../../services/budget-creation.service';
+import { BudgetCreationService } from '../../services/budget-category.service';
 
 @Component({
   selector: 'app-budget-category-master',

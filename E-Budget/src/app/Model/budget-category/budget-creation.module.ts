@@ -10,3 +10,11 @@ export interface GetBudgetCategoryNameByBudgetCategoryResponse{
   budgetCategoryDescription: String;
 }
 
+export interface BudgetCreation{
+  amount: String;
+  remark: String;
+  budgetCategoryDescription:String;
+
+  // budgetCode:String;
+
+}
