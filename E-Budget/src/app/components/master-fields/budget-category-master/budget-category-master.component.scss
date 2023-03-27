@@ -1,4 +1,3 @@
-
 .categoryMaster-button {
 
     width: 215px !important;
@@ -9,6 +8,28 @@
 }
 
 
-mat-card-title{
+mat-card-title {
     margin-bottom: 25px;
+}
+
+.btn-close {
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin-bottom: 250px;
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in;
+}
+
+.btn-close:hover {
+    opacity: 0.9;
+
+}
+
+.container {
+    position: relative;
 }

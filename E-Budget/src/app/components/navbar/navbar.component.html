@@ -1,12 +1,38 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <!-- <span><img [src]="appLogo.PATH" id="logo" [alt]="appLogo.ALT_TEXT" class="logo" /></span> -->
-    <span class="budget"> E-Budget</span>
-    <a href="/home" class="home">Home</a>
-    <a href="/view" class=home>View</a>
-    <a href="/contact" class=home>Contact</a>
-    <a href="/about" class="home">About</a>
-    <a href="/review" class="home">Review</a>
-    <span><img [src]="bajajLogo.PATH" id="bajajlogo" [alt]="appLogo.ALT_TEXT" class="bajajlogo" /></span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="menu-bar">
+  <span class="budget">E-Budget</span>
+  <ul>
+    <li class="active"><a href=""><mat-icon class="home-icon">home</mat-icon>Home</a>
+      <div class="sub-menu-1">
+        <ul>
+          <li class="hover-me"><a>Master</a><mat-icon class="arrow-icon">arrow_right</mat-icon>
+            <div class="sub-menu-2">
+              <ul>
+                <li><a href="/budgetCategoryMaster">Budget Category</a></li>
+                <li><a href="/budgetSubCategoryMaster">Budget Sub-category</a></li>
+                <li><a href="/vendorMaster">Vendor Master</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="hover-me"><a routerLink="/budgetCreation">Transaction</a><mat-icon
+              class="arrow-icon">arrow_right</mat-icon>
+            <div class="sub-menu-2">
+              <ul>
+                <li><a routerLink="/budgetCreation" routerLinkActive="active-link">Budget Creation</a></li>
+                <li><a routerLink="/generatePO" routerLinkActive="active-link"> PO Generation</a></li>
+                <li><a routerLink="/generateInvoice" routerLinkActive="active-link">Invoice Generation</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li><a href="/view">View</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/about">About Us</a></li>
+  </ul>
+  <span><img [src]="bajajLogo.PATH" id="bajajlogo" [alt]="appLogo.ALT_TEXT" class="bajajlogo" /></span>
+
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>

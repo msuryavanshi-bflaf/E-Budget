@@ -16,15 +16,17 @@ export class BudgetCategoryMasterComponent {
   public budgetCategoryMasterForm !: FormGroup;
   showMsg: boolean = false;
 
-  constructor(private router: Router, private fb: FormBuilder,private budgetCategoryService: BudgetCreationService) { }
+  constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCreationService) { }
 
- 
+
   textArea: any;
 
   ngOnInit() {
 
     this.initBudgetCategoryMasterForm();
+
   }
+
 
 
   initBudgetCategoryMasterForm() {
@@ -38,17 +40,17 @@ export class BudgetCategoryMasterComponent {
   }
 
   budgetCategoryMaster() {
-    let createBudgetCategoryRequest:BudgetCategoryData={
+    let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "budgetCategoryDescription": this.budgetCategoryMasterForm.value.budgetCategoryDescription
-      
+
     };
-    this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data:any)=>{
-      
+    this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
+
     })
 
     this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
-    this.showMsg= true;
+
 
   }
 
@@ -59,6 +61,6 @@ export class BudgetCategoryMasterComponent {
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
 
-  
+
 }
 
