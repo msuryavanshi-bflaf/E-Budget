@@ -4,14 +4,20 @@
 
 
 html,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 body {
     height: 100%;
+    background-position: center;
 }
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: sans-serif;
 }
 
 .top {
@@ -28,8 +34,8 @@ table {
 .container {
     display: flex;
     box-shadow: 0 1px 1px 2px rgb(223, 221, 221),
-    0 1px 1px 1px rgb(223, 221, 221),
-    0 1px 1px 1px rgb(223, 221, 221);
+        0 1px 1px 1px rgb(223, 221, 221),
+        0 1px 1px 1px rgb(223, 221, 221);
     justify-content: center;
     /* align horizontal */
     align-items: center;
@@ -59,7 +65,7 @@ table {
 }
 
 .container {
-  box-shadow: 0 1px 1px 2px rgb(223, 221, 221),
+    box-shadow: 0 1px 1px 2px rgb(223, 221, 221),
         0 1px 1px 1px rgb(223, 221, 221),
         0 1px 1px 1px rgb(223, 221, 221);
     display: flex;
@@ -73,6 +79,7 @@ table {
     /* align vertical */
 
 }
+
 .error-message {
 
     color: red;
@@ -81,7 +88,7 @@ table {
 
 }
 
- 
+
 
 .submit-button {
 
@@ -90,4 +97,5 @@ table {
     margin: 0 10px;
 
 }
+
 

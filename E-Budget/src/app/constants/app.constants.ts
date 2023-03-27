@@ -6,10 +6,10 @@ export class AppConstant {
     public static GENERATEPO: string = 'generatePO';
     public static GENERATEINVOICE: string = 'generateInvoice';
     public static BUDGETCREATION: string = 'budgetCreation';
-    
-    public static BUDGETCATEGORYMASTER:string='budgetCategoryMaster';
-    public static BUDGETSUBCATEGORYMASTER:string='budgetSubcategoryMaster';
-    public static VENDORMASTER:string='vendorMaster';
+
+    public static BUDGETCATEGORYMASTER: string = 'budgetCategoryMaster';
+    public static BUDGETSUBCATEGORYMASTER: string = 'budgetSubCategoryMaster';
+    public static VENDORMASTER: string = 'vendorMaster';
 
 
 }

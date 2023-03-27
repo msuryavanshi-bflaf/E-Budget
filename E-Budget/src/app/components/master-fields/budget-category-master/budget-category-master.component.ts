@@ -22,7 +22,6 @@ export class BudgetCategoryMasterComponent {
 
   constructor(private router: Router, private fb: FormBuilder,private budgetCategoryService: BudgetCreationService,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
 
- 
   textArea: any;
 
   ngOnInit() {
@@ -30,6 +29,7 @@ export class BudgetCategoryMasterComponent {
     this.initBudgetCategoryMasterForm();
     this.initBudgetCategotryNameList()
   }
+
 
 
   initBudgetCategoryMasterForm() {
@@ -43,10 +43,10 @@ export class BudgetCategoryMasterComponent {
   }
 
   budgetCategoryMaster() {
-    let createBudgetCategoryRequest:BudgetCategoryData={
+    let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "budgetCategoryDescription": this.budgetCategoryMasterForm.value.budgetCategoryDescription
-      
+
     };
     this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data:any)=>{
     //  if(this.budgetCategoryNameList===this.budgetCategoryMasterForm.value.budgetCategoryName)
@@ -84,6 +84,6 @@ export class BudgetCategoryMasterComponent {
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
 
-  
+
 }
 

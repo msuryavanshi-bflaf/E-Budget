@@ -1,4 +1,4 @@
-<app-home></app-home>
+<app-navbar></app-navbar>
 
 <div class="center_div top">
 
@@ -42,12 +42,13 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="contactNumber"(keypress)="numberOnly($event)" maxlength="10" required>
+                                <input matInput formControlName="contactNumber" (keypress)="numberOnly($event)"
+                                    maxlength="10" required>
                                 <mat-error>Please enter valid contact number</mat-error>
                             </mat-form-field>
 
                         </td>
-                    
+
                     </tr>
 
                     <tr>
@@ -81,7 +82,7 @@
                             </mat-form-field>
 
                         </td>
-                    
+
                     </tr>
                 </table>
 

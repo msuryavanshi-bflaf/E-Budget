@@ -1,4 +1,4 @@
-<app-home></app-home>
+<app-navbar></app-navbar>
 
 <div class="center_div top">
 
@@ -30,7 +30,8 @@
 
                                 <mat-select formControlName="budgetCategoryName" #teams (change)="onSelected(teams.value)">
 
-                                     <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList" value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
+                                    <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList"
+                                        value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
 
                                     <!-- <mat-option value="option">License</mat-option>  -->
 

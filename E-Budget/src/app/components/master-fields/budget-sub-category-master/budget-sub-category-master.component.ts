@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
@@ -46,7 +47,7 @@ export class BudgetSubCategoryMasterComponent {
 
   budgetSubCategoryMaster() {
 
-    let createSubCategoryRequest:SubCategoryData={
+    let createSubCategoryRequest: SubCategoryData = {
       // "subCategoryName":this.budgetSubCategoryMasterForm.value.subCategoryName,
       "subCategoryDescription" :this.budgetSubCategoryMasterForm.value.subCategoryDescription,
      
@@ -61,17 +62,16 @@ export class BudgetSubCategoryMasterComponent {
 
     }
 
- 
   autogrow() {
     let textArea = document.getElementById("description")
     this.textArea.style.overflow = 'hidden';
     this.textArea.style.height = 'auto';
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
-  initBudgetCategotryNameList(){
-    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res:any)=>{
-      this.budgetCategoryNameList =[];
-      for(const item in res){
+  initBudgetCategotryNameList() {
+    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res: any) => {
+      this.budgetCategoryNameList = [];
+      for (const item in res) {
         this.budgetCategoryNameList.push(res[item].budgetCategoryName);
       }
     })

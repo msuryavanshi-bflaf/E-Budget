@@ -1,29 +1,98 @@
-.mat-toolbar {
-   background-color: #004DA8;
-}
 
 .budget {
    color: white;
    font-size: 25px;
+   text-align: left;
 }
 
-#logo {
-   width: 30px;
-   height: 30px;
-   margin: 9px 0 0 5px;
-}
 
 #bajajlogo {
-   width: 150px;
-   height: 50px;
+   width: 120px;
+   height: 30px;
    margin: 9px 0 0 500px;
 
 }
 
-.home {
+.menu-bar {
+   text-align: center;
    background-color: #004DA8;
-   border-color: #004DA8;
-   color: white;
-   margin-left: 50px;
-   font-size: 15px;
+}
+
+.menu-bar ul {
+   display: inline-flex;
+   list-style: none;
+   color: #fff;
+}
+
+.menu-bar ul li {
+   width: 100px;
+   margin: 7px;
+   padding: 12px;
+}
+
+.menu-bar ul li a {
+   text-decoration: none;
+   color: #fff;
+}
+
+.active,
+.menu-bar ul li:hover {
+
+   background: #2c6bb8;
+   border-radius: 3px;
+}
+
+.sub-menu-1 {
+   display: none;
+
+}
+
+.menu-bar ul li:hover .sub-menu-1 {
+   display: block;
+   position: absolute;
+   background: #004DA8;
+   margin-top: 15px;
+   margin-left: -15px;
+
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul {
+   display: block;
+   margin: 10px;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li {
+   width: 150px;
+   padding: 10px;
+   border-bottom: 1px dotted #fff;
+   background: transparent;
+   border-radius: 0;
+   text-align: left;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li:last-child {
+   border-bottom: none;
+}
+
+.sub-menu-2 {
+   display: none;
+
+}
+
+.hover-me:hover .sub-menu-2 {
+   position: absolute;
+   display: block;
+   margin-top: -40px;
+   margin-left: 140px;
+   background: #004DA8;
+}
+
+.home-icon {
+   height: 14px;
+   width: 30px;
+}
+
+.arrow-icon {
+   height: 13px;
+   width: 20px;
 }
