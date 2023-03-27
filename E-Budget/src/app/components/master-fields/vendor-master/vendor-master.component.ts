@@ -6,6 +6,7 @@ import { AppConstant } from 'src/app/constants/app.constants';
 
 import { VendorService } from 'src/app/components/services/vendor.service';
 import { VendorData } from 'src/app/Model/vendor/vendor.module';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vendor-master',
@@ -60,7 +61,17 @@ export class VendorMasterComponent {
     
   })
     this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-
+    Swal.fire('Vendor added successfully')
   }
 
+
+
+
+
+  omit_special_char(event: { charCode: any; })
+  {   
+     var k;  
+     k = event.charCode;  //         k = event.keyCode;  (Both can be used)
+     return((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57)); 
+  }
 }

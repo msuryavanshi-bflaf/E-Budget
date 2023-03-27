@@ -14,7 +14,7 @@ import { FindAllBudgetDescriptionService } from '../services/find-all-budget-des
   styleUrls: ['./budget-creation.component.scss']
 })
 export class BudgetCreationComponent {
-
+  selectedTeam = '';
   public createBudgetCreationForm !: FormGroup;
   hide: boolean = true;
   //attachment
@@ -59,7 +59,7 @@ export class BudgetCreationComponent {
     let createBudgetRequest:BudgetCreation={
       "amount":this.createBudgetCreationForm.value.amount,
       "remark" :this.createBudgetCreationForm.value.remark,
-      "budgetCategoryDescription":this.createBudgetCreationForm.value.budgetCategoryNameList.budgetCategoryDescription,
+      "budgetCategoryDescription":this.createBudgetCreationForm.value.budgetCategoryDescription,
 
     };
     this.BudgetCreationService.createBudget(createBudgetRequest).subscribe((data:any)=>{
@@ -77,11 +77,5 @@ export class BudgetCreationComponent {
       }
     })
   }
-
-
-
-
-
-
 
 }

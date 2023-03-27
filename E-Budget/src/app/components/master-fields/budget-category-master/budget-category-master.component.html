@@ -31,6 +31,12 @@
                             <mat-form-field appearance="outline">
 
                                 <input matInput formControlName="budgetCategoryName" minlength="4" required>
+
+
+                                <!-- <div *ngIf = "budgetCategoryMasterForm.get('budgetCategoryName').errors && budgetCategoryMasterForm.get('budgetCategoryName').errors['invalid']" style="color:red;">username cannot be blank!</div>
+                                <div *ngIf = "budgetCategoryMasterForm.get('budgetCategoryName').errors && budgetCategoryMasterForm.get('budgetCategoryName').errors['exists']" style="color:red;">username exists already!</div> -->
+
+
                                 <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
 
@@ -62,17 +68,22 @@
 
                 </table>
 
-
             </form>
 
         </mat-card-content>
 
 
-        <button mat-button style="color: white;" onclick="window.location.reload();" class="categoryMaster-button"
-            (click)="budgetCategoryMaster()" [disabled]="!budgetCategoryMasterForm.valid" type="submit">Create Budget
-            Master</button>
+        <button mat-button class="categoryMaster-button" (click)="budgetCategoryMaster()"
+            [disabled]="!budgetCategoryMasterForm.valid" type="submit">Create Budget
+            Master
+        </button>
 
+         <span class="error-msg" *ngIf="!budgetCategoryMasterForm.valid">
+            <div class="danger" id="danger">Please fill the fields .</div>
+        </span> 
+        
 
+        
     </mat-card>
 
 </div>

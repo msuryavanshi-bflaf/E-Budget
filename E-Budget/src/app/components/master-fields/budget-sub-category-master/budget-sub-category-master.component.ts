@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
+import Swal from 'sweetalert2';
 import { FindAllBudgetCategoryNameService } from '../../services/find-all-budget-category-name.service';
 import { SubCategoryService } from '../../services/sub-category.service';
 
@@ -15,7 +16,7 @@ export class BudgetSubCategoryMasterComponent {
 
   public budgetSubCategoryMasterForm !: FormGroup;
   budgetCategoryNameList:String[]=undefined as any;
-
+  selectedTeam = '';
   textArea:any;
   constructor(private router: Router, private fb: FormBuilder,private SubCategoryService:SubCategoryService,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
 
@@ -54,8 +55,10 @@ export class BudgetSubCategoryMasterComponent {
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data:any)=>{
       
     })
+
       this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-  
+     Swal.fire('Budget SubCategory added successfully')
+
     }
 
  
@@ -74,6 +77,13 @@ export class BudgetSubCategoryMasterComponent {
     })
   }
 
+
+
+
+ 
+	onSelected(value:string): void {
+		this.selectedTeam = value;
+	}
 }
 
 

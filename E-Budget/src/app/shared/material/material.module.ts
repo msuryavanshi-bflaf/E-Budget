@@ -17,7 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatRadioModule} from '@angular/material/radio';
 import{MatTabsModule} from '@angular/material/tabs'
-
+import { NgToastModule } from 'ng-angular-popup';
 @NgModule({
   declarations: [],
   imports: [
@@ -39,7 +39,8 @@ import{MatTabsModule} from '@angular/material/tabs'
     MatStepperModule,
     MatToolbarModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    NgToastModule
 
 
   ],
@@ -60,7 +61,8 @@ import{MatTabsModule} from '@angular/material/tabs'
     MatStepperModule,
     MatToolbarModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    NgToastModule
 
   ],
 })
