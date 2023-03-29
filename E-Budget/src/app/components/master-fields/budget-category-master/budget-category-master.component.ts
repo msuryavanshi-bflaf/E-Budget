@@ -18,19 +18,17 @@ export class BudgetCategoryMasterComponent {
 
   public budgetCategoryMasterForm !: FormGroup;
   showMsg: boolean = false;
-  budgetCategoryNameList:String[]=undefined as any;
+  budgetCategoryNameList: String[] = undefined as any;
 
-  constructor(private router: Router, private fb: FormBuilder,private budgetCategoryService: BudgetCreationService,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
+  constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCreationService, private FindAllBudgetCategoryNameService: FindAllBudgetCategoryNameService) { }
 
   textArea: any;
-
+  res: any;
   ngOnInit() {
 
     this.initBudgetCategoryMasterForm();
     this.initBudgetCategotryNameList()
   }
-
-
 
   initBudgetCategoryMasterForm() {
 
@@ -42,40 +40,76 @@ export class BudgetCategoryMasterComponent {
 
   }
 
+  initBudgetCategotryNameList() {
+    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res) => {
+      this.budgetCategoryNameList = [];
+      for (const item in res) {
+        this.budgetCategoryNameList.push(res[item].budgetCategoryName);
+      }
+    })
+  }
+
   budgetCategoryMaster() {
     let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "budgetCategoryDescription": this.budgetCategoryMasterForm.value.budgetCategoryDescription
 
     };
-    this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data:any)=>{
-    //  if(this.budgetCategoryNameList===this.budgetCategoryMasterForm.value.budgetCategoryName)
-      
-    //     {
-    //     Swal.fire('Budget category already exits');
-      
-    //    }
-    //   else{
-        Swal.fire('Budget category created successfully')
-        this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
-      // }
-      
-    })
-  
-    // Swal.fire('Budget category created successfully')
-    // this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
-    
-  }
+    this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
+      let StoredData = data.body;
 
-  initBudgetCategotryNameList(){
-    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res:any)=>{
-      this.budgetCategoryNameList =[];
-      for(const item in res){
-        this.budgetCategoryNameList.push(res[item].budgetCategoryName);
+      if (data.body.budgetCategoryName != "" && data.body.budgetCategoryDescription != "") {
+
+        let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(StoredData);
+
+        if (isBudgetCategoryNameExits == true) {
+
+          alert('user already exits...')
+          this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
+
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:green' , 'margin-top:100px'>Budget category created successfully..</h1>",
+            icon: 'success'
+          })
+          this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+        }
+
+
       }
+
+      else {
+
+        Swal.fire({
+          title: "<h1 style='color:red'>Please fill all details</h1>",
+          icon: 'error',
+         
+        })
+
+      }
+
     })
+
   }
 
+  checkBudgetCategoryNameExits(data: BudgetCategoryData): boolean {
+
+    let budgetCategoryData = this.budgetCategoryNameList;
+
+    let isBudgetCategoryNameExits = false;
+
+    for (let i = 0; i < budgetCategoryData.length; i++) {
+
+      if (budgetCategoryData[i] == data.budgetCategoryName) {
+
+        isBudgetCategoryNameExits = true;
+
+      }
+    }
+
+    return isBudgetCategoryNameExits;
+
+  }
 
   autogrow() {
     let textArea = document.getElementById("description")
