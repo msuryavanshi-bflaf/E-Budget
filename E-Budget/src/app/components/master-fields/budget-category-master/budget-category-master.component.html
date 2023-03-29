@@ -68,16 +68,11 @@
 
 
         <button mat-button class="categoryMaster-button" (click)="budgetCategoryMaster()"
-            [disabled]="!budgetCategoryMasterForm.valid" type="submit">Create Budget
+           type="submit">Create Budget
             Master
         </button>
 
-         <span class="error-msg" *ngIf="!budgetCategoryMasterForm.valid">
-            <div class="danger" id="danger">Please fill the fields .</div>
-        </span> 
-        
-
-        
+       
     </mat-card>
 
 </div>

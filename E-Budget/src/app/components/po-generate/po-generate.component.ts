@@ -7,6 +7,7 @@ import { AppConfig } from 'src/app/config/app.config';
 
 import { AppConstant } from 'src/app/constants/app.constants';
 import { Messages } from 'src/app/constants/message.constants';
+import { FindVendorNameListService } from '../services/find-vendor-name-list.service';
 
 @Component({
   selector: 'app-po-generate',
@@ -22,13 +23,14 @@ export class PoGenerateComponent {
   isValidFileError: boolean = false;
   fileName: string = "";
   attachmentErrorMessage: string = "";
-
-  constructor(private router: Router, private fb: FormBuilder) { }
+  vendorNameList:String[]=undefined as any;
+  constructor(private router: Router, private fb: FormBuilder,private FindVendorNameListService:FindVendorNameListService) { }
 
 
   ngOnInit() {
 
     this.initGeneratePOForm();
+    this.initVendorNameList();
   }
 
 
@@ -105,6 +107,14 @@ export class PoGenerateComponent {
     this.isValidFile = false;
   }
 
+  initVendorNameList() {
+    this.FindVendorNameListService.getBudgetCategoryList().subscribe((res: any) => {
+      this.vendorNameList = [];
+      for (const item in res) {
+        this.vendorNameList.push(res[item].vendorName);
+      }
+    })
+  }
 
 
   generatePO() {

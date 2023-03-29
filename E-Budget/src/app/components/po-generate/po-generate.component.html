@@ -89,27 +89,22 @@
                             <mat-form-field appearance="outline">
 
                                 <mat-select formControlName="vendorName" minlength="4">
-
-                                    <mat-option value="option">Integration wings</mat-option>
-
-                                    <mat-option value="option">Cognizant</mat-option>
-
-                                    <mat-option value="option">tcs </mat-option>
-
+                                    <mat-option *ngFor="let vendorName of vendorNameList"
+                                    value="vendorNameList">{{vendorName}}</mat-option>
                                 </mat-select>
-                                <mat-error>Minimum 4 characteds required.</mat-error>
+                                <mat-error>Please select vendor name.</mat-error>
                             </mat-form-field>
 
                         </td>
 
-                        <!-- Amount-->
+                    
 
 
 
                     </tr>
 
                     <tr>
-                        <!-- Created By  -->
+                   
                         <td>
 
                             <mat-label>Budget Code</mat-label>
@@ -127,7 +122,7 @@
                             </mat-form-field>
 
                         </td>
-                        <!-- Created Date -->
+                  
                         <td>
 
                             <mat-label> PO Amount</mat-label>

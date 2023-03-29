@@ -47,7 +47,7 @@
 
 }
 
-.menu-bar ul li:hover .sub-menu-1 {
+.menu-bar ul li .sub-menu-1 {
    display: block;
    position: absolute;
    background: #004DA8;
@@ -56,12 +56,12 @@
 
 }
 
-.menu-bar ul li:hover .sub-menu-1 ul {
+.menu-bar ul li .sub-menu-1 ul {
    display: block;
    margin: 10px;
 }
 
-.menu-bar ul li:hover .sub-menu-1 ul li {
+.menu-bar ul li .sub-menu-1 ul li {
    width: 150px;
    padding: 10px;
    border-bottom: 1px dotted #fff;
@@ -70,7 +70,7 @@
    text-align: left;
 }
 
-.menu-bar ul li:hover .sub-menu-1 ul li:last-child {
+.menu-bar ul li .sub-menu-1 ul li:last-child {
    border-bottom: none;
 }
 
