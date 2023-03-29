@@ -45,6 +45,8 @@ export class InvoiceGenerateComponent {
 
       'invoiceDate': [''],
 
+      'invoiceReceivedDate': [''],
+
       'createdBy': ['', [Validators.minLength(4)]],
 
       'invoiceAmount': [''],
@@ -56,6 +58,8 @@ export class InvoiceGenerateComponent {
       'remark': [''],
 
       'file':[''],
+
+      'taxAmount': [''],
 
       'createdDate':['']
 

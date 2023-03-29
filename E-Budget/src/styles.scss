@@ -11,7 +11,9 @@ html,
 }
 
 body {
-    height: 100%;
+    min-height: 100vh;
+    background: url(assets/images/Image3.jpg) no-repeat;
+    background-size: cover;
     background-position: center;
 }
 

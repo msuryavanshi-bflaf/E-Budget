@@ -40,13 +40,13 @@ export class PoGenerateComponent {
 
       'budgetCode': ['', [Validators.minLength(4)]],
 
-      'poStatus': ['', Validators.required],
+      'poStage': ['', Validators.required],
 
       'vendorName': ['', [Validators.minLength(4)]],
 
       'createdBy': ['', [Validators.minLength(4)]],
 
-      'createdDate':['',[Validators.required]],
+      'createdDate': ['', [Validators.required]],
 
       'poAmount': [''],
 
@@ -56,9 +56,9 @@ export class PoGenerateComponent {
 
       'remark': [''],
 
-      'file':['',[Validators.required]],
+      'file': ['', [Validators.required]],
 
-      'crDescription': ['', [Validators.minLength(4)]],
+      'poDescription': ['', [Validators.minLength(4)]],
 
       'poExpiryDate': ['', [Validators.required]]
 

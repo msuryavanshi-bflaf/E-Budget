@@ -4,8 +4,8 @@
     <mat-card class="container">
 
         <mat-card-header>
-            <!-- title -->
-            <mat-card-title class="titlecard">Generate Invoice</mat-card-title>
+
+            <mat-card-title class="titlecard">Insert Invoice</mat-card-title>
 
         </mat-card-header>
 
@@ -63,7 +63,6 @@
                                 <mat-datepicker #pickers></mat-datepicker>
                             </mat-form-field>
                         </td>
-                        <!-- Amount-->
 
                         <td>
 
@@ -79,9 +78,32 @@
 
                         </td>
 
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-label>Invoice received Date</mat-label>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline" class="date-picker">
+                                <input matInput [matDatepicker]="pickers" placeholder="Choose a date"
+                                    formControlName="createdDate" required>
+                                <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                                <mat-datepicker #pickers></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
 
+                            <mat-label>Tax</mat-label>
 
-                        <!-- Created By  -->
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="taxAmount" required>
+                                <mat-error>Please enter tax</mat-error>
+                            </mat-form-field>
+
+                        </td>
 
                     </tr>
                     <tr>
@@ -111,8 +133,8 @@
                             </mat-radio-group>
                         </td>
                     </tr>
-                    <tr>
 
+                    <tr>
                         <td>
                             <button style="color: white;" class="approvalButton" mat-button
                                 (click)="fileInput.click()">File</button>
@@ -125,6 +147,7 @@
                                     alt="Remove">delete</i></span>
                             <span class="invalid-file-error" *ngIf="isValidFileError">{{attachmentErrorMessage}}</span>
                         </td>
+
 
                     </tr>
                 </table>

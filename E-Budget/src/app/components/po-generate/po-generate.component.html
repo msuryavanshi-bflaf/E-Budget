@@ -18,7 +18,7 @@
                     <tr>
                         <td>
 
-                            <mat-label>PO Status</mat-label>
+                            <mat-label>PO Stage</mat-label>
 
                         </td>
 
@@ -26,7 +26,7 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="poStatus">
+                                <mat-select formControlName="poStage">
 
                                     <mat-option value="option">PO to be Issue</mat-option>
 
@@ -35,7 +35,7 @@
                                     <mat-option value="option">PO on hold </mat-option>
 
                                 </mat-select>
-                                <mat-error>Please select PO Status</mat-error>
+                                <mat-error>Please select PO Stage</mat-error>
                             </mat-form-field>
 
                         </td>
@@ -147,14 +147,14 @@
                     <tr>
                         <td>
 
-                            <mat-label> CR Description</mat-label>
+                            <mat-label> PO Description</mat-label>
 
                         <td>
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="crDescription" minlength="4" required>
-                                <mat-error>Please Enter CR Description</mat-error>
+                                <input matInput formControlName="poDescription" minlength="4" required>
+                                <mat-error>Please Enter PO Description</mat-error>
                             </mat-form-field>
 
                         </td>
