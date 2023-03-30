@@ -19,6 +19,7 @@ export class BudgetCategoryMasterComponent {
   public budgetCategoryMasterForm !: FormGroup;
   showMsg: boolean = false;
   budgetCategoryNameList: String[] = undefined as any;
+  checked = true;
 
   constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCreationService, private FindAllBudgetCategoryNameService: FindAllBudgetCategoryNameService) { }
 
@@ -35,7 +36,7 @@ export class BudgetCategoryMasterComponent {
     this.budgetCategoryMasterForm = this.fb.group({
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
-      'budgetCategoryDescription': ['', [Validators.minLength(4)]]
+      'remark': ['', [Validators.minLength(4)]]
     });
 
   }
@@ -52,13 +53,13 @@ export class BudgetCategoryMasterComponent {
   budgetCategoryMaster() {
     let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
-      "budgetCategoryDescription": this.budgetCategoryMasterForm.value.budgetCategoryDescription
+      "remark": this.budgetCategoryMasterForm.value.remark
 
     };
     this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
       let StoredData = data.body;
 
-      if (data.body.budgetCategoryName != "" && data.body.budgetCategoryDescription != "") {
+      if (data.body.budgetCategoryName != "" && data.body.remark != "") {
 
         let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(StoredData);
 

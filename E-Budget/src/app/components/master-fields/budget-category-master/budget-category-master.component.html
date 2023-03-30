@@ -42,7 +42,7 @@
 
                         <td>
 
-                            <mat-label>Budget Description</mat-label>
+                            <mat-label>Remark</mat-label>
 
                         </td>
 
@@ -50,15 +50,24 @@
 
                             <mat-form-field appearance="outline">
 
-                                <textarea matInput style="resize:vertical" formControlName="budgetCategoryDescription"
-                                    (keyup)="autogrow()" rows="2" (click)="autogrow()" minlength="4"
-                                    required></textarea>
+                                <textarea matInput style="resize:vertical" formControlName="remark" (keyup)="autogrow()"
+                                    rows="2" (click)="autogrow()" minlength="4" required></textarea>
                                 <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
 
                         </td>
 
+
                     </tr>
+
+                    <tr>
+
+                        <mat-checkbox type="checkbox" checked>Active</mat-checkbox>
+                 Active<input type="checkbox" name ="Active" formControlName="Active">
+                    </tr>
+
+
+
 
                 </table>
 
@@ -67,12 +76,11 @@
         </mat-card-content>
 
 
-        <button mat-button class="categoryMaster-button" (click)="budgetCategoryMaster()"
-           type="submit">Create Budget
+        <button mat-button class="categoryMaster-button" (click)="budgetCategoryMaster()" type="submit">Create Budget
             Master
         </button>
 
-       
+
     </mat-card>
 
 </div>

@@ -1,7 +1,7 @@
 export interface BudgetCategoryData {
 
   budgetCategoryName: String;
-  budgetCategoryDescription: String;
+  remark: String;
 }
 
 export interface GetBudgetCategoryNameByBudgetCategoryResponse{

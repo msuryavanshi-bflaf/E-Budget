@@ -1,8 +1,7 @@
 export interface SubCategoryData {
-
- 
-  // subCategoryDescription: String;
-
-
-  
+	budgetSubCategoryName: String;
+  budgetCategoryName:String;
+  remark:String;
+  budgetCode:String;
+  active:String;
 }

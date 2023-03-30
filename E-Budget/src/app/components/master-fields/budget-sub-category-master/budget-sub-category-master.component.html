@@ -28,10 +28,10 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCategoryName" #teams (change)="onSelected(teams.value)">
+                                <mat-select formControlName="budgetCategoryName" [(ngModel)]="budgetCategoryNameSelected">
 
                                     <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList"
-                                        value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
+                                       [value]="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
 
                                     <!-- <mat-option value="option">License</mat-option>  -->
 
@@ -54,7 +54,7 @@
                         <td>
 
                             <mat-form-field appearance="outline">
-                                <textarea matInput style="resize:vertical" formControlName="subCategoryDescription"
+                                <textarea matInput style="resize:vertical" formControlName="budgetSubCategoryDescription"
                                     (keyup)="autogrow()" rows="2" (click)="autogrow()" minlength="4"
                                     required></textarea>
 

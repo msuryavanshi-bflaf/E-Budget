@@ -19,13 +19,15 @@ export class BudgetSubCategoryMasterComponent {
   budgetCategoryNameList:String[]=undefined as any;
   selectedTeam = '';
   textArea:any;
+  selectedValue:any;
   constructor(private router: Router, private fb: FormBuilder,private SubCategoryService:SubCategoryService,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
-
+  budgetCategoryNameSelected:any
 
   ngOnInit() {
 
     this.initBudgetSubCategoryMasterForm();
     this.initBudgetCategotryNameList();
+    
   }
 
 
@@ -35,23 +37,21 @@ export class BudgetSubCategoryMasterComponent {
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
 
-      'subCategoryName': ['', [Validators.minLength(4)]],
+      'budgetSubCategoryName': ['', [Validators.minLength(4)]],
 
-      'subCategoryDescription': ['', Validators.minLength(4)]
+      'remark': ['', Validators.minLength(4)]
 
     });
 
   }
-
-
-
   budgetSubCategoryMaster() {
 
     let createSubCategoryRequest: SubCategoryData = {
-      // "subCategoryName":this.budgetSubCategoryMasterForm.value.subCategoryName,
-      "subCategoryDescription" :this.budgetSubCategoryMasterForm.value.subCategoryDescription,
-     
-      
+      "budgetCategoryName" :this.budgetSubCategoryMasterForm.value.budgetCategoryName,
+       "budgetSubCategoryName":this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
+     "remark":this.budgetSubCategoryMasterForm.value.remark,
+      "budgetCode":this.budgetSubCategoryMasterForm.value.remark,
+      "active":this.budgetSubCategoryMasterForm.value.active
     };
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data:any)=>{
       
@@ -75,6 +75,7 @@ export class BudgetSubCategoryMasterComponent {
         this.budgetCategoryNameList.push(res[item].budgetCategoryName);
       }
     })
+   this. budgetCategoryNameSelected=this.budgetCategoryNameList
   }
 
 
