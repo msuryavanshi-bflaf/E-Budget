@@ -35,9 +35,9 @@ export class BudgetSubCategoryMasterComponent {
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
 
-      'subCategoryName': ['', [Validators.minLength(4)]],
+      'budgetSubCategoryName': ['', [Validators.minLength(4)]],
 
-      'subCategoryDescription': ['', Validators.minLength(4)]
+      'budgetSubCategoryDescription': ['', Validators.minLength(4)]
 
     });
 
@@ -48,10 +48,11 @@ export class BudgetSubCategoryMasterComponent {
   budgetSubCategoryMaster() {
 
     let createSubCategoryRequest: SubCategoryData = {
-      // "subCategoryName":this.budgetSubCategoryMasterForm.value.subCategoryName,
-      "subCategoryDescription": this.budgetSubCategoryMasterForm.value.subCategoryDescription,
-
-
+      "budgetCategoryName":this.budgetSubCategoryMasterForm.value.budgetCategoryName,
+      "budgetSubCategoryName":this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
+      "budgetSubCategoryDescription" :this.budgetSubCategoryMasterForm.value.budgetSubCategoryDescription
+     
+      
     };
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
 
