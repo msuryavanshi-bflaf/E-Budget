@@ -4,10 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AppConfig } from 'src/app/config/app.config';
-
 import { AppConstant } from 'src/app/constants/app.constants';
 import { Messages } from 'src/app/constants/message.constants';
-import { FindVendorNameListService } from '../services/find-vendor-name-list.service';
+import { VendorService } from '../services/vendor.service';
 
 @Component({
   selector: 'app-po-generate',
@@ -23,8 +22,8 @@ export class PoGenerateComponent {
   isValidFileError: boolean = false;
   fileName: string = "";
   attachmentErrorMessage: string = "";
-  vendorNameList:String[]=undefined as any;
-  constructor(private router: Router, private fb: FormBuilder,private FindVendorNameListService:FindVendorNameListService) { }
+  vendorNameList: String[] = undefined as any;
+  constructor(private router: Router, private fb: FormBuilder, private vendorService: VendorService) { }
 
 
   ngOnInit() {
@@ -108,7 +107,7 @@ export class PoGenerateComponent {
   }
 
   initVendorNameList() {
-    this.FindVendorNameListService.getBudgetCategoryList().subscribe((res: any) => {
+    this.vendorService.getVendorNameList().subscribe((res: any) => {
       this.vendorNameList = [];
       for (const item in res) {
         this.vendorNameList.push(res[item].vendorName);

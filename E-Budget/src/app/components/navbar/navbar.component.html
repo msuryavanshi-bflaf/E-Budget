@@ -1,7 +1,8 @@
 <div class="menu-bar">
   <span class="budget">E-Budget</span>
   <ul>
-    <li class="active"><a href=""><mat-icon class="home-icon">home</mat-icon>Home</a>
+    <li class="active"><a href=""><mat-icon class="home-icon">home</mat-icon>Home</a></li>
+    <li><a href="">Masters</a>
       <div class="sub-menu-1">
         <ul>
           <li class="hover-me"><a>Master</a><mat-icon class="arrow-icon">arrow_right</mat-icon>
@@ -10,6 +11,7 @@
                 <li><a href="/budgetCategoryMaster">Budget Category</a></li>
                 <li><a href="/budgetSubCategoryMaster">Budget Sub-category</a></li>
                 <li><a href="/vendorMaster">Vendor Master</a></li>
+                <li><a routerLink="/budgetCreation">Budget Creation</a></li>
               </ul>
             </div>
           </li>
@@ -17,7 +19,7 @@
               class="arrow-icon">arrow_right</mat-icon>
             <div class="sub-menu-2">
               <ul>
-                <li><a routerLink="/budgetCreation" routerLinkActive="active-link">Budget Creation</a></li>
+
                 <li><a routerLink="/generatePO" routerLinkActive="active-link"> PO Generation</a></li>
                 <li><a routerLink="/generateInvoice" routerLinkActive="active-link">Invoice Generation</a></li>
               </ul>
@@ -27,7 +29,6 @@
       </div>
     </li>
     <li><a href="/view">View</a></li>
-    <li><a href="/contact">Contact</a></li>
     <li><a href="/about">About Us</a></li>
     <li><a href="/help">Help</a></li>
   </ul>

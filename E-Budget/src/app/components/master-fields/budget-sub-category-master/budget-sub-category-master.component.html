@@ -28,7 +28,8 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCategoryName" #teams (change)="onSelected(teams.value)">
+                                <mat-select formControlName="budgetCategoryName" #teams
+                                    (change)="onSelected(teams.value)">
 
                                     <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList"
                                         value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
@@ -71,8 +72,8 @@
 
         </mat-card-content>
 
-        <button mat-button class="budget-sub-category-master-button"
-            (click)="budgetSubCategoryMaster()" [disabled]=!budgetSubCategoryMasterForm.valid>Sub Category
+        <button mat-button class="budget-sub-category-master-button" (click)="budgetSubCategoryMaster()"
+            [disabled]=!budgetSubCategoryMasterForm.valid>Sub Category
             Master</button>
 
     </mat-card>

@@ -16,9 +16,9 @@ import Swal from 'sweetalert2';
 export class VendorMasterComponent {
 
   public vendorMasterForm!: FormGroup;
-   
-  
-  constructor(private router: Router, private fb: FormBuilder, private VendorService:VendorService) { }
+
+
+  constructor(private router: Router, private fb: FormBuilder, private VendorService: VendorService) { }
 
 
   ngOnInit() {
@@ -32,14 +32,14 @@ export class VendorMasterComponent {
     this.vendorMasterForm = this.fb.group({
 
       'vendorName': ['', [Validators.minLength(4)]],
-      'email':['',[Validators.email]],
-      'contactNumber':['',Validators.maxLength(10)],
-      'address':['',Validators.minLength(4)]
+      'email': ['', [Validators.email]],
+      'contactNumber': ['', Validators.maxLength(10)],
+      'address': ['', Validators.minLength(4)]
     });
 
   }
 
-  numberOnly(event:any) {
+  numberOnly(event: any) {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -48,18 +48,18 @@ export class VendorMasterComponent {
 
   }
 
- vendorMaster() {
+  vendorMaster() {
 
-  let createVendorRequest:VendorData={
-    "vendorName":this.vendorMasterForm.value.vendorName,
-    "contactNumber" :this.vendorMasterForm.value.contactNumber,
-    "email":this.vendorMasterForm.value.email,
-    "address":this.vendorMasterForm.value.address,
-    
-  };
-  this.VendorService.createVendor(createVendorRequest).subscribe((data:any)=>{
-    
-  })
+    let createVendorRequest: VendorData = {
+      "vendorName": this.vendorMasterForm.value.vendorName,
+      "contactNumber": this.vendorMasterForm.value.contactNumber,
+      "email": this.vendorMasterForm.value.email,
+      "address": this.vendorMasterForm.value.address,
+
+    };
+    this.VendorService.createVendor(createVendorRequest).subscribe((data: any) => {
+
+    })
     this.router.navigate([`/${AppConstant.VENDORMASTER}`])
     Swal.fire('Vendor added successfully')
   }
@@ -68,10 +68,9 @@ export class VendorMasterComponent {
 
 
 
-  omit_special_char(event: { charCode: any; })
-  {   
-     var k;  
-     k = event.charCode;  //         k = event.keyCode;  (Both can be used)
-     return((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57)); 
+  omit_special_char(event: { charCode: any; }) {
+    var k;
+    k = event.charCode;  //         k = event.keyCode;  (Both can be used)
+    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
   }
 }

@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
+import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-category.module';
 import Swal from 'sweetalert2';
 
-import { BudgetCreationService } from '../../services/budget-category.service';
-import { FindAllBudgetCategoryNameService } from '../../services/find-all-budget-category-name.service';
+import { BudgetCategoryService } from '../../services/budget-category.service';
 
 @Component({
   selector: 'app-budget-category-master',
@@ -20,7 +19,7 @@ export class BudgetCategoryMasterComponent {
   showMsg: boolean = false;
   budgetCategoryNameList: String[] = undefined as any;
 
-  constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCreationService, private FindAllBudgetCategoryNameService: FindAllBudgetCategoryNameService) { }
+  constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCategoryService) { }
 
   textArea: any;
   res: any;
@@ -41,7 +40,7 @@ export class BudgetCategoryMasterComponent {
   }
 
   initBudgetCategotryNameList() {
-    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res) => {
+    this.budgetCategoryService.getBudgetCategoryList().subscribe((res) => {
       this.budgetCategoryNameList = [];
       for (const item in res) {
         this.budgetCategoryNameList.push(res[item].budgetCategoryName);
@@ -83,7 +82,7 @@ export class BudgetCategoryMasterComponent {
         Swal.fire({
           title: "<h1 style='color:red'>Please fill all details</h1>",
           icon: 'error',
-         
+
         })
 
       }

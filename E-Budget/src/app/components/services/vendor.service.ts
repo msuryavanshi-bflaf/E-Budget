@@ -11,9 +11,18 @@ import { VendorData } from '../../Model/vendor/vendor.module';
 export class VendorService {
 
   constructor(private http: HttpClient) { }
+
   createVendor(createVendorRequest: VendorData): Observable<VendorData> {
-    return this.http.post(environment.javaEndPoint+API_END_POINTS.VENDOR, createVendorRequest).pipe(map((res: any) => {
+    return this.http.post(environment.javaEndPoint + API_END_POINTS.VENDOR, createVendorRequest).pipe(map((res: any) => {
       return res;
     }))
+  }
+
+  getVendorNameList(): Observable<VendorData[]> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDORNAMELIST).pipe(
+      map((res: any) => {
+        return (res)
+      })
+    )
   }
 }
