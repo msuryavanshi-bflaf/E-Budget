@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-category.module';
+import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
 import Swal from 'sweetalert2';
 
 import { BudgetCategoryService } from '../../services/budget-category.service';
