@@ -2,8 +2,9 @@ export interface BudgetCreation{
     budgetCategoryName: String;
     budgetSubCategoryName: String;
     budgetCode:String;
-    capitalAmount: String;
-    revenueAmount: String;
+    budgetType:String;
+    amount: String;
+    amountInWords: String;
     remark: String;
     
   }
