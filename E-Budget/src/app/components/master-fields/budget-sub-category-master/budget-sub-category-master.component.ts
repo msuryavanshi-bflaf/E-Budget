@@ -48,7 +48,7 @@ export class BudgetSubCategoryMasterComponent {
   budgetSubCategoryMaster() {
 
     let createSubCategoryRequest: SubCategoryData = {
-      // "subCategoryName":this.budgetSubCategoryMasterForm.value.subCategoryName,
+       "subCategoryName":this.budgetSubCategoryMasterForm.value.subCategoryName,
       "subCategoryDescription" :this.budgetSubCategoryMasterForm.value.subCategoryDescription,
      
       
