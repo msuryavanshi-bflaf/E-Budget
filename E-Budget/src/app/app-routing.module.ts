@@ -12,6 +12,8 @@ import { PoGenerateComponent } from './components/po-generate/po-generate.compon
 import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
 import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
 import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
+import { BudgetCodeMasterComponent } from './components/master-fields/budget-code-master/budget-code-master.component';
+import { BudgetCodeCategoryMappingComponent } from './components/master-fields/budget-code-category-mapping/budget-code-category-mapping.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: AppConstant.BUDGETCATEGORYMASTER, component: BudgetCategoryMasterComponent },
   { path: AppConstant.BUDGETSUBCATEGORYMASTER, component: BudgetSubCategoryMasterComponent },
   { path: AppConstant.VENDORMASTER, component: VendorMasterComponent },
+  { path: AppConstant.BUDGETCODEMASTER, component: BudgetCodeMasterComponent },
+  { path: AppConstant.BUDGETCODECATEGORYMAPPING, component: BudgetCodeCategoryMappingComponent },
 
 
 ];

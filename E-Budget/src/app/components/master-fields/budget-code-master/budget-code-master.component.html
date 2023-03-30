@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+
+<div class="center_div top">
+
+    <mat-card class="container">
+
+        <mat-card-header>
+            <!-- title -->
+            <mat-card-title>Budget Code Master</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <form [formGroup]="budgetCodeMasterForm" id="budgetCodeForm">
+
+                <table>
+
+                    <tr>
+                        <td>
+                            <mat-label>Budget Code</mat-label>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="outline">
+                                <input matInput formControlName="budgetCategoryName" required>
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+                        </td>
+                        
+                        <td>
+
+                            <mat-label>Budget Category Name</mat-label>
+
+                        </td>
+
+
+
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetCategoryName" minlength="4" required>
+
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            <mat-label>Budget Description</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <textarea matInput style="resize:vertical" formControlName="budgetCategoryDescription"
+                                    (keyup)="autogrow()" rows="2" (click)="autogrow()" minlength="4"
+                                    required></textarea>
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </form>
+
+        </mat-card-content>
+
+
+        <button mat-button class="codeMaster-button" (click)="budgetCodeMaster()"
+           type="submit">Create Budget
+            Code
+        </button>
+
+       
+    </mat-card>
+
+</div>
