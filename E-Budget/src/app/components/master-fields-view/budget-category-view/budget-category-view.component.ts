@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
+import { BudgetCategoryDetails } from 'src/app/Model/budget-category/budget-creation.module';
+import { BudgetCategoryService } from '../../services/budget-category.service';
 
 export interface Employee {
   value: string;
@@ -19,39 +21,39 @@ export class BudgetCategoryViewComponent implements OnInit {
 
 
   id: number | undefined;
-  // activeEmployeeData: ActiveEmployee[] = [];
-  employee: Employee[] = [
-    { value: 'Active Employee', viewValue: 'Active Employee' },
-    { value: 'Terminated Employee', viewValue: 'Terminated Employee' },
-  ];
+  budgetCategoryData: BudgetCategoryDetails[] = [];
+  
+  tableHead = ['Sr No.', 'Budget Category', 'Created Date', 'Created By', 'Status','Action'];
 
-  constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute ) { }
+  constructor(private router: Router, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
   ngOnInit(): void {
-    this.getActiveEmployee();
+    // this.getActiveCategory();
   }
+
   addBudgetCategory() {
     this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
   }
-  // getActiveEmployeeDetails() {
-  //   this.getActiveEmployeeDetails(this.id).subscribe((data: any) => {
-  //     // this.activeEmployeeData = data;
-  //     // this.router.navigate([AppConstant.VIEW_EMPLOYEE]);
+
+  getbudgetCategoryDetails() {
+    this.budgetCategoryService.getBudgetCategoryDetails(this.id).subscribe((data: any) => {
+      this.budgetCategoryData = data;
+      // this.router.navigate([AppConstant.VIEW_EMPLOYEE]);
+    });
+  }
+
+  // getActiveCategory() {
+  //   this.budgetCategoryService.getActiveCategory.subscribe((data: any) => {
+  //     this.budgetCategoryData = data;
   //   });
   // }
-
-  getActiveEmployee() {
-    // this.inviteActiveEmployeeService.getActiveEmployee().subscribe((res: any) => {
-    //   this.activeEmployeeData = res;
-    // });
-  }
-  deleteEmployee(data: any) {
-    // if (confirm('Are You sure to Delete this record'))
-    //   this.inviteActiveEmployeeService.deleteEmployee(data.id).subscribe((res: any) => {
-    //   })
-    // alert('Record deleted Successfully')
+  deleteCategory(data: any) {
+    if (confirm('Are You sure to Delete this record'))
+      this.budgetCategoryService.deleteCategory(data.id).subscribe((res: any) => {
+      })
+    alert('Record deleted Successfully')
     // this.getActiveEmployee()
   }
-  searchEmployee(event: any) {
+  searchCategory(event: any) {
     // let filteredEmployees: ActiveEmployee[] = [];
     // if (event === '') {
     //   this.getActiveEmployee = this.addEmployee;
@@ -65,6 +67,6 @@ export class BudgetCategoryViewComponent implements OnInit {
     // }
   }
 
-  tableHead = ['Sr No.', 'Employee Name', 'Department Name', 'Work Mail', 'Cost To Company'];
+ 
 }
 

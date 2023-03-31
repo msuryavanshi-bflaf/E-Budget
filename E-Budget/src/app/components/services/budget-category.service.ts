@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { API_END_POINTS } from 'src/app/config/api_endpoint.config';
-import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
+import { BudgetCategoryData, BudgetCategoryDetails } from 'src/app/Model/budget-category/budget-creation.module';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,24 +18,25 @@ export class BudgetCategoryService {
     }))
   }
 
-  // getActiveEmployee(): Observable<ActiveEmployee> {
-  //   return this.http.get(environment.apiUrl + API_END_POINTS.ACTIVE_EMPLOYEE).pipe(
-  //     map((res: any) => { return (res) })
-  //   );
-  // }
+  getActiveCategory(): Observable<BudgetCategoryDetails> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYDETAILS).pipe(
+      map((res: any) => { return (res) })
+    );
+  }
+
   // createSalary(createSalaryRequest:SalaryData): Observable<SalaryData> {
   //   return this.http.post( environment.apiUrl+API_END_POINTS.SALARY_DETAILS, createSalaryRequest).pipe(map((res: any) => {
   //     return res;
   //   }))
   // }
 
-  getActiveEmployeeDetails(id: any) {
+  getBudgetCategoryDetails(id: any) {
     return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYDETAILS + id).pipe(
       map((res: any) => { return (res) })
     );
   }
 
-  public deleteEmployee(id: any) {
+  public deleteCategory(id: any) {
     return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETECATEGORY + id)
   }
 

@@ -1,11 +1,17 @@
 @import '/src/scss/base';
 
-.add-employee {
-      background-color: $c-cyan-azure;
-    margin-left: 550px;
+.add-category {
+    //   background-color: $c-cyan-azure;
+    // margin-left: 550px;
+
+    width: 215px !important;
+
+    margin: 28px 0 2rem 250px;
+
+     background-color:  #004DA8;
 }
 
-.delete-employee {
+.delete-category {
   background-color: $c-cyan-azure;
 }
 
@@ -38,6 +44,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    background-color: white;
 }
 
 td,
