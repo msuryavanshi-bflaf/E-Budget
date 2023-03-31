@@ -1,8 +1,8 @@
 export const API_END_POINTS = {
-    VENDOR: '/vendor',
-    BUDGET_CATEGORY:'/budgetCategory',
-    SUBCATEGORY:'/subCategory',
-    BUDGETCATEGORYLIST:'/findAllBudgetCategory',
+    VENDOR: '/vendor/vendor',
+    BUDGET_CATEGORY:'/budgetCategory/budgetCategory',
+    SUBCATEGORY:'/subCategory/subCategory',
+    BUDGETCATEGORYLIST:'budgetCategory/findAllBudgetCategory',
     BUDGETSUBCATEGORYLIST:'/findAllSubBudgetCategory',
     CREATEBUDGET:'/createbudget',
     VENDORNAMELIST:'/findAllVendor',
