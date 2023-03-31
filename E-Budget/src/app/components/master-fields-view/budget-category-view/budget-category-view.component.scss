@@ -1,0 +1,64 @@
+@import '/src/scss/base';
+
+.add-employee {
+      background-color: $c-cyan-azure;
+    margin-left: 550px;
+}
+
+.delete-employee {
+  background-color: $c-cyan-azure;
+}
+
+.search {
+    margin: 0px 0 0 10px;
+    width: 400px;
+}
+
+.matInput {
+    margin-top: 10px;
+}
+
+.mat-icon {
+    font-size: large;
+}
+
+.delete-icon {
+  color: $c-primary-mandatory-field;
+  font-size: $h4-font-size;
+}
+
+.view-icon {
+      color: $c-primary-mandatory-field1;
+      font-size: $h4-font-size;
+    margin-top: 15px;
+}
+
+table {
+    margin: 0 10px 0 10px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.select-mat-input {
+    height: 19px;
+    font-size: $h1-font-size;
+    width: 241px;
+    padding-Top: 9px;
+    margin: 1px 0 13px 20px;
+}
+
+.employee-list {
+    margin: 6px 0 0 10px;
+}

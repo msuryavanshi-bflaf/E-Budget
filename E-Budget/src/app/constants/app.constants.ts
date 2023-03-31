@@ -10,6 +10,7 @@ export class AppConstant {
     public static BUDGETCATEGORYMASTER: string = 'budgetCategoryMaster';
     public static BUDGETSUBCATEGORYMASTER: string = 'budgetSubCategoryMaster';
     public static VENDORMASTER: string = 'vendorMaster';
+    public static BUDGETCATEGORYVIEW: string = 'budgetCategoryView';
 
 
 }

@@ -4,5 +4,7 @@ export const API_END_POINTS = {
     SUBCATEGORY:'/subCategory',
     BUDGETCATEGORYLIST:'/findAllBudgetCategory',
     CREATEBUDGET:'/createbudget',
-    VENDORNAMELIST:'/findAllVendor'
+    VENDORNAMELIST:'/findAllVendor',
+    BUDGETCATEGORYDETAILS:'/budgetCategoryDetails',
+    DELETECATEGORY:'/deleteCategory'
 }

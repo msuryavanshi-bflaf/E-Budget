@@ -15,7 +15,8 @@ import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-
 import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
 import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
 import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { BudgetCategoryViewComponent } from './components/master-fields-view/budget-category-view/budget-category-view.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http'
     BudgetCategoryMasterComponent,
     BudgetSubCategoryMasterComponent,
     VendorMasterComponent,
+    BudgetCategoryViewComponent,
 
   ],
   imports: [
