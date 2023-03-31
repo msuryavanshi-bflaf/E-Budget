@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
 import Swal from 'sweetalert2';
-import { FindAllBudgetCategoryNameService } from '../../services/find-all-budget-category-name.service';
+import { BudgetCategoryService } from '../../services/budget-category.service';
 import { SubCategoryService } from '../../services/sub-category.service';
 
 @Component({
@@ -16,12 +16,13 @@ import { SubCategoryService } from '../../services/sub-category.service';
 export class BudgetSubCategoryMasterComponent {
 
   public budgetSubCategoryMasterForm !: FormGroup;
-  budgetCategoryNameList:String[]=undefined as any;
+  budgetCategoryNameList: String[] = undefined as any;
   selectedTeam = '';
-  textArea:any;
+  textArea: any;
   selectedValue:any;
-  constructor(private router: Router, private fb: FormBuilder,private SubCategoryService:SubCategoryService,private FindAllBudgetCategoryNameService:FindAllBudgetCategoryNameService) { }
-  budgetCategoryNameSelected:any
+  budgetCategoryNameSelected:any;
+  constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder, private SubCategoryService: SubCategoryService) { }
+
 
   ngOnInit() {
 
@@ -40,12 +41,9 @@ export class BudgetSubCategoryMasterComponent {
       'budgetSubCategoryName': ['', [Validators.minLength(4)]],
 
       'remark': ['', Validators.minLength(4)]
-
     });
-
   }
   budgetSubCategoryMaster() {
-
     let createSubCategoryRequest: SubCategoryData = {
       "budgetCategoryName" :this.budgetSubCategoryMasterForm.value.budgetCategoryName,
        "budgetSubCategoryName":this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
@@ -53,14 +51,14 @@ export class BudgetSubCategoryMasterComponent {
       "budgetCode":this.budgetSubCategoryMasterForm.value.remark,
       "active":this.budgetSubCategoryMasterForm.value.active
     };
-    this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data:any)=>{
-      
+    this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
+
     })
 
-      this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-     Swal.fire('Budget SubCategory added successfully')
+    this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+    Swal.fire('Budget SubCategory added successfully')
 
-    }
+  }
 
   autogrow() {
     let textArea = document.getElementById("description")
@@ -69,7 +67,7 @@ export class BudgetSubCategoryMasterComponent {
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
   initBudgetCategotryNameList() {
-    this.FindAllBudgetCategoryNameService.getBudgetCategoryList().subscribe((res: any) => {
+    this.budgetCategoryService.getBudgetCategoryList().subscribe((res: any) => {
       this.budgetCategoryNameList = [];
       for (const item in res) {
         this.budgetCategoryNameList.push(res[item].budgetCategoryName);
@@ -81,10 +79,10 @@ export class BudgetSubCategoryMasterComponent {
 
 
 
- 
-	onSelected(value:string): void {
-		this.selectedTeam = value;
-	}
+
+  onSelected(value: string): void {
+    this.selectedTeam = value;
+  }
 }
 
 

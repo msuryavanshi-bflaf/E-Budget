@@ -31,6 +31,7 @@ import { BudgetCategoryViewComponent } from './components/master-fields-view/bud
     BudgetSubCategoryMasterComponent,
     VendorMasterComponent,
     BudgetCategoryViewComponent,
+   
 
   ],
   imports: [

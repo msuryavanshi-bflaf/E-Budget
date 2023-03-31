@@ -13,35 +13,24 @@
                         </td>
                         <td>
                             <mat-form-field appearance="outline">
-                                <input matInput formControlName="budgetCategoryName" required>
-                                <mat-error>Minimum 4 characters required</mat-error>
+
+                                <mat-select formControlName="budgetCode">
+
+                                    <mat-option *ngFor="let budgetCode of budgetCodeList"
+                                        value="budgetCodeList">{{budgetCode}}</mat-option>
+
+
+                                </mat-select>
+
                             </mat-form-field>
                         </td>
                         <td>
-
-                            <mat-label>Budget Type</mat-label>
-
-                        </td>
-                        <td>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Capex</mat-radio-button>
-                                <mat-radio-button value="2">Revenue</mat-radio-button>
-                            </mat-radio-group>
-                        </td>
-
-
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            <mat-label>Budget Description</mat-label>
+                            <mat-label>Budget Category</mat-label>
                         </td>
                         <td>
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCategoryDescription">
+                                <mat-select formControlName="budgetCategoryName">
 
                                     <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList"
                                         value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
@@ -51,22 +40,70 @@
 
                             </mat-form-field>
                         </td>
-                        <td>
-
-                            <mat-label>Amount</mat-label>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="amount" required>
-
-                            </mat-form-field>
-
-                        </td>
-
-
+                       
                     </tr>
+
+                    <tr>
+                    <td>
+                        <mat-label>Budget Sub-Category</mat-label>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="outline">
+
+                            <mat-select formControlName="budgetSubCategoryName">
+
+                                <mat-option *ngFor="let budgetSubCategoryName of budgetSubCategoryNameList"
+                                    value="budgetSubCategoryNameList">{{budgetSubCategoryName}}</mat-option>
+
+
+                            </mat-select>
+
+                        </mat-form-field>
+                    </td>
+                    
+                    <td>
+
+                        <mat-label>Budget Type</mat-label>
+
+                    <td>
+
+                        <mat-form-field appearance="outline">
+
+                            <input matInput formControlName="budgetType" required>
+
+                        </mat-form-field>
+
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+
+                        <mat-label>Amount</mat-label>
+
+                    <td>
+
+                        <mat-form-field appearance="outline">
+                           
+                            <input matInput formControlName="amount" type="number" required>
+                            
+                        </mat-form-field>
+
+                    </td>
+               
+                    <td>
+
+                        <mat-label>Amount In-words</mat-label>
+
+                    <td>
+
+                        <mat-form-field appearance="outline">
+
+                            <input matInput formControlName="amountInWords" required>
+                            {{numberInWords}}
+                            <!-- <button type="button" (click)="convertToWord()">Convert to String</button> -->
+                        </mat-form-field>
+
+                    </td>
                     <tr>
                         <td>
                             <mat-label>Remark</mat-label>
