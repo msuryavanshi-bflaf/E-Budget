@@ -16,9 +16,9 @@ import Swal from 'sweetalert2';
 export class VendorMasterComponent {
 
   public vendorMasterForm!: FormGroup;
-   
-  
-  constructor(private router: Router, private fb: FormBuilder, private VendorService:VendorService) { }
+
+
+  constructor(private router: Router, private fb: FormBuilder, private VendorService: VendorService) { }
 
 
   ngOnInit() {
@@ -31,15 +31,18 @@ export class VendorMasterComponent {
 
     this.vendorMasterForm = this.fb.group({
 
-      'vendorName': ['', [Validators.minLength(4)]],
-      'email':['',[Validators.email]],
-      'contactNumber':['',Validators.maxLength(10)],
-      'address':['',Validators.minLength(4)]
+      'vendorCompanyName': ['', [Validators.required]],
+      'email': ['', [Validators.email]],
+      'address': ['', Validators.required],
+      'vendorSapCode': [''],
+      'contactPersonName': [''],
+      'mobileNumber': [''],
+      'landLineNumber': ['']
     });
 
   }
 
-  numberOnly(event:any) {
+  numberOnly(event: any) {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -48,30 +51,67 @@ export class VendorMasterComponent {
 
   }
 
- vendorMaster() {
+  vendorMaster() {
 
-  let createVendorRequest:VendorData={
-    "vendorName":this.vendorMasterForm.value.vendorName,
-    "contactNumber" :this.vendorMasterForm.value.contactNumber,
-    "email":this.vendorMasterForm.value.email,
-    "address":this.vendorMasterForm.value.address,
-    
-  };
-  this.VendorService.createVendor(createVendorRequest).subscribe((data:any)=>{
-    
-  })
-    this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-    Swal.fire('Vendor added successfully')
+    let createVendorRequest: VendorData = {
+      "vendorCompanyName": this.vendorMasterForm.value.vendorCompanyName,
+      "email": this.vendorMasterForm.value.email,
+      "address": this.vendorMasterForm.value.address,
+      "vendorSapCode": this.vendorMasterForm.value.vendorSapCode,
+      "contactPersonName": this.vendorMasterForm.value.contactPersonName,
+      "mobileNumber": this.vendorMasterForm.value.mobileNumber,
+      "landLineNumber": this.vendorMasterForm.value.landLineNumber
+    };
+
+
+    this.VendorService.createVendor(createVendorRequest).subscribe((data: any) => {
+
+      if (data.body.vendorCompanyName != "" && data.body.email != "" && data.body.address != "" && data.body.vendorSapCode != "" && data.body.contactPersonName != "" && data.body.mobileNumber != "") {
+
+        this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+        Swal.fire('Vendor added successfully')
+
+      }
+
+      else {
+
+        Swal.fire({
+          title: "<h1 style='color:red'>Please fill all details</h1>",
+          icon: 'error',
+
+        })
+
+      }
+
+
+
+
+
+    })
+
   }
 
 
 
 
 
-  omit_special_char(event: { charCode: any; })
-  {   
-     var k;  
-     k = event.charCode;  //         k = event.keyCode;  (Both can be used)
-     return((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57)); 
+  omit_special_char(event: { charCode: any; }) {
+    var k;
+    k = event.charCode;  //         k = event.keyCode;  (Both can be used)
+    return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
   }
+
+  // Only AlphaNumeric
+  keyPressAlphanumeric(event: any) {
+
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
 }

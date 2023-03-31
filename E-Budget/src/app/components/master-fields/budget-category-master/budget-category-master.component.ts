@@ -84,7 +84,7 @@ export class BudgetCategoryMasterComponent {
         Swal.fire({
           title: "<h1 style='color:red'>Please fill all details</h1>",
           icon: 'error',
-         
+
         })
 
       }
@@ -119,6 +119,17 @@ export class BudgetCategoryMasterComponent {
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
 
+  keyPressAlphanumeric(event: any) {
 
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
 }
+
 
