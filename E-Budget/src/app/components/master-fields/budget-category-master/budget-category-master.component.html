@@ -27,7 +27,8 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="budgetCategoryName" minlength="4" required>
+                                <input matInput formControlName="budgetCategoryName"
+                                    (keypress)="keyPressAlphanumeric($event)" required>
 
                             </mat-form-field>
 
@@ -48,7 +49,8 @@
                             <mat-form-field appearance="outline">
 
                                 <textarea matInput style="resize:vertical" formControlName="remark" (keyup)="autogrow()"
-                                    rows="2" (click)="autogrow()" minlength="4" required></textarea>
+                                    rows="2" (click)="autogrow()" (keypress)="keyPressAlphanumeric($event)"
+                                    required></textarea>
                                 <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
 
@@ -60,7 +62,7 @@
                     <tr>
 
                         <mat-checkbox type="checkbox" checked>Active</mat-checkbox>
-                 Active<input type="checkbox" name ="Active" formControlName="Active">
+                        <!-- Active<input type="checkbox" name ="Active" formControlName="Active"> -->
                     </tr>
 
 

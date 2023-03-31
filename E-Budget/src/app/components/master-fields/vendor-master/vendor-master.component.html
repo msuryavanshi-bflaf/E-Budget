@@ -19,7 +19,7 @@
                     <tr>
                         <td>
 
-                            <mat-label>Vendor Name</mat-label>
+                            <mat-label>Vendor Company Name</mat-label>
 
                         </td>
 
@@ -27,31 +27,13 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="vendorName" minlength="4" (keypress)="omit_special_char($event)" required>
-                                <mat-error>Minimum 4 characters required</mat-error>
+                                <input matInput formControlName="vendorCompanyName"
+                                    (keypress)="omit_special_char($event)" (keypress)="keyPressAlphanumeric($event)"
+                                    required>
+                                <mat-error>please fill the field.</mat-error>
                             </mat-form-field>
 
                         </td>
-                        <td>
-
-                            <mat-label>Contact Number</mat-label>
-
-                        </td>
-
-                        <td>
-
-                            <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="contactNumber" (keypress)="numberOnly($event)"
-                                    maxlength="10" required>
-                                <mat-error>Please enter valid contact number</mat-error>
-                            </mat-form-field>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
                         <td>
 
                             <mat-label>Email</mat-label>
@@ -63,7 +45,27 @@
                             <mat-form-field appearance="outline">
 
                                 <input matInput formControlName="email" type="email" required>
-                                <mat-error>please enter valid email</mat-error>
+                                <mat-error>Please enter valid email</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Vendor SAP Code</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="vendorSapCode" (keypress)="numberOnly($event)"
+                                    required>
+                                <mat-error>please enter Sap code.</mat-error>
                             </mat-form-field>
 
                         </td>
@@ -77,20 +79,77 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="address" minlength="4"   (keypress)="omit_special_char($event)" required>
-                                <mat-error>Minimum 4 characters required</mat-error>
+                                <input matInput formControlName="address" (keypress)="omit_special_char($event)"
+                                    required>
+                                <mat-error>Please entewr address</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Contact Person Name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="contactPersonName"
+                                    (keypress)="omit_special_char($event)" (keypress)="keyPressAlphanumeric($event)"
+                                    required>
+                                <mat-error>Enter the contact person name</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                        <td>
+
+                            <mat-label>Mobile Number</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="mobileNumber" (keypress)="numberOnly($event)"
+                                    maxlength="10" required>
+                                <mat-error>Please enter valid contact number</mat-error>
                             </mat-form-field>
 
                         </td>
 
                     </tr>
+                    <tr>
+                        <td>
+
+                            <mat-label>Land Line Number</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="landLineNumber" (keypress)="numberOnly($event)"
+                                    maxlength="10" required>
+                                <mat-error>Please enter valid contact number</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                    </tr>
+
                 </table>
 
             </form>
 
         </mat-card-content>
 
-        <button [disabled]="!vendorMasterForm.valid" type="submit" mat-button class="vendorMaster-button" (click)="vendorMaster()">Vendor Master</button>
+        <button type="submit" mat-button class="vendorMaster-button"
+            (click)="vendorMaster()">Vendor Master</button>
 
     </mat-card>
 

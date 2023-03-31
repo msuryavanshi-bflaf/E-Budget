@@ -28,10 +28,11 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCategoryName" [(ngModel)]="budgetCategoryNameSelected">
+                                <mat-select formControlName="budgetCategoryName"
+                                    [(ngModel)]="budgetCategoryNameSelected">
 
                                     <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList"
-                                       [value]="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
+                                        [value]="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
 
                                     <!-- <mat-option value="option">License</mat-option>  -->
 
@@ -41,39 +42,55 @@
                             </mat-form-field>
 
                         </td>
-                       
-                    </tr>
-               <tr>
-                <td>
 
-                    <mat-label>Sub Category Name</mat-label>
-
-                </td>
-
-                <td>
-
-                    <mat-form-field appearance="outline">
-
-                        <input matInput formControlName="budgetSubCategoryName" minlength="4" required>
-                        <mat-error>Minimum 4 characters required</mat-error>
-                    </mat-form-field>
-
-                </td>
-               </tr>
-                    <tr>
-
+              
                         <td>
 
-                            <mat-label>Sub Category Description</mat-label>
+                            <mat-label>BudgetCode</mat-label>
 
                         </td>
 
                         <td>
 
                             <mat-form-field appearance="outline">
-                                <textarea matInput style="resize:vertical" formControlName="budgetSubCategoryDescription"
-                                    (keyup)="autogrow()" rows="2" (click)="autogrow()" minlength="4"
-                                    required></textarea>
+
+                                <input matInput formControlName="budgetCode" minlength="4" required>
+
+                            </mat-form-field>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Budget Sub Category Name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetSubCategoryName"
+                                    (keypress)="keyPressAlphanumeric($event)" required>
+                                <mat-error>Please enter the sub caterory.</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                        <td>
+
+                            <mat-label>Remark</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+                                <textarea matInput style="resize:vertical" formControlName="remark"
+                                    (keypress)="keyPressAlphanumeric($event)" (keyup)="autogrow()" rows="2"
+                                    (click)="autogrow()" minlength="4" required></textarea>
 
                                 <mat-error>Minimum 4 characters required</mat-error>
                             </mat-form-field>
@@ -81,6 +98,14 @@
                         </td>
 
                     </tr>
+                    <td> <mat-checkbox type="checkbox" checked>Active</mat-checkbox></td>
+
+
+                    <td> Bydget Type <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1">Capital</mat-radio-button>
+                            <mat-radio-button value="2">Revenue</mat-radio-button>
+                        </mat-radio-group></td>
+
 
                 </table>
 
@@ -88,8 +113,7 @@
 
         </mat-card-content>
 
-        <button mat-button class="budget-sub-category-master-button" (click)="budgetSubCategoryMaster()"
-            [disabled]=!budgetSubCategoryMasterForm.valid>Sub Category
+        <button mat-button class="budget-sub-category-master-button" (click)="budgetSubCategoryMaster()">Sub Category
             Master</button>
 
     </mat-card>

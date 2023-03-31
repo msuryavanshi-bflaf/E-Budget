@@ -118,6 +118,17 @@ export class BudgetCategoryMasterComponent {
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
 
+  keyPressAlphanumeric(event: any) {
 
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
 }
+
 

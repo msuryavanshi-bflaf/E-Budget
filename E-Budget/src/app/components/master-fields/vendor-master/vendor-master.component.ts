@@ -31,10 +31,13 @@ export class VendorMasterComponent {
 
     this.vendorMasterForm = this.fb.group({
 
-      'vendorName': ['', [Validators.minLength(4)]],
+      'vendorCompanyName': ['', [Validators.required]],
       'email': ['', [Validators.email]],
-      'contactNumber': ['', Validators.maxLength(10)],
-      'address': ['', Validators.minLength(4)]
+      'address': ['', Validators.required],
+      'vendorSapCode': [''],
+      'contactPersonName': [''],
+      'mobileNumber': [''],
+      'landLineNumber': ['']
     });
 
   }
@@ -51,17 +54,41 @@ export class VendorMasterComponent {
   vendorMaster() {
 
     let createVendorRequest: VendorData = {
-      "vendorName": this.vendorMasterForm.value.vendorName,
-      "contactNumber": this.vendorMasterForm.value.contactNumber,
+      "vendorCompanyName": this.vendorMasterForm.value.vendorCompanyName,
       "email": this.vendorMasterForm.value.email,
       "address": this.vendorMasterForm.value.address,
-
+      "vendorSapCode": this.vendorMasterForm.value.vendorSapCode,
+      "contactPersonName": this.vendorMasterForm.value.contactPersonName,
+      "mobileNumber": this.vendorMasterForm.value.mobileNumber,
+      "landLineNumber": this.vendorMasterForm.value.landLineNumber
     };
+
+
     this.VendorService.createVendor(createVendorRequest).subscribe((data: any) => {
 
+      if (data.body.vendorCompanyName != "" && data.body.email != "" && data.body.address != "" && data.body.vendorSapCode != "" && data.body.contactPersonName != "" && data.body.mobileNumber != "") {
+
+        this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+        Swal.fire('Vendor added successfully')
+
+      }
+
+      else {
+
+        Swal.fire({
+          title: "<h1 style='color:red'>Please fill all details</h1>",
+          icon: 'error',
+
+        })
+
+      }
+
+
+
+
+
     })
-    this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-    Swal.fire('Vendor added successfully')
+
   }
 
 
@@ -73,4 +100,18 @@ export class VendorMasterComponent {
     k = event.charCode;  //         k = event.keyCode;  (Both can be used)
     return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
   }
+
+  // Only AlphaNumeric
+  keyPressAlphanumeric(event: any) {
+
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
 }
