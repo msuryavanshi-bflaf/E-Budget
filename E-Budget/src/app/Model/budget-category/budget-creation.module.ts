@@ -5,10 +5,11 @@ export interface BudgetCategoryData {
 }
 
 export interface BudgetCategoryDetails{
+  id:String;
   budgetCategoryName: String;
   remark:String;
-  status: Boolean;
   createdBy:String;
   createdDate:Date;
+  Action:String;
   
 }

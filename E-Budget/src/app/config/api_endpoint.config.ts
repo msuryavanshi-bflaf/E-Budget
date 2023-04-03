@@ -1,12 +1,22 @@
 export const API_END_POINTS = {
-    VENDOR: '/vendor/vendor',
+    // VENDOR: '/vendor/vendor',
+    // BUDGET_CATEGORY:'/budgetCategory/budgetCategory',
+    // SUBCATEGORY:'/subCategory/subCategory',
+    // BUDGETCATEGORYLIST:'budgetCategory/findAllBudgetCategory',
+    // BUDGETSUBCATEGORYLIST:'/findAllSubBudgetCategory',
+    // CREATEBUDGET:'/createbudget',
+    // VENDORNAMELIST:'/findAllVendor',
+    // BUDGETCATEGORYDETAILS:'/budgetCategoryDetails',
+    // DELETECATEGORY:'/deleteCategory',
+    // BUDGETCODELIST:'/findAllCodeList'
+    VENDOR:'/vendor/vendor',
     BUDGET_CATEGORY:'/budgetCategory/budgetCategory',
     SUBCATEGORY:'/subCategory/subCategory',
-    BUDGETCATEGORYLIST:'budgetCategory/findAllBudgetCategory',
-    BUDGETSUBCATEGORYLIST:'/findAllSubBudgetCategory',
+    BUDGETCATEGORYLIST:'/budgetCategory/findAllBudgetCategory',
+    BUDGETSUBCATEGORYLIST:'/subCategory/findAllSubBudgetCategory',
     CREATEBUDGET:'/createbudget',
-    VENDORNAMELIST:'/findAllVendor',
+    VENDORNAMELIST:'/vendor/findAllVendor',
     BUDGETCATEGORYDETAILS:'/budgetCategoryDetails',
-    DELETECATEGORY:'/deleteCategory',
+    DELETECATEGORY:'/budgetCategory/',
     BUDGETCODELIST:'/findAllCodeList'
 }

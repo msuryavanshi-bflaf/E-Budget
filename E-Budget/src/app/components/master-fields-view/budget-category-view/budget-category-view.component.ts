@@ -22,12 +22,13 @@ export class BudgetCategoryViewComponent implements OnInit {
 
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
-  
-  tableHead = ['Sr No.', 'Budget Category', 'Created Date', 'Created By', 'Status','Action'];
-
+  event:any;
+  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Delete'];
+  p: any = 1;
+  count: any= 5;
   constructor(private router: Router, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
   ngOnInit(): void {
-    // this.getActiveCategory();
+    this.getActiveCategory();
   }
 
   addBudgetCategory() {
@@ -35,38 +36,47 @@ export class BudgetCategoryViewComponent implements OnInit {
   }
 
   getbudgetCategoryDetails() {
-    this.budgetCategoryService.getBudgetCategoryDetails(this.id).subscribe((data: any) => {
+    this.budgetCategoryService.getAllBudgetCategoryList().subscribe((data: any) => {
       this.budgetCategoryData = data;
-      // this.router.navigate([AppConstant.VIEW_EMPLOYEE]);
+      
     });
   }
 
-  // getActiveCategory() {
-  //   this.budgetCategoryService.getActiveCategory.subscribe((data: any) => {
-  //     this.budgetCategoryData = data;
-  //   });
-  // }
+  getActiveCategory() {
+    this.budgetCategoryService.getActiveCategory().subscribe((data: any) => {
+      this.budgetCategoryData = data;
+    });
+  }
+
   deleteCategory(data: any) {
     if (confirm('Are You sure to Delete this record'))
       this.budgetCategoryService.deleteCategory(data.id).subscribe((res: any) => {
       })
     alert('Record deleted Successfully')
-    // this.getActiveEmployee()
-  }
-  searchCategory(event: any) {
-    // let filteredEmployees: ActiveEmployee[] = [];
-    // if (event === '') {
-    //   this.getActiveEmployee = this.addEmployee;
-    // } else {
-    //   filteredEmployees = this.activeEmployeeData.filter((activeEmployeeData, index) => {
-    //     let targetKey = activeEmployeeData.firstName.toLowerCase();
-    //     let searchKey = event.toLowerCase();
-    //     return targetKey.includes(searchKey)
-    //   })
-    //   this.activeEmployeeData = filteredEmployees;
+    this.getActiveCategory()
+
+
+
+    //  searchCategory(event:any){
+    //   let filteredEmployees: BudgetCategoryDetails[] = [];
+    //   if (event === '') {
+    //     this.getActiveCategory = this.addBudgetCategory;
+    //   } else {
+    //     filteredEmployees = this.budgetCategoryData.filter((budgetCategoryData, index) => {
+    //       let targetKey = budgetCategoryData.budgetCategoryName.toLowerCase();
+    //       let searchKey = event.toLowerCase();
+    //       return targetKey.includes(searchKey)
+    //     })
+    //     this.budgetCategoryData = filteredEmployees;
+    //   }
     // }
+
   }
 
  
+}
+
+function searchCategory(event: Event | undefined, any: any) {
+  throw new Error('Function not implemented.');
 }
 

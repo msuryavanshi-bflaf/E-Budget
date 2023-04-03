@@ -35,65 +35,65 @@
    color: #fff;
 }
 
-.active,
-.menu-bar ul li:hover {
+// .active,
+// .menu-bar ul li:hover {
 
-   background: #2c6bb8;
-   border-radius: 3px;
-}
+//    background: #2c6bb8;
+//    border-radius: 3px;
+// }
 
-.sub-menu-1 {
-   display: none;
+// .sub-menu-1 {
+//    display: none;
 
-}
+// }
 
 
-.menu-bar ul li .sub-menu-1 {
-   display: block;
-   position: absolute;
-   background: #004DA8;
-   margin-top: 15px;
-   margin-left: -15px;
+// .menu-bar ul li .sub-menu-1 {
+//    display: block;
+//    position: absolute;
+//    background: #004DA8;
+//    margin-top: 15px;
+//    margin-left: -15px;
 
-}
+// }
 
-.menu-bar ul li .sub-menu-1 ul {
-   display: block;
-   margin: 10px;
-}
+// .menu-bar ul li .sub-menu-1 ul {
+//    display: block;
+//    margin: 10px;
+// }
 
-.menu-bar ul li .sub-menu-1 ul li {
-   width: 150px;
-   padding: 10px;
-   border-bottom: 1px dotted #fff;
-   background: transparent;
-   border-radius: 0;
-   text-align: left;
-}
+// .menu-bar ul li .sub-menu-1 ul li {
+//    width: 150px;
+//    padding: 10px;
+//    border-bottom: 1px dotted #fff;
+//    background: transparent;
+//    border-radius: 0;
+//    text-align: left;
+// }
 
-.menu-bar ul li .sub-menu-1 ul li:last-child {
-   border-bottom: none;
-}
+// .menu-bar ul li .sub-menu-1 ul li:last-child {
+//    border-bottom: none;
+// }
 
-.sub-menu-2 {
-   display: none;
+// .sub-menu-2 {
+//    display: none;
 
-}
+// }
 
-.hover-me:hover .sub-menu-2 {
-   position: absolute;
-   display: block;
-   margin-top: -40px;
-   margin-left: -210px;
-   background: #004DA8;
-}
+// .hover-me:hover .sub-menu-2 {
+//    position: absolute;
+//    display: block;
+//    margin-top: -40px;
+//    margin-left: -210px;
+//    background: #004DA8;
+// }
 
-.home-icon {
-   height: 14px;
-   width: 30px;
-}
+// .home-icon {
+//    height: 14px;
+//    width: 30px;
+// }
 
-.arrow-icon {
-   height: 13px;
-   width: 20px;
-}
+// .arrow-icon {
+//    height: 13px;
+//    width: 20px;
+// }

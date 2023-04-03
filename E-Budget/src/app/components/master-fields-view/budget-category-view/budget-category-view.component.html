@@ -1,23 +1,31 @@
-<app-navbar></app-navbar>
+<!-- 
 <div>
     <mat-form-field appearance="outline" class="search">
-      <input matInput type="search" placeholder="Search" class="matInput" #searchInput>
+      <input matInput type="search" placeholder="Search"  class="matInput" #searchInput>
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <button mat-button class="add-category" (click)="addBudgetCategory()">Add Budget Category</button>
-  </div>
+  </div> -->
   <table class="mat-elevation-z8">
     <tr>
       <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
     </tr>
     <tr *ngFor="let data of budgetCategoryData">
+      <td>{{ data.id}}</td>
       <td>{{ data.budgetCategoryName}}</td>
       <td>{{ data.remark}}</td>
       <td>{{ data.createdDate}}</td>
       <td>{{ data.createdBy}}</td>
-      <td>{{ data.status}}</td>
-      <td><mat-icon class="view-icon">preview</mat-icon></td>
-      <td><mat-icon class="delete-icon">delete_forever</mat-icon></td>
+      <td>{{ data.Action}}</td>
+      <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
     </tr>
+    <!-- <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div> -->
+    <mat-paginator [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+</mat-paginator>
   </table>
   

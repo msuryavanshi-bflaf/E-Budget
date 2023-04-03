@@ -17,7 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs'
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [],
   imports: [
@@ -40,7 +40,7 @@ import { MatTabsModule } from '@angular/material/tabs'
     MatToolbarModule,
     MatRadioModule,
     MatTabsModule,
-
+    MatPaginatorModule
 
 
   ],
@@ -61,8 +61,8 @@ import { MatTabsModule } from '@angular/material/tabs'
     MatStepperModule,
     MatToolbarModule,
     MatRadioModule,
-    MatTabsModule
-
+    MatTabsModule,
+    MatPaginatorModule
   ],
 })
 export class MaterialModule { }

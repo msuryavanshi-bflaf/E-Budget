@@ -19,7 +19,7 @@ export class BudgetCategoryService {
   }
 
   getActiveCategory(): Observable<BudgetCategoryDetails> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYDETAILS).pipe(
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST).pipe(
       map((res: any) => { return (res) })
     );
   }
@@ -31,7 +31,7 @@ export class BudgetCategoryService {
   // }
 
   getBudgetCategoryDetails(id: any) {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYDETAILS + id).pipe(
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST + id).pipe(
       map((res: any) => { return (res) })
     );
   }
@@ -63,6 +63,14 @@ export class BudgetCategoryService {
 
 
   getBudgetCategoryList(): Observable<BudgetCategoryData[]> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST).pipe(
+      map((res: any) => {
+        return (res)
+      })
+    )
+  }
+
+  getAllBudgetCategoryList(): Observable<BudgetCategoryData[]> {
     return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST).pipe(
       map((res: any) => {
         return (res)
