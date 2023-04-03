@@ -18,11 +18,15 @@ export class VendorService {
     }))
   }
 
-  getVendorNameList(): Observable<VendorData[]> {
+  getActiveVendor(): Observable<VendorData[]> {
     return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDORNAMELIST).pipe(
       map((res: any) => {
         return (res)
       })
     )
+  }
+
+  public deleteVendor(id: any) {
+    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETEVENDOR + id)
   }
 }

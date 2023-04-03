@@ -16,7 +16,9 @@ import { BudgetCategoryMasterComponent } from './components/master-fields/budget
 import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
 import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BudgetCategoryViewComponent } from './components/master-fields-view/budget-category-view/budget-category-view.component'
+import { BudgetCategoryViewComponent } from './components/master-fields-view/budget-category-view/budget-category-view.component';
+import { SubCategoryViewComponent } from './components/master-fields-view/sub-category-view/sub-category-view.component';
+import { VendorViewComponent } from './components/master-fields-view/vendor-view/vendor-view.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +33,8 @@ import { BudgetCategoryViewComponent } from './components/master-fields-view/bud
     BudgetSubCategoryMasterComponent,
     VendorMasterComponent,
     BudgetCategoryViewComponent,
+    SubCategoryViewComponent,
+    VendorViewComponent,
    
 
   ],

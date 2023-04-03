@@ -18,7 +18,7 @@ export class SubCategoryService {
     }))
   }
 
-  getBudgetSubCategoryList(): Observable<SubCategoryData[]> {
+  getActiveBudgetSubCategory(): Observable<SubCategoryData[]> {
     return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETSUBCATEGORYLIST).pipe(
       map((res: any) => {
         return (res)
@@ -36,6 +36,9 @@ export class SubCategoryService {
 
   getBudgetType(){
     
+  }
+  public deleteSubCategory(id: any) {
+    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETESUBCATEGORY + id)
   }
 
 }

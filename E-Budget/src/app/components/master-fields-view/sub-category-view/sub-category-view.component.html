@@ -1,0 +1,22 @@
+<mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]"
+   (page)="pageChanged($event)" [length]="budgetSubCategoryData?.length">
+</mat-paginator>
+
+  <table class="mat-elevation-z8">
+    <tr>
+      <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
+    </tr>
+    <tr *ngFor="let data of budgetSubCategoryData">
+      <td>{{ data.id}}</td>
+      <td>{{ data.budgetCategoryName}}</td>
+      <td>{{ data.budgetSubCategoryName}}</td>
+      <td>{{ data.active}}</td>
+      <td>{{data.createdDate}}{{ data.time}}</td>
+      <td>{{ data.createdBy}}</td>
+      
+      <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
+    </tr>
+  </table>
+  

@@ -1,0 +1,21 @@
+<mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 8, 10]"
+   (page)="pageChanged($event)" [length]="vendorData?.length">
+</mat-paginator>
+
+  <table class="mat-elevation-z8">
+    <tr>
+      <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
+    </tr>
+    <tr *ngFor="let data of vendorData">
+      <td>{{ data.id}}</td>
+      <td>{{ data.vendorCompanyName}}</td>
+      <td>{{ data.email}}</td>
+      <td>{{ data.address}}</td>
+      <td>{{ data.contactPersonName}}</td>
+      <td>{{ data.mobileNumber}}</td>
+      <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
+    </tr>
+  </table>
+  

@@ -8,11 +8,11 @@
 
     margin: 28px 0 2rem 250px;
 
-    background-color: #004DA8;
+     background-color:  #004DA8;
 }
 
 .delete-category {
-    background-color: $c-cyan-azure;
+  background-color: $c-cyan-azure;
 }
 
 .search {
@@ -29,33 +29,33 @@
 }
 
 .delete-icon {
-    color: $c-primary-mandatory-field;
-    font-size: $h4-font-size;
+  color: $c-primary-mandatory-field;
+  font-size: $h4-font-size;
 }
 
 .view-icon {
-    color: $c-primary-mandatory-field1;
-    font-size: $h4-font-size;
+      color: $c-primary-mandatory-field1;
+      font-size: $h4-font-size;
     margin-top: 15px;
 }
 
 table {
-    margin: 0 5px 0 5px;
-    // font-family: arial, sans-serif;
-    // border-collapse: collapse;
+    margin: 0 10px 0 10px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
     width: 100%;
     background-color: white;
 }
 
 td,
 th {
-    // border: 1px solid #dddddd;
-    // text-align: left;
-    // padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 
 tr:nth-child(even) {
-    // background-color: #dddddd;
+    background-color: #dddddd;
 }
 
 .select-mat-input {

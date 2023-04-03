@@ -147,10 +147,17 @@
             </form>
 
         </mat-card-content>
-
-        <button type="submit" mat-button class="vendorMaster-button"
-            (click)="vendorMaster()">Vendor Master</button>
+<div>
+    <button mat-button class="backbutton"(click)="back()">back</button>
+    
+    <button type="submit" mat-button class="vendorMaster-button"
+    (click)="vendorMaster()">Vendor Master</button>
+</div>
+       
 
     </mat-card>
 
 </div>
+<br>
+<br>
+<app-vendor-view></app-vendor-view>

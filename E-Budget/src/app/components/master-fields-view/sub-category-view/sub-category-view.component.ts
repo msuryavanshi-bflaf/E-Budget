@@ -1,6 +1,6 @@
-
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
@@ -8,53 +8,50 @@ import { BudgetCategoryDetails } from 'src/app/Model/budget-category/budget-crea
 import { BudgetCategoryService } from '../../services/budget-category.service';
 import{  MatTableModule}from '@angular/material/table';
 import{MatTableDataSource}from '@angular/material/table'
-export interface Employee {
-  value: string;
-  viewValue: string;
-
-}
+import { SubCategoryService } from '../../services/sub-category.service';
+import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
 
 @Component({
-  selector: 'app-budget-category-view',
-  templateUrl: './budget-category-view.component.html',
-  styleUrls: ['./budget-category-view.component.scss']
+  selector: 'app-sub-category-view',
+  templateUrl: './sub-category-view.component.html',
+  styleUrls: ['./sub-category-view.component.scss']
 })
-export class BudgetCategoryViewComponent implements OnInit {
+export class SubCategoryViewComponent {
 
 
   id: number | undefined;
-  budgetCategoryData: BudgetCategoryDetails[] = [];
+  budgetSubCategoryData: SubCategoryData[] = [];
   event:any;
-  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Delete'];
+  tableHead = ['Sr.No.', 'Budget Category Name','Budget Sub Category Name', 'Status','Created Date-time', 'Created By','Delete'];
  
-  constructor(private router: Router, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
+  constructor(private router: Router, private http: HttpClient, private budgetSubCategoryService:SubCategoryService, private route: ActivatedRoute ) { }
   ngOnInit(): void {
-    this.getActiveCategory();
+    this.getActiveBudgetSubCategory();
   }
 
   addBudgetCategory() {
     this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
   }
 
-  getbudgetCategoryDetails() {
-    this.budgetCategoryService.getAllBudgetCategoryList().subscribe((data: any) => {
-      this.budgetCategoryData = data;
+  getActiveBudgetSubCategory() {
+    this.budgetSubCategoryService.getActiveBudgetSubCategory().subscribe((data: any) => {
+      this.budgetSubCategoryData = data;
       
     });
   }
 
-  getActiveCategory() {
-    this.budgetCategoryService.getActiveCategory().subscribe((data: any) => {
-      this.budgetCategoryData = data;
-    });
-  }
+  // getActiveCategory() {
+  //   this.budgetSubCategoryService.getActiveCategory().subscribe((data: any) => {
+  //     this.budgetCategoryData = data;
+  //   });
+  // }
 
   deleteCategory(data: any) {
     if (confirm('Are You sure to Delete this record'))
-      this.budgetCategoryService.deleteCategory(data.id).subscribe((res: any) => {
+      this.budgetSubCategoryService.deleteSubCategory(data.id).subscribe((res: any) => {
       })
     alert('Record deleted Successfully')
-    this.getActiveCategory()
+    this.getActiveBudgetSubCategory()
 
 
 
@@ -86,23 +83,17 @@ export class BudgetCategoryViewComponent implements OnInit {
     this.pageChanged({
       pageIndex: 1,
       pageSize: 10,
-      length: this.budgetCategoryData.length
+      length: this.budgetSubCategoryData.length
     });
   }
 
   pageChanged(event: PageEvent) {
     event.length;
-    const budgetCategoryData = [...this.budgetCategoryData];
-    let dataSource= this.budgetCategoryData.splice(
+    const budgetSubCategoryData = [...this.budgetSubCategoryData];
+    let dataSource= this.budgetSubCategoryData.splice(
       (event.pageIndex - 1) * event.pageSize,
       event.pageSize
     );
   }
  
 }
-
-function searchCategory(event: Event | undefined, any: any) {
-  throw new Error('Function not implemented.');
-
-}
-

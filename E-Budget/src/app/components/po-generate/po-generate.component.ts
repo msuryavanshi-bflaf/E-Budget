@@ -107,7 +107,7 @@ export class PoGenerateComponent {
   }
 
   initVendorNameList() {
-    this.vendorService.getVendorNameList().subscribe((res: any) => {
+    this.vendorService.getActiveVendor().subscribe((res: any) => {
       this.vendorNameList = [];
       for (const item in res) {
         this.vendorNameList.push(res[item].vendorName);

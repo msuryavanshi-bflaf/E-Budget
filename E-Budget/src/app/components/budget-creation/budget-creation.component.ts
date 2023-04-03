@@ -102,7 +102,7 @@ export class BudgetCreationComponent  {
     })
   }
   initBudgetSubCategotryNameList(){
-    this.subCategoryService.getBudgetSubCategoryList().subscribe((res:any)=>{
+    this.subCategoryService.getActiveBudgetSubCategory().subscribe((res:any)=>{
       this.budgetSubCategoryNameList =[];
       for(const item in res){
         this.budgetSubCategoryNameList.push(res[item].budgetSubCategoryName);

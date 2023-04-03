@@ -19,8 +19,8 @@ export class BudgetSubCategoryMasterComponent {
   budgetCategoryNameList: String[] = undefined as any;
   selectedTeam = '';
   textArea: any;
-  selectedValue:any;
-  budgetCategoryNameSelected:any;
+  selectedValue: any;
+  budgetCategoryNameSelected: any;
   constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder, private SubCategoryService: SubCategoryService) { }
 
 
@@ -44,7 +44,13 @@ export class BudgetSubCategoryMasterComponent {
 
       'budgetCode': [''],
 
-      'active': ['']
+      'active': [''],
+
+      'createdBy': [''],
+
+      'createdDate': ['',],
+
+      'time': [''],
     });
   }
   budgetSubCategoryMaster() {
@@ -53,7 +59,11 @@ export class BudgetSubCategoryMasterComponent {
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
-      "active": this.budgetSubCategoryMasterForm.value.active
+      "active": this.budgetSubCategoryMasterForm.value.active,
+      "createdBy": this.budgetSubCategoryMasterForm.value.createdBy,
+      "createdDate": this.budgetSubCategoryMasterForm.value.createdDate,
+      "time": this.budgetSubCategoryMasterForm.value.time,
+      "id": this.budgetSubCategoryMasterForm.value.id,
     };
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
       if (data.body.budgetCode != "" && data.body.budgetSubCategoryName != "") {
@@ -75,6 +85,13 @@ export class BudgetSubCategoryMasterComponent {
     })
 
 
+
+  }
+
+
+  back() {
+
+    this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
 
   }
 

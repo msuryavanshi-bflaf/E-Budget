@@ -60,7 +60,8 @@ export class VendorMasterComponent {
       "vendorSapCode": this.vendorMasterForm.value.vendorSapCode,
       "contactPersonName": this.vendorMasterForm.value.contactPersonName,
       "mobileNumber": this.vendorMasterForm.value.mobileNumber,
-      "landLineNumber": this.vendorMasterForm.value.landLineNumber
+      "landLineNumber": this.vendorMasterForm.value.landLineNumber,
+      "id":this.vendorMasterForm.value.id,
     };
 
 
@@ -92,7 +93,10 @@ export class VendorMasterComponent {
   }
 
 
+back(){
+  this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
 
+}
 
 
   omit_special_char(event: { charCode: any; }) {
