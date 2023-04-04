@@ -2,6 +2,7 @@ export interface BudgetCategoryData {
 
   budgetCategoryName: String;
   remark: String;
+  status:boolean;
 }
 
 export interface BudgetCategoryDetails{
@@ -10,7 +11,7 @@ export interface BudgetCategoryDetails{
   remark:String;
   createdBy:String;
   createdDate:Date;
-  Action:String;
+  status:boolean;
   activation_date:String;
   
 }

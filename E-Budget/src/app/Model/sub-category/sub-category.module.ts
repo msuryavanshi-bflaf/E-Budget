@@ -1,12 +1,11 @@
 export interface SubCategoryData {
   id:String;
 	budgetSubCategoryName: String;
-  // budgetCategoryName:String;
+ budgetCategoryName:String;
   remark:String;
   budgetCode:String;
-  active:String;
+  status:boolean;
   createdBy:String;
-  createdDate:Date;
-  time:String;
+  budgetType:String;
   activation_date:String;
 }

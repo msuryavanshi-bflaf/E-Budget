@@ -35,7 +35,8 @@ export class BudgetCategoryMasterComponent {
     this.budgetCategoryMasterForm = this.fb.group({
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
-      'remark': ['', [Validators.minLength(4)]]
+      'remark': ['', [Validators.minLength(4)]],
+      'status':[''],
     });
 
   }
@@ -52,8 +53,8 @@ export class BudgetCategoryMasterComponent {
   budgetCategoryMaster() {
     let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
-      "remark": this.budgetCategoryMasterForm.value.remark
-
+      "remark": this.budgetCategoryMasterForm.value.remark,
+"status":this.budgetCategoryMasterForm.value.status
     };
     this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
       let StoredData = data.body;
@@ -122,7 +123,7 @@ export class BudgetCategoryMasterComponent {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();

@@ -16,11 +16,14 @@ import { SubCategoryService } from '../../services/sub-category.service';
 export class BudgetSubCategoryMasterComponent {
 
   public budgetSubCategoryMasterForm !: FormGroup;
-  budgetCategoryNameList: String[] = undefined as any;
+   budgetCategoryNameList: String[] = undefined as any;
   selectedTeam = '';
   textArea: any;
   selectedValue: any;
   budgetCategoryNameSelected: any;
+  selectedType:string='';
+  budgetType:any=['Capital','Revenue'];
+
   constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder, private SubCategoryService: SubCategoryService) { }
 
 
@@ -44,25 +47,22 @@ export class BudgetSubCategoryMasterComponent {
 
       'budgetCode': [''],
 
-      'active': [''],
+      'status': [''],
 
       'createdBy': [''],
 
-      'createdDate': ['',],
-
-      'time': [''],
+      'budgetType': [''],
     });
   }
   budgetSubCategoryMaster() {
     let createSubCategoryRequest: SubCategoryData = {
-      //  "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
+     "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
-      "active": this.budgetSubCategoryMasterForm.value.active,
+      "status": this.budgetSubCategoryMasterForm.value.status,
       "createdBy": this.budgetSubCategoryMasterForm.value.createdBy,
-      "createdDate": this.budgetSubCategoryMasterForm.value.createdDate,
-      "time": this.budgetSubCategoryMasterForm.value.time,
+      "budgetType": this.budgetSubCategoryMasterForm.value.budgetType,
       "id": this.budgetSubCategoryMasterForm.value.id,
       "activation_date": this.budgetSubCategoryMasterForm.value.activation_date
     };
@@ -116,7 +116,7 @@ export class BudgetSubCategoryMasterComponent {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();
@@ -124,5 +124,9 @@ export class BudgetSubCategoryMasterComponent {
     }
   }
 
+
+selectedValues(event:any){
+  this.selectedType=event.target.value;
+}
 
 }
