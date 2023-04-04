@@ -3,5 +3,6 @@ export interface SubCategoryData {
   budgetCategoryName:String;
   remark:String;
   budgetCode:String;
-  active:String;
+  active:Boolean;
+  budgetType:String;
 }

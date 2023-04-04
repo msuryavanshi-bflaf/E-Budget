@@ -98,12 +98,11 @@
                         </td>
 
                     </tr>
-                    <td> <mat-checkbox type="checkbox" checked>Active</mat-checkbox></td>
-
-
+                    <td> <mat-checkbox formControlName="active" checked>Active</mat-checkbox></td>
+                    
                     <td> Bydget Type <mat-radio-group aria-label="Select an option">
-                            <mat-radio-button value="1">Capital</mat-radio-button>
-                            <mat-radio-button value="2">Revenue</mat-radio-button>
+                            <mat-radio-button value="1" formControlName="budgetType">Capital</mat-radio-button>
+                            <mat-radio-button value="2" formControlName="budgetType">Revenue</mat-radio-button>
                         </mat-radio-group></td>
 
 

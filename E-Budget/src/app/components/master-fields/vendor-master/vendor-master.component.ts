@@ -106,7 +106,7 @@ export class VendorMasterComponent {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();

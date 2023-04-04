@@ -58,12 +58,11 @@
 
 
                     </tr>
-
-                    <tr>
-
-                        <mat-checkbox type="checkbox" checked>Active</mat-checkbox>
-                        <!-- Active<input type="checkbox" name ="Active" formControlName="Active"> -->
-                    </tr>
+<!-- 
+                    <tr *ngFor="let item of status">
+                        <mat-checkbox name="{{item.name}}" (change)="onchange()" [(ngModel)]="item.isSelected">{{item.name}}</mat-checkbox>
+                         Active<input type="checkbox" name ="Active" formControlName="Active">
+                    </tr> -->
 
 
 

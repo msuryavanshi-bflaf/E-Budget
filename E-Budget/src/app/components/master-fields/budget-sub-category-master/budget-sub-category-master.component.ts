@@ -44,7 +44,9 @@ export class BudgetSubCategoryMasterComponent {
 
       'budgetCode': [''],
 
-      'active': ['']
+      'active': [''],
+
+      'budgetType':['']
     });
   }
   budgetSubCategoryMaster() {
@@ -53,7 +55,8 @@ export class BudgetSubCategoryMasterComponent {
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
-      "active": this.budgetSubCategoryMasterForm.value.active
+      "active": this.budgetSubCategoryMasterForm.value.active,
+      "budgetType": this.budgetSubCategoryMasterForm.value.budgetType
     };
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
       if (data.body.budgetCode != "" && data.body.budgetSubCategoryName != "") {
@@ -98,7 +101,7 @@ export class BudgetSubCategoryMasterComponent {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();

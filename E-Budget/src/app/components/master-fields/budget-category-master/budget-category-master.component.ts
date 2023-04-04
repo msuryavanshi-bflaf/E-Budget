@@ -19,6 +19,7 @@ export class BudgetCategoryMasterComponent {
   showMsg: boolean = false;
   budgetCategoryNameList: String[] = undefined as any;
   checked = true;
+  
 
   constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCategoryService) { }
 
@@ -27,7 +28,7 @@ export class BudgetCategoryMasterComponent {
   ngOnInit() {
 
     this.initBudgetCategoryMasterForm();
-    this.initBudgetCategotryNameList()
+    this.initBudgetCategotryNameList();
   }
 
   initBudgetCategoryMasterForm() {
@@ -35,7 +36,8 @@ export class BudgetCategoryMasterComponent {
     this.budgetCategoryMasterForm = this.fb.group({
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
-      'remark': ['', [Validators.minLength(4)]]
+      'remark': ['', [Validators.minLength(4)]],
+      
     });
 
   }
@@ -122,13 +124,14 @@ export class BudgetCategoryMasterComponent {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/[a-zA-Z0-9]/.test(inp)) {
+    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();
       return false;
     }
   }
+  
 }
 
 
