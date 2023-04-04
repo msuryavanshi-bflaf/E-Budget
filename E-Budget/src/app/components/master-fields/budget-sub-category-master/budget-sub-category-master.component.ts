@@ -44,7 +44,7 @@ export class BudgetSubCategoryMasterComponent {
 
       'budgetCode': [''],
 
-      'active': [''],
+      'status': [''],
 
       'budgetType':['']
     });
@@ -55,7 +55,7 @@ export class BudgetSubCategoryMasterComponent {
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
-      "active": this.budgetSubCategoryMasterForm.value.active,
+      "status": this.budgetSubCategoryMasterForm.value.status,
       "budgetType": this.budgetSubCategoryMasterForm.value.budgetType
     };
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
