@@ -10,12 +10,11 @@
     </tr>
     <tr *ngFor="let data of budgetSubCategoryData">
       <td>{{ data.id}}</td>
-      <td>{{ data.budgetCategoryName}}</td>
+      <!-- <td>{{ data.budgetCategoryName}}</td> -->
       <td>{{ data.budgetSubCategoryName}}</td>
-      <td>{{ data.active}}</td>
-      <td>{{data.createdDate}}{{ data.time}}</td>
+      <td>{{data.activation_date}}</td>
       <td>{{ data.createdBy}}</td>
-      
+      <td>{{ data.active}}</td>
       <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
     </tr>
   </table>

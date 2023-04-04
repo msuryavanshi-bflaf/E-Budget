@@ -11,5 +11,6 @@ export interface BudgetCategoryDetails{
   createdBy:String;
   createdDate:Date;
   Action:String;
+  activation_date:String;
   
 }

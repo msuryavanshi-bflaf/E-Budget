@@ -62,6 +62,7 @@ export class VendorMasterComponent {
       "mobileNumber": this.vendorMasterForm.value.mobileNumber,
       "landLineNumber": this.vendorMasterForm.value.landLineNumber,
       "id":this.vendorMasterForm.value.id,
+      "activation_date":this.vendorMasterForm.value.id,
     };
 
 

@@ -39,14 +39,15 @@
   <router-outlet></router-outlet>
 </div> -->
 <div class="menu-bar">
-  <span class="budget">E-Budget</span>
+  <!-- <span class="budget">E-Budget</span> -->
   <ul>
-    <li><a href="/budgetCategoryMaster">Budget Category</a></li>
+    <li class="active"><a href="/budgetCategoryMaster">Budget Category</a></li>
     <li><a href="/budgetSubCategoryMaster">Budget Sub-category</a></li>
     <li><a href="/vendorMaster">Vendor Master</a></li>
     <li><a routerLink="/budgetCreation">Budget Creation</a></li>
+    <span><img [src]="bajajLogo.PATH" id="bajajlogo" [alt]="appLogo.ALT_TEXT" class="bajajlogo" /></span>
 </ul>
-  <span><img [src]="bajajLogo.PATH" id="bajajlogo" [alt]="appLogo.ALT_TEXT" class="bajajlogo" /></span>
+ 
 
 </div> 
 

@@ -1,99 +1,105 @@
 
-.budget {
-   color: white;
-   font-size: 25px;
-   text-align: left;
-}
+// .budget {
+//    color: white;
+//    font-size: 25px;
+//    text-align: left;
+// }
 
 
 #bajajlogo {
    width: 120px;
-   height: 30px;
-   margin: 9px 0 0 500px;
+   height: 34px;
+   margin: 7px 0 0 650px;
 
 }
 
-.menu-bar {
-   text-align: center;
+
+
+
+
+// 8**********************
+// .menu-bar {
+//    text-align: center;
+//    background-color: #004DA8;
+// }
+
+// ul {
+//    list-style-type: none;
+//    margin-left: 10px;
+//    padding: 0;
+//    color: #fff;
+//  }
+ 
+//  li {
+//    display: inline;
+//  }
+// **************
+
+
+
+
+
+
+
+
+
+
+
+ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
    background-color: #004DA8;
-}
-
-.menu-bar ul {
-   display: inline-flex;
-   list-style: none;
-   color: #fff;
-}
-
-.menu-bar ul li {
-   width: 100px;
-   margin: 7px;
-   padding: 12px;
-}
-
-.menu-bar ul li a {
+ }
+ 
+ li {
+   float: left;
+   border-right:1px solid #bbb;
+ }
+ 
+ li:last-child {
+   border-right: none;
+ }
+ 
+ li a {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
    text-decoration: none;
-   color: #fff;
-}
+ }
+ 
+ li a:hover:not(.active) {
+   background-color: #122e50;
+ }
+ 
+ .active {
+   background-color: #04AA6D;
+ }
 
-// .active,
-// .menu-bar ul li:hover {
 
-//    background: #2c6bb8;
-//    border-radius: 3px;
+
+
+
+
+
+
+// .menu-bar ul {
+// display: inline-flex;
+// list-style: none;
+// color: #fff;
+  
 // }
 
-// .sub-menu-1 {
-//    display: none;
-
+// .menu-bar ul li {
+//    width: 100px;
+//    margin: 7px;
+//    padding: 12px;
 // }
 
-
-// .menu-bar ul li .sub-menu-1 {
-//    display: block;
-//    position: absolute;
-//    background: #004DA8;
-//    margin-top: 15px;
-//    margin-left: -15px;
-
+// .menu-bar ul li a {
+//    text-decoration: none;
+//    color: #fff;
 // }
 
-// .menu-bar ul li .sub-menu-1 ul {
-//    display: block;
-//    margin: 10px;
-// }
-
-// .menu-bar ul li .sub-menu-1 ul li {
-//    width: 150px;
-//    padding: 10px;
-//    border-bottom: 1px dotted #fff;
-//    background: transparent;
-//    border-radius: 0;
-//    text-align: left;
-// }
-
-// .menu-bar ul li .sub-menu-1 ul li:last-child {
-//    border-bottom: none;
-// }
-
-// .sub-menu-2 {
-//    display: none;
-
-// }
-
-// .hover-me:hover .sub-menu-2 {
-//    position: absolute;
-//    display: block;
-//    margin-top: -40px;
-//    margin-left: -210px;
-//    background: #004DA8;
-// }
-
-// .home-icon {
-//    height: 14px;
-//    width: 30px;
-// }
-
-// .arrow-icon {
-//    height: 13px;
-//    width: 20px;
-// }

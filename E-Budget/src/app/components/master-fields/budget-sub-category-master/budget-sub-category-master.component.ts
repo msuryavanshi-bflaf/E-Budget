@@ -55,7 +55,7 @@ export class BudgetSubCategoryMasterComponent {
   }
   budgetSubCategoryMaster() {
     let createSubCategoryRequest: SubCategoryData = {
-      "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
+      //  "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
@@ -64,6 +64,7 @@ export class BudgetSubCategoryMasterComponent {
       "createdDate": this.budgetSubCategoryMasterForm.value.createdDate,
       "time": this.budgetSubCategoryMasterForm.value.time,
       "id": this.budgetSubCategoryMasterForm.value.id,
+      "activation_date": this.budgetSubCategoryMasterForm.value.activation_date
     };
     this.SubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
       if (data.body.budgetCode != "" && data.body.budgetSubCategoryName != "") {

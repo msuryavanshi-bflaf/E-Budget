@@ -7,6 +7,6 @@ export interface VendorData {
   contactPersonName:String;
   mobileNumber:String;
   landLineNumber:String;
-
+  activation_date:String;
 
 }
