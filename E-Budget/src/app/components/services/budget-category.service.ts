@@ -31,7 +31,7 @@ export class BudgetCategoryService {
   // }
 
   getBudgetCategoryDetails(id: any) {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST + id).pipe(
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.MODIFYCATEGORY + id).pipe(
       map((res: any) => { return (res) })
     );
   }
@@ -77,4 +77,8 @@ export class BudgetCategoryService {
       })
     )
   }
+
+  
+
+
 }

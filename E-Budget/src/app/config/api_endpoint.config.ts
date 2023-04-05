@@ -20,5 +20,7 @@ export const API_END_POINTS = {
     BUDGETCATEGORYDETAILS:'/budgetCategoryDetails',
     DELETECATEGORY:'/budgetCategory/',
     BUDGETCODELIST:'/findAllCodeList',
-    DELETESUBCATEGORY:'/subCategory/'
+    DELETESUBCATEGORY:'/subCategory/',
+    MODIFYCATEGORY:'/budgetCategory/'
+
 }

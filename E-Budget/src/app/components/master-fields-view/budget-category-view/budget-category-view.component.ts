@@ -8,11 +8,8 @@ import { BudgetCategoryDetails } from 'src/app/Model/budget-category/budget-crea
 import { BudgetCategoryService } from '../../services/budget-category.service';
 import{  MatTableModule}from '@angular/material/table';
 import{MatTableDataSource}from '@angular/material/table'
-export interface Employee {
-  value: string;
-  viewValue: string;
+import { FormGroup, NgForm } from '@angular/forms';
 
-}
 
 @Component({
   selector: 'app-budget-category-view',
@@ -25,6 +22,10 @@ export class BudgetCategoryViewComponent implements OnInit {
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
   event:any;
+  @ViewChild('budgetCategoryMasterForm')
+  form!: NgForm;
+  // form!: NgForm;
+
   tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Edit','Delete'];
  
   constructor(private router: Router, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
@@ -36,10 +37,19 @@ export class BudgetCategoryViewComponent implements OnInit {
     this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
   }
 
-  getbudgetCategoryDetails() {
-    this.budgetCategoryService.getAllBudgetCategoryList().subscribe((data: any) => {
-      this.budgetCategoryData = data;
-      
+  getbudgetCategoryDetails(id:any) {
+    // this.budgetCategoryService.getBudgetCategoryDetails(this.id).subscribe((data: any) => {
+    //   this.budgetCategoryData = data;
+    //   this.router.navigate([AppConstant.MODIFYBUDGETCATEGORYMASTER]);
+    // });
+    let currentCategory= this.budgetCategoryData.find((p)=>{return p.id===id});
+    console.log(this.form);
+
+    this.form.setValue({
+      budgetCategoryName: currentCategory?.budgetCategoryName,
+      remark: currentCategory?.remark,
+      status: currentCategory?.status
+
     });
   }
 
