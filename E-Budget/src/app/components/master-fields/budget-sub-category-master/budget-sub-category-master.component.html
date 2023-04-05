@@ -28,29 +28,19 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCategoryName"[(ngModel)]="budgetCategoryNameSelected"> 
+                                <mat-select formControlName="budgetCategoryName"
+                                    [(ngModel)]="budgetCategoryNameSelected">
+
+                                    <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList let i = index"
+                                        [value]="budgetCategoryName">{{budgetCategoryName}}</mat-option>
 
 
-<!-- 
-                                 <ul>
-                                        <li *ngFor="let budgetCategoryName of budgetCategoryNameList;let indexOfelement=index;">
-                                         {{indexOfelement}} value : {{budgetCategoryName}} 
-                                        </li>
-                                    </ul>  -->
-                              
-
-                                <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList let i = index"
-                                        [value]="budgetCategoryName">{{budgetCategoryName}}</mat-option> 
-
-                            
                                 </mat-select>
-
 
                             </mat-form-field>
 
                         </td>
 
-              
                         <td>
 
                             <mat-label>BudgetCode</mat-label>
@@ -105,24 +95,18 @@
                         </td>
 
                     </tr>
-                    <!-- <td> <mat-checkbox type="checkbox" checked>Active</mat-checkbox></td> -->
+
                     <td> <mat-checkbox formControlName="status" checked>Active</mat-checkbox></td>
+
                     <td>
 
                         <mat-label>Budget Type</mat-label>
 
                     </td>
                     <td *ngFor="let budget of budgetType">
-                            <input type="radio" formControlName="budgetType" name="budgetType" value="{{budget}}" (change)="selectedValues($event)">{{budget}}
+                        <input type="radio" formControlName="budgetType" name="budgetType" value="{{budget}}"
+                            (change)="selectedValues($event)">{{budget}}
                     </td>
-
-
-
-                    <!-- <td> Budget Type <mat-radio-group aria-label="Select an option">
-                            <mat-radio-button value="Capital" name="budgetType" formControlName="budgetType" ngModel>Capital</mat-radio-button>
-                            <mat-radio-button value="Revenue" name="budgetType" formControlName="budgetType" ngModel>Revenue</mat-radio-button>
-                        </mat-radio-group></td> -->
-
 
                 </table>
 
@@ -130,12 +114,11 @@
 
         </mat-card-content>
         <div>
-            <button mat-button class="backbutton"(click)="back()">back</button>
-            <button mat-button class="budget-sub-category-master-button" (click)="budgetSubCategoryMaster()">Sub Category
+            <button mat-button class="backbutton" (click)="back()">back</button>
+            <button mat-button class="budget-sub-category-master-button" (click)="budgetSubCategoryMaster()">Sub
+                Category
                 Master</button>
-    
         </div>
-       
     </mat-card>
 
 </div>

@@ -25,7 +25,7 @@ export class BudgetCategoryViewComponent implements OnInit {
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
   event:any;
-  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Delete'];
+  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Edit','Delete'];
  
   constructor(private router: Router, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
   ngOnInit(): void {
@@ -55,6 +55,12 @@ export class BudgetCategoryViewComponent implements OnInit {
       })
     alert('Record deleted Successfully')
     this.getActiveCategory()
+
+
+    // editCategory(data:any){
+
+    // }
+
 
 
 
