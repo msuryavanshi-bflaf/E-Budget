@@ -1,5 +1,35 @@
-@import'../../../scss//base';
+.budget-sub-category-master-button {
 
-.stepper {
-    margin: 50px 150px 0 150px;
+    width: 215px !important;
+
+    margin: 15px 0 2rem 0;
+
+
+    background-color: #004DA8;
+}
+
+
+mat-card-title {
+
+    margin-bottom: 25px;
+
+}
+
+.close.mat-button {
+    position: inherit;
+    top: 0;
+    right: 0;
+    padding: 2px;
+    line-height: 3px;
+    min-width: auto;
+}
+
+.dialog {
+    display: flex;
+    flex-direction: column;
+}
+.backbutton{
+    margin: 10px 20px  2rem 0;
+    background-color: #004DA8;
+
 }

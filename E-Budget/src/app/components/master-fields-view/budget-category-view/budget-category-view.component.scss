@@ -1,76 +1,35 @@
-@import '/src/scss/base';
-
-.add-category {
-    //   background-color: $c-cyan-azure;
-    // margin-left: 550px;
+.budget-sub-category-master-button {
 
     width: 215px !important;
 
-    margin: 28px 0 2rem 250px;
+    margin: 15px 0 2rem 0;
+
 
     background-color: #004DA8;
 }
 
-.delete-category {
-    background-color: $c-cyan-azure;
+
+mat-card-title {
+
+    margin-bottom: 25px;
+
 }
 
-.search {
-    margin: 0px 0 0 10px;
-    width: 400px;
+.close.mat-button {
+    position: inherit;
+    top: 0;
+    right: 0;
+    padding: 2px;
+    line-height: 3px;
+    min-width: auto;
 }
 
-.matInput {
-    margin-top: 10px;
+.dialog {
+    display: flex;
+    flex-direction: column;
 }
+.backbutton{
+    margin: 10px 20px  2rem 0;
+    background-color: #004DA8;
 
-.mat-icon {
-    font-size: large;
-}
-
-.delete-icon {
-    color: $c-primary-mandatory-field;
-    font-size: $h4-font-size;
-}
-
-.view-icon {
-    color: $c-primary-mandatory-field1;
-    font-size: $h4-font-size;
-    margin-top: 15px;
-}
-
-table {
-    margin: 0 5px 0 5px;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    background-color: white;
-}
-
-td,
-th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-.select-mat-input {
-    height: 19px;
-    font-size: $h1-font-size;
-    width: 241px;
-    padding-Top: 9px;
-    margin: 1px 0 13px 20px;
-}
-
-.employee-list {
-    margin: 6px 0 0 10px;
-}
-.view-icon{
-    color:$c-primary-mandatory-field1;
-    font-size: $h3-font-size;
-    margin-top: 10px;
 }
