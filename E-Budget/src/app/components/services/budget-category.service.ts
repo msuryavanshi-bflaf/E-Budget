@@ -24,11 +24,6 @@ export class BudgetCategoryService {
     );
   }
 
-  // createSalary(createSalaryRequest:SalaryData): Observable<SalaryData> {
-  //   return this.http.post( environment.apiUrl+API_END_POINTS.SALARY_DETAILS, createSalaryRequest).pipe(map((res: any) => {
-  //     return res;
-  //   }))
-  // }
 
   getBudgetCategoryDetails(id: any) {
     return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST + id).pipe(
@@ -36,16 +31,24 @@ export class BudgetCategoryService {
     );
   }
 
+
   public deleteCategory(id: any) {
     return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETECATEGORY + id)
   }
+  
+  editCategory(id: any) {
+     return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY+id,id)
+  }
 
+  // editCategory(id: number, value: any): Observable<Object> {
+  //   return this.http.put(`${environment.javaEndPoint + API_END_POINTS.EDITCATEGORY + id }/${id}`, value);
+  // }
   // activeEmployeeSalary(id: any) {
   //   return this.http.get(environment.apiUrl + API_END_POINTS.ACTIVE_EMPLOYEE_SALARY_DETAILS + id).pipe(
   //     map((res: any) => { return (res) })
   //   );
   // }
- 
+
 
   // activeEmployeeSalary(createSalaryRequest:SalaryData): Observable<SalaryData> {
   //   return this.http.get( environment.apiUrl+API_END_POINTS. ACTIVE_EMPLOYEE_SALARY_DETAILS).pipe(map((res: any) => {
@@ -58,7 +61,7 @@ export class BudgetCategoryService {
   //     map((res: any) => { return (res) })
   //   );
   // }
- 
+
 
 
 

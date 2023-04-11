@@ -56,29 +56,15 @@ export class BudgetCategoryViewComponent implements OnInit {
     alert('Record deleted Successfully')
     this.getActiveCategory()
 
-
+    
+      }
+    
     // editCategory(data:any){
 
     // }
 
 
 
-
-    //  searchCategory(event:any){
-    //   let filteredEmployees: BudgetCategoryDetails[] = [];
-    //   if (event === '') {
-    //     this.getActiveCategory = this.addBudgetCategory;
-    //   } else {
-    //     filteredEmployees = this.budgetCategoryData.filter((budgetCategoryData, index) => {
-    //       let targetKey = budgetCategoryData.budgetCategoryName.toLowerCase();
-    //       let searchKey = event.toLowerCase();
-    //       return targetKey.includes(searchKey)
-    //     })
-    //     this.budgetCategoryData = filteredEmployees;
-    //   }
-    // }
-
-  }
 
   dataSource = new MatTableDataSource([]);
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -104,11 +90,11 @@ export class BudgetCategoryViewComponent implements OnInit {
       event.pageSize
     );
   }
- 
 }
 
-function searchCategory(event: Event | undefined, any: any) {
-  throw new Error('Function not implemented.');
 
-}
+// function searchCategory(event: Event | undefined, any: any) {
+//   throw new Error('Function not implemented.');
+
+// }
 

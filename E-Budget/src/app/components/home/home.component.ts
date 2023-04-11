@@ -23,7 +23,7 @@ export class HomeComponent {
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
   event:any;
-  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Edit','Delete'];
+  tableHead = ['Budget Code.','Remark','Edit','Delete'];
  
   constructor(private router: Router, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
   ngOnInit(): void {
@@ -102,10 +102,3 @@ export class HomeComponent {
   }
  
 }
-
-// function searchCategory(event: Event | undefined, any: any) {
-//   throw new Error('Function not implemented.');
-
-// }
-
-

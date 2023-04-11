@@ -1,35 +1,75 @@
-.budget-sub-category-master-button {
+@import '/src/scss/base';
+
+.add-category {
+    //   background-color: $c-cyan-azure;
+    // margin-left: 550px;
 
     width: 215px !important;
 
-    margin: 15px 0 2rem 0;
+    margin: 28px 0 2rem 250px;
 
-
-    background-color: #004DA8;
+     background-color:  #004DA8;
+}
+.paginator{
+    width:80%;
+    margin: 0 210px 0 130px;
+}
+.delete-category {
+  background-color: $c-cyan-azure;
 }
 
-
-mat-card-title {
-
-    margin-bottom: 25px;
-
+.search {
+    margin: 0px 0 0 10px;
+    width: 400px;
 }
 
-.close.mat-button {
-    position: inherit;
-    top: 0;
-    right: 0;
-    padding: 2px;
-    line-height: 3px;
-    min-width: auto;
+.matInput {
+    margin-top: 10px;
 }
 
-.dialog {
-    display: flex;
-    flex-direction: column;
+.mat-icon {
+    font-size: large;
 }
-.backbutton{
-    margin: 10px 20px  2rem 0;
-    background-color: #004DA8;
 
+.delete-icon {
+  color: $c-primary-mandatory-field;
+  font-size: 23px;
+}
+
+.view-icon {
+      color: $c-primary-mandatory-field1;
+      font-size: 23px;
+    // margin-top: 2px;
+}
+
+table {
+    // margin: 0 3px 0 3px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: white;
+    margin: 0 210px 0 130px;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    // padding: 2px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.select-mat-input {
+    height: 19px;
+    font-size: $h1-font-size;
+    width: 241px;
+    padding-Top: 9px;
+    margin: 1px 0 13px 20px;
+}
+
+.employee-list {
+    margin: 6px 0 0 10px;
 }

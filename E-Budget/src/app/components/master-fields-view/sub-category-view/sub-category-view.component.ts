@@ -22,7 +22,7 @@ export class SubCategoryViewComponent {
   id: number | undefined;
   budgetSubCategoryData: SubCategoryData[] = [];
   event:any;
-  tableHead = ['Sr.No.','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Delete'];
+  tableHead = ['Sr.No.','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Edit','Delete'];
  
   constructor(private router: Router, private http: HttpClient, private budgetSubCategoryService:SubCategoryService, private route: ActivatedRoute ) { }
   ngOnInit(): void {

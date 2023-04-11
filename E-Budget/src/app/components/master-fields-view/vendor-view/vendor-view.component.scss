@@ -8,11 +8,11 @@
 
     margin: 28px 0 2rem 250px;
 
-     background-color:  #004DA8;
+    background-color: #004DA8;
 }
 
 .delete-category {
-  background-color: $c-cyan-azure;
+    background-color: $c-cyan-azure;
 }
 
 .search {
@@ -29,21 +29,27 @@
 }
 
 .delete-icon {
-  color: $c-primary-mandatory-field;
-  font-size: $h4-font-size;
+    color: $c-primary-mandatory-field;
+    font-size: 23px;
+    ;
 }
 
 .view-icon {
-      color: $c-primary-mandatory-field1;
-      font-size: $h4-font-size;
-    margin-top: 15px;
-}
+    color: $c-primary-mandatory-field1;
+    font-size: 23px;
 
+}
+.paginator{
+    width:80%;
+    margin: 0 210px 0 130px;
+}
 table {
-    margin: 0 10px 0 10px;
+    margin: 0 1px 0 1px;
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
+    margin: 0 210px 0 130px;
+
     background-color: white;
 }
 
@@ -51,7 +57,7 @@ td,
 th {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    // padding: 8px;
 }
 
 tr:nth-child(even) {

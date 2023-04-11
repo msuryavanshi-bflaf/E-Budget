@@ -1,4 +1,4 @@
-<mat-paginator #paginator
+<mat-paginator #paginator class="paginator"
   [pageSize]="10"
   [pageSizeOptions]="[5, 10, 20]"
    (page)="pageChanged($event)" [length]="budgetSubCategoryData?.length">
@@ -15,6 +15,7 @@
       <td>{{data.activation_date}}</td>
       <td>{{ data.createdBy}}</td>
       <td>{{ data.status}}</td>
+      <td><mat-icon class="view-icon">create</mat-icon></td>
       <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
     </tr>
   </table>

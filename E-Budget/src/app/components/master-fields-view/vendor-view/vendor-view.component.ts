@@ -20,7 +20,7 @@ export class VendorViewComponent {
   id: number | undefined;
   vendorData: VendorData[] = [];
   event:any;
-  tableHead = ['Sr.No.', 'Vendor Company Name','Email', 'Address', 'Person Contact Name','Mobile Number','created Date','Delete'];
+  tableHead = ['Sr.No.', 'Vendor Company Name','Email', 'Address', 'Person Contact Name','Mobile Number','created Date','Edit','Delete'];
  
   constructor(private router: Router, private http: HttpClient, private activeVendor: VendorService, private route: ActivatedRoute ) { }
   ngOnInit(): void {

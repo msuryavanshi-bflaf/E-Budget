@@ -1,4 +1,4 @@
-<mat-paginator #paginator
+<mat-paginator #paginator class="paginator"
   [pageSize]="10"
   [pageSizeOptions]="[5, 8, 10]"
    (page)="pageChanged($event)" [length]="vendorData?.length">
@@ -16,6 +16,7 @@
       <td>{{ data.contactPersonName}}</td>
       <td>{{ data.mobileNumber}}</td>
       <td>{{data.activation_date}}</td>
+      <td><mat-icon class="view-icon">create</mat-icon></td>
       <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
     </tr>
   </table>

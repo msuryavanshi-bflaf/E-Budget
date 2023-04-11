@@ -1,12 +1,19 @@
 import { style } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component,ViewChild ,OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
+import { BudgetCategoryData, BudgetCategoryDetails } from 'src/app/Model/budget-category/budget-creation.module';
 import Swal from 'sweetalert2';
-
+import { HttpClient } from '@angular/common/http';
 import { BudgetCategoryService } from '../../services/budget-category.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import{MatTableDataSource}from '@angular/material/table';
+import { environment } from 'src/environments/environment';
+import { API_END_POINTS } from 'src/app/config/api_endpoint.config';
+
+
+
 
 @Component({
   selector: 'app-budget-category-master',
@@ -19,17 +26,26 @@ export class BudgetCategoryMasterComponent {
   showMsg: boolean = false;
   budgetCategoryNameList: String[] = undefined as any;
   checked = true;
+ 
+  id: number | undefined;
+  budgetCategoryData: BudgetCategoryDetails[] = [];
+  event:any;
 
-  constructor(private router: Router, private fb: FormBuilder, private budgetCategoryService: BudgetCategoryService) { }
-
+  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Edit','Delete'];
+  constructor(private router: Router, private fb: FormBuilder,private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
+data:any;
   textArea: any;
   res: any;
+  editMode:boolean=false;
+  editBudgetCategoryId: any;
   ngOnInit() {
-
+    this.getActiveCategory();
     this.initBudgetCategoryMasterForm();
-    this.initBudgetCategotryNameList()
+    this.initBudgetCategotryNameList();
+
   }
 
+  
   initBudgetCategoryMasterForm() {
 
     this.budgetCategoryMasterForm = this.fb.group({
@@ -50,18 +66,33 @@ export class BudgetCategoryMasterComponent {
     })
   }
 
+
   budgetCategoryMaster() {
+
+ 
     let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "remark": this.budgetCategoryMasterForm.value.remark,
-"status":this.budgetCategoryMasterForm.value.status
+      "status":this.budgetCategoryMasterForm.value.status
     };
+
+
     this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
       let StoredData = data.body;
+
+//       if(this.editMode)
+//         {
+//          this.budgetCategoryService.editCategory(this.id).subscribe((res: any) => {
+//        })
+//       }
+
+// else
 
       if (data.body.budgetCategoryName != "" && data.body.remark != "") {
 
         let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(StoredData);
+
+
 
         if (isBudgetCategoryNameExits == true) {
 
@@ -130,6 +161,87 @@ export class BudgetCategoryMasterComponent {
       return false;
     }
   }
+
+
+  addBudgetCategory() {
+    this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
+  }
+
+  getbudgetCategoryDetails() {
+    this.budgetCategoryService.getAllBudgetCategoryList().subscribe((data: any) => {
+      this.budgetCategoryData = data;
+      
+    });
+  }
+
+  getActiveCategory() {
+    this.budgetCategoryService.getActiveCategory().subscribe((data: any) => {
+      this.budgetCategoryData = data;
+    });
+  }
+
+  deleteCategory(data: any) {
+    if (confirm('Are You sure to Delete this record'))
+      this.budgetCategoryService.deleteCategory(data.id).subscribe((res: any) => {
+      })
+    alert('Record deleted Successfully')
+    this.getActiveCategory()
+
+    
+      }
+    
+    editCategory(categoryId: any,index:number){
+      this.editMode=true;
+        console.log(this.budgetCategoryData[index]);
+// this.editBudgetCategoryId=categoryId;
+        this.budgetCategoryMasterForm.setValue({
+          budgetCategoryName:this.budgetCategoryData[index].budgetCategoryName,
+          remark:this.budgetCategoryData[index].remark,
+          status:this.budgetCategoryData[index].status
+         
+        })
+    }
+
+
+
+
+  dataSource = new MatTableDataSource([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  /**
+   * Set the paginator after the view init since this component will
+   * be able to query its view for the initialized paginator.
+   */
+  ngAfterViewInit() {
+    // this should be moved in API CALL
+    this.pageChanged({
+      pageIndex: 1,
+      pageSize: 10,
+      length: this.budgetCategoryData.length
+    });
+  }
+
+  pageChanged(event: PageEvent) {
+    event.length;
+    const budgetCategoryData = [...this.budgetCategoryData];
+    let dataSource= this.budgetCategoryData.splice(
+      (event.pageIndex - 1) * event.pageSize,
+      event.pageSize
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

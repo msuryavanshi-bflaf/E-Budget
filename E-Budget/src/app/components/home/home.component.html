@@ -11,11 +11,11 @@
     </tr>
     <tr *ngFor="let data of budgetCategoryData">
       <td>{{ data.id}}</td>
-      <td>{{ data.budgetCategoryName}}</td>
+      <!-- <td>{{ data.budgetCategoryName}}</td> -->
       <td>{{ data.remark}}</td>
-      <td>{{ data.activation_date}}</td>
+      <!-- <td>{{ data.activation_date}}</td>
       <td>{{ data.createdBy}}</td>
-      <td>{{ data.status}}</td>
+      <td>{{ data.status}}</td> -->
       <td><mat-icon class="view-icon">create</mat-icon></td>
       <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
      
