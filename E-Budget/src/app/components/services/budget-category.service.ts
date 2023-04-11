@@ -36,6 +36,12 @@ export class BudgetCategoryService {
     );
   }
 
+  updateBudgetCategoryDetails(updateBudgetCategoryRequest: BudgetCategoryDetails): Observable<BudgetCategoryData>{
+    return this.http.put(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST + updateBudgetCategoryRequest.id , updateBudgetCategoryRequest).pipe(
+      map((res: any) => { return (res) })
+    );
+  }
+
   public deleteCategory(id: any) {
     return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETECATEGORY + id)
   }

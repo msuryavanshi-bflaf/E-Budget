@@ -57,10 +57,6 @@ export class BudgetCategoryViewComponent implements OnInit {
     this.getActiveCategory()
 
 
-    // editCategory(data:any){
-
-    // }
-
 
 
 
@@ -78,6 +74,10 @@ export class BudgetCategoryViewComponent implements OnInit {
     //   }
     // }
 
+  }
+
+  editCategory(){
+    
   }
 
   dataSource = new MatTableDataSource([]);

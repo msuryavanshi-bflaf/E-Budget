@@ -13,6 +13,7 @@ import { BudgetCategoryMasterComponent } from './components/master-fields/budget
 import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
 import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
 import { BudgetCategoryViewComponent } from './components/master-fields-view/budget-category-view/budget-category-view.component';
+import { EditBudgetCategoryMasterComponent } from './components/master-fields/edit-budget-category-master/edit-budget-category-master.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: AppConstant.BUDGETSUBCATEGORYMASTER, component: BudgetSubCategoryMasterComponent },
   { path: AppConstant.VENDORMASTER, component: VendorMasterComponent },
   { path: AppConstant.BUDGETCATEGORYVIEW, component: BudgetCategoryViewComponent },
+  { path: AppConstant.MODIFYBUDGETCATEGORY, component: EditBudgetCategoryMasterComponent },
 
 
 ];
