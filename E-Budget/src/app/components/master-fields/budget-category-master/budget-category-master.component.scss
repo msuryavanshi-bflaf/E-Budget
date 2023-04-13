@@ -66,10 +66,6 @@ mat-card-title {
 
 
 
-.paginator{
-   width:80%;
-   margin: 0 210px 0 130px;
-}
 .delete-category {
  background-color: $c-cyan-azure;
 }
@@ -98,6 +94,10 @@ mat-card-title {
    // margin-top: 2px;
 }
 
+.paginator{
+   width:80%;
+   margin: 0 210px 0 130px;
+}
 .view-table {
    // margin: 0 3px 0 3px;
    font-family: arial, sans-serif;

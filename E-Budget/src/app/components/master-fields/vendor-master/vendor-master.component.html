@@ -149,9 +149,11 @@
         </mat-card-content>
 <div>
     <button mat-button class="backbutton"(click)="back()">back</button>
-    
+<!--     
     <button type="submit" mat-button class="vendorMaster-button"
-    (click)="vendorMaster()">Vendor Master</button>
+    (click)="vendorMaster()">Vendor Master</button> -->
+    <button mat-button class="vendorMaster-button" (click)="vendorMaster()" type="submit">{{editMode? 'Update Vendor' : 'Add Vendor'}}</button>
+
 </div>
        
 
@@ -160,4 +162,28 @@
 </div>
 <br>
 <br>
-<app-vendor-view></app-vendor-view>
+
+<mat-paginator #paginator class="paginator"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 8, 10]"
+   (page)="pageChanged($event)" [length]="vendorData?.length">
+</mat-paginator>
+
+  <table class="view-table">
+    <tr>
+      <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
+    </tr>
+    <tr *ngFor="let data of vendorData ; index as i">
+      <td>{{ data.id}}</td>
+      <td>{{ data.vendorCompanyName}}</td>
+      <td>{{ data.email}}</td>
+      <td>{{ data.address}}</td>
+      <td>{{ data.contactPersonName}}</td>
+      <td>{{ data.mobileNumber}}</td>
+      <td>{{data.activation_date}}</td>
+      <td><mat-icon class="view-icon"(click)="editCategory(data,i)">create</mat-icon></td>
+      <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
+    </tr>
+  </table>
+  
+<!-- <app-vendor-view></app-vendor-view> -->

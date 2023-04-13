@@ -1,5 +1,5 @@
 import { style } from '@angular/animations';
-import { Component,ViewChild ,OnInit} from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
@@ -8,10 +8,10 @@ import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { BudgetCategoryService } from '../../services/budget-category.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import{MatTableDataSource}from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { environment } from 'src/environments/environment';
 import { API_END_POINTS } from 'src/app/config/api_endpoint.config';
-
+import { first } from 'rxjs/operators';
 
 
 
@@ -26,33 +26,36 @@ export class BudgetCategoryMasterComponent {
   showMsg: boolean = false;
   budgetCategoryNameList: String[] = undefined as any;
   checked = true;
- 
+
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
-  event:any;
-
-  tableHead = ['Sr.No.', 'Budget Category Name','Remark', 'Created Date', 'Created By','Status','Edit','Delete'];
-  constructor(private router: Router, private fb: FormBuilder,private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute ) { }
-data:any;
+  event: any;
+value:any;
+  tableHead = ['Sr.No.', 'Budget Category Name', 'Remark', 'Created Date', 'Created By', 'Status', 'Edit', 'Delete'];
+  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute) { }
+  data: any;
+  index: any;
   textArea: any;
   res: any;
-  editMode:boolean=false;
+  editMode: boolean = false;
   editBudgetCategoryId: any;
+  // loading = false;
+  // submitted = false;
   ngOnInit() {
     this.getActiveCategory();
     this.initBudgetCategoryMasterForm();
     this.initBudgetCategotryNameList();
-
+    // this.id = this.route.snapshot.params['id'];
+    // this.editMode = !this.id;
   }
 
-  
   initBudgetCategoryMasterForm() {
 
     this.budgetCategoryMasterForm = this.fb.group({
 
       'budgetCategoryName': ['', [Validators.minLength(4)]],
       'remark': ['', [Validators.minLength(4)]],
-      'status':[''],
+      'status': [''],
     });
 
   }
@@ -66,27 +69,31 @@ data:any;
     })
   }
 
-
+  editBudgetCategoryMaster() {
+    console.log('hhjhjhjhjhjj')
+  }
   budgetCategoryMaster() {
 
- 
+
     let createBudgetCategoryRequest: BudgetCategoryData = {
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "remark": this.budgetCategoryMasterForm.value.remark,
-      "status":this.budgetCategoryMasterForm.value.status
+      "status": this.budgetCategoryMasterForm.value.status
     };
+    // if(this.budgetCategoryMasterForm.valid){
+    // if(this.editMode){
 
+
+    //     this.budgetCategoryService.editBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
+    //       this.budgetCategoryData = data;
+
+    //   });
+    // }
+
+    // else
 
     this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
       let StoredData = data.body;
-
-//       if(this.editMode)
-//         {
-//          this.budgetCategoryService.editCategory(this.id).subscribe((res: any) => {
-//        })
-//       }
-
-// else
 
       if (data.body.budgetCategoryName != "" && data.body.remark != "") {
 
@@ -143,6 +150,52 @@ data:any;
 
   }
 
+
+  //   onSubmit() {
+  //     this.submitted = true;
+
+  //     if (this.budgetCategoryMasterForm.invalid) {
+  //         return;
+  //     }
+
+  //     this.loading = true;
+  //     if (this.editMode) {
+  //         this.createUser();
+  //     } else {
+  //         this.updateUser();
+  //     }
+  // }
+
+  // private createUser() {
+  //     this.budgetCategoryService.createBudgetCategory(this.budgetCategoryMasterForm.value)
+  //         .pipe(first())
+  //         .subscribe({
+  //             next: () => {
+  //                 // this.alertService.success('User added', { keepAfterRouteChange: true });
+  //                 // this.router.navigate(['../'], { relativeTo: this.route });
+  //             },
+  //             error: error => {
+  //                 // this.alertService.error(error);
+  //                 this.loading = false;
+  //             }
+  //         });
+  // }
+
+  // private updateUser() {
+  //     this.budgetCategoryService.editCategory(this.id, this.budgetCategoryMasterForm.value)
+  //         .pipe(first())
+  //         .subscribe({
+  //             next: () => {
+  //                 // this.alertService.success('User updated', { keepAfterRouteChange: true });
+  //                 this.router.navigate(['../../'], { relativeTo: this.route });
+  //             },
+  //             error: error => {
+  //                 // this.alertService.error(error);
+  //                 this.loading = false;
+  //             }
+  //         });
+  // }
+
   autogrow() {
     let textArea = document.getElementById("description")
     this.textArea.style.overflow = 'hidden';
@@ -170,7 +223,7 @@ data:any;
   getbudgetCategoryDetails() {
     this.budgetCategoryService.getAllBudgetCategoryList().subscribe((data: any) => {
       this.budgetCategoryData = data;
-      
+
     });
   }
 
@@ -187,23 +240,31 @@ data:any;
     alert('Record deleted Successfully')
     this.getActiveCategory()
 
-    
-      }
-    
-    editCategory(categoryId: any,index:number){
-      this.editMode=true;
-        console.log(this.budgetCategoryData[index]);
-// this.editBudgetCategoryId=categoryId;
-        this.budgetCategoryMasterForm.setValue({
-          budgetCategoryName:this.budgetCategoryData[index].budgetCategoryName,
-          remark:this.budgetCategoryData[index].remark,
-          status:this.budgetCategoryData[index].status
-         
-        })
-    }
+
+  }
+
+  editCategory(categoryId: any, index: number) {
+    this.editMode = true;
+    console.log(this.budgetCategoryData[index]);
+    // this.editBudgetCategoryId=categoryId;
+    this.budgetCategoryMasterForm.setValue({
+      budgetCategoryName: this.budgetCategoryData[index].budgetCategoryName,
+      remark: this.budgetCategoryData[index].remark,
+      status: this.budgetCategoryData[index].status
+
+    })
+    // this.budgetCategoryService.editCategory(categoryId.id, index).subscribe((res: any) => {
+    // })
+  }
 
 
-
+  updateCategory(data: any) {
+   
+   
+      this.budgetCategoryService.editCategory(data,data).subscribe((res: any) => {
+      })
+   
+  }
 
   dataSource = new MatTableDataSource([]);
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -224,7 +285,7 @@ data:any;
   pageChanged(event: PageEvent) {
     event.length;
     const budgetCategoryData = [...this.budgetCategoryData];
-    let dataSource= this.budgetCategoryData.splice(
+    let dataSource = this.budgetCategoryData.splice(
       (event.pageIndex - 1) * event.pageSize,
       event.pageSize
     );

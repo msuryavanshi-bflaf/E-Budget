@@ -1,4 +1,4 @@
-
+@import '/src/scss/base';
 .vendorMaster-button {
 
     width: 215px !important;
@@ -17,3 +17,40 @@ mat-card-title{
     margin: 10px 20px  2rem 0;
     background-color: #004DA8;
 }
+
+
+.delete-icon {
+    color: $c-primary-mandatory-field;
+    font-size: 23px;
+   }
+   
+   .view-icon {
+        color: $c-primary-mandatory-field1;
+        font-size: 23px;
+      // margin-top: 2px;
+   }
+   .paginator{
+    width:80%;
+    margin: 0 210px 0 130px;
+ }
+   .view-table {
+      // margin: 0 3px 0 3px;
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+       background-color: white;
+      margin: 0 210px 0 130px;
+   
+   
+      
+   td,
+   th {
+       border: 1px solid #dddddd;
+      text-align: left;
+      // padding: 2px;
+   }
+   
+   tr:nth-child(even) {
+       background-color: #dddddd;
+   }
+   }

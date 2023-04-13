@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: AppConstant.GENERATEINVOICE, component: InvoiceGenerateComponent },
   { path: AppConstant.GENERATEPO, component: PoGenerateComponent },
   { path: AppConstant.BUDGETCATEGORYMASTER, component: BudgetCategoryMasterComponent },
+  { path: AppConstant.EDITCATEGORY, component: BudgetCategoryMasterComponent },
   { path: AppConstant.BUDGETSUBCATEGORYMASTER, component: BudgetSubCategoryMasterComponent },
   { path: AppConstant.VENDORMASTER, component: VendorMasterComponent },
   { path: AppConstant.BUDGETCATEGORYVIEW, component: BudgetCategoryViewComponent },

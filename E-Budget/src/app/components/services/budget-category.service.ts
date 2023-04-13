@@ -17,6 +17,11 @@ export class BudgetCategoryService {
       return res;
     }))
   }
+  editBudgetCategory(createBudgetCategoryRequest: BudgetCategoryData): Observable<BudgetCategoryData> {
+    return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY, createBudgetCategoryRequest).pipe(map((res: any) => {
+      return res;
+    }))
+  }
 
   getActiveCategory(): Observable<BudgetCategoryDetails> {
     return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCATEGORYLIST).pipe(
@@ -36,9 +41,25 @@ export class BudgetCategoryService {
     return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETECATEGORY + id)
   }
   
-  editCategory(id: any) {
-     return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY+id,id)
-  }
+
+  editCategory(id: number, value: any): Observable<Object> {
+      return this.http.put<any>(`${environment.javaEndPoint + API_END_POINTS.EDITCATEGORY+id}`, value);
+    }
+
+
+    // editCategory(id: number): Observable<Object> {
+    //   // return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY).pipe(
+    //         map((res: any) => { return (res) })
+    //       );
+    // }
+
+
+
+
+
+  // editCategory(id: any,value: any) {
+  //    return this.http.put(`${environment.javaEndPoint + API_END_POINTS.EDITCATEGORY + id }/${id}`, value)
+  // }
 
   // editCategory(id: number, value: any): Observable<Object> {
   //   return this.http.put(`${environment.javaEndPoint + API_END_POINTS.EDITCATEGORY + id }/${id}`, value);

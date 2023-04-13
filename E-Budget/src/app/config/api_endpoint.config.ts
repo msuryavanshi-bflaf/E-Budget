@@ -11,7 +11,7 @@ export const API_END_POINTS = {
     // BUDGETCODELIST:'/findAllCodeList'
     VENDOR:'/vendor/vendor',
     BUDGET_CATEGORY:'/budgetCategory/budgetCategory',
-    EDITCATEGORY:'/budgetCategory/update/',
+    EDITCATEGORY:'/budgetCategory/',
     SUBCATEGORY:'/subCategory/subCategory',
     BUDGETCATEGORYLIST:'/budgetCategory/findAllBudgetCategory',
     BUDGETSUBCATEGORYLIST:'/subCategory/findAllBudgetSubCategory',

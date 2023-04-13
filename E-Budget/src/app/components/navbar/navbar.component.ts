@@ -9,6 +9,7 @@ import { AppConstant } from 'src/app/constants/app.constants';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
   appLogo = ASSET_IMAGE.LOGO_IMG;
   bajajLogo = ASSET_IMAGE.BAJAJ_LOGO_IMG;
   constructor(private router: Router) { }

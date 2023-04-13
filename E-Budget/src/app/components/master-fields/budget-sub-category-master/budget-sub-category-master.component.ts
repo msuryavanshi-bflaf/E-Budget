@@ -33,7 +33,7 @@ export class BudgetSubCategoryMasterComponent {
   tableHead = ['Sr.No.','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Edit','Delete'];
   editMode:boolean=false;
   
-  
+  editBudgetSubCategoryId:any;
   constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder,private budgetSubCategoryService:SubCategoryService,private http: HttpClient, private route: ActivatedRoute) { }
 
 
@@ -139,14 +139,6 @@ selectedValues(event:any){
   this.selectedType=event.target.value;
 }
 
-
-
-
-
-
-
-
-
 addBudgetCategory() {
   this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
 }
@@ -174,6 +166,10 @@ deleteCategory(data: any) {
   }
   editCategory(data: any,index:number){
     this.editMode=true;
+    this.editMode = true;
+    console.log(data);
+    console.log(this.budgetSubCategoryData[index]);
+    this.editBudgetSubCategoryId = data;
       // console.log(this.budgetSubCategoryData[index])
       this.budgetSubCategoryMasterForm.setValue({
         budgetCategoryName:this.budgetSubCategoryData[index].budgetCategoryName,
@@ -182,7 +178,7 @@ deleteCategory(data: any) {
         budgetSubCategoryName:this.budgetSubCategoryData[index].budgetSubCategoryName,
         budgetCode:this.budgetSubCategoryData[index].budgetCode,
         budgetType:this.budgetSubCategoryData[index].budgetType,
-        createdBy:this.budgetSubCategoryData[index].createdBy
+        // createdBy:this.budgetSubCategoryData[index].createdBy
       })
   }
 
