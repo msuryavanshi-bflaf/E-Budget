@@ -11,9 +11,7 @@
         </mat-card-header>
 
         <mat-card-content>
-            <form [formGroup]="budgetCategoryMasterForm" id="invoiceForm">
-
-            <!-- <form [formGroup]="budgetCategoryMasterForm" id="invoiceForm"  (ngSubmit)="onSubmit()"> -->
+            <form [formGroup]="budgetCategoryMasterForm" id="invoiceForm" (ngSubmit)="budgetCategoryMaster()">
 
                 <table>
 
@@ -36,13 +34,13 @@
 
                         </td>
 
-                     </tr>
+                    </tr>
 
-                    <tr> 
+                    <tr>
 
                         <td>
-                                        <!-- Remark -->
-                                        
+                            <!-- Remark -->
+
                             <mat-label>Remark</mat-label>
 
                         </td>
@@ -62,51 +60,44 @@
 
                     </tr>
 
-                    <tr> 
+                    <tr>
 
                         <td> <mat-checkbox formControlName="status" checked>Active</mat-checkbox></td>
-                        
+
                     </tr>
 
                 </table>
 
+
+                <button mat-button class="categoryMaster-button" type="submit">{{editMode ? 'Update Budget Category' :
+                    'Create Budget Category'}}</button>
             </form>
 
         </mat-card-content>
 
-        <!-- <button mat-button class="categoryMaster-button" (click)="budgetCategoryMaster()" type="submit">{{editMode? 'Update Budget Category' : 'Create Budget Category'}}</button> -->
-        <button  mat-button class="categoryMaster-button" (click)="budgetCategoryMaster()" type="submit" *ngIf="!editMode">Add budgetCategory</button> 
-        <!-- <button mat-button class="categoryMaster-button" (click)="updateCategory(data,index)" type="submit"*ngIf="editMode">Edit budgetCategory </button> -->
-        <button mat-button class="categoryMaster-button" (click)="updateCategory(data)" type="submit"*ngIf="editMode">Edit budgetCategory </button>
 
     </mat-card>
-
 </div>
 <br>
 <br>
-<mat-paginator #paginator class="paginator"
-  [pageSize]="10"
-  [pageSizeOptions]="[5, 10, 20]"
-   (page)="pageChanged($event)" [length]="budgetCategoryData?.length">
+<mat-paginator #paginator class="paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" (page)="pageChanged($event)"
+    [length]="budgetCategoryData?.length">
 </mat-paginator>
 
-  <table class="view-table">
+<table class="view-table">
     <tr>
-      <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
+        <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
     </tr>
     <tr *ngFor="let data of budgetCategoryData; index as i">
-      <td>{{ data.id}}</td>
-      <td>{{ data.budgetCategoryName}}</td>
-      <td>{{ data.remark}}</td>
-      <td>{{ data.activation_date}}</td>
-      <td>{{ data.createdBy}}</td>
-      <td>{{ data.status}}</td>
-      
-      <td><mat-icon class="view-icon"(click)="editCategory(data,i)">create</mat-icon></td>
-      <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
-     
-    </tr>
-  </table>
-<!-- <app-budget-category-view></app-budget-category-view> -->
+        <td>{{ data.id}}</td>
+        <td>{{ data.budgetCategoryName}}</td>
+        <td>{{ data.remark}}</td>
+        <td>{{ data.activation_date}}</td>
+        <td>{{ data.createdBy}}</td>
+        <td>{{ data.status}}</td>
 
-<!-- https://jasonwatmore.com/post/2020/09/02/angular-combined-add-edit-create-update-form-example -->
+        <td><mat-icon class="view-icon" (click)="editCategory(data.id)">create</mat-icon></td>
+        <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
+
+    </tr>
+</table>

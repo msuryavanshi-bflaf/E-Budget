@@ -12,6 +12,7 @@ export const API_END_POINTS = {
     VENDOR:'/vendor/vendor',
     BUDGET_CATEGORY:'/budgetCategory/budgetCategory',
     EDITCATEGORY:'/budgetCategory/',
+    EDITSUBCATEGORY:'/subCategory/',
     SUBCATEGORY:'/subCategory/subCategory',
     BUDGETCATEGORYLIST:'/budgetCategory/findAllBudgetCategory',
     BUDGETSUBCATEGORYLIST:'/subCategory/findAllBudgetSubCategory',

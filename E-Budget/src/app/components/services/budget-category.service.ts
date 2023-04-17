@@ -17,7 +17,7 @@ export class BudgetCategoryService {
       return res;
     }))
   }
-  editBudgetCategory(createBudgetCategoryRequest: BudgetCategoryData): Observable<BudgetCategoryData> {
+  editBudgetCategory(createBudgetCategoryRequest: BudgetCategoryDetails): Observable<BudgetCategoryData> {
     return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY, createBudgetCategoryRequest).pipe(map((res: any) => {
       return res;
     }))
@@ -42,11 +42,11 @@ export class BudgetCategoryService {
   }
   
 
-  editCategory(id: number, value: any): Observable<Object> {
-      return this.http.put<any>(`${environment.javaEndPoint + API_END_POINTS.EDITCATEGORY+id}`, value);
+  editCategory(id: String, createBudgetCategoryRequest: BudgetCategoryData): Observable<Object> {
+      return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY + id, createBudgetCategoryRequest);
     }
 
-
+   
     // editCategory(id: number): Observable<Object> {
     //   // return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITCATEGORY).pipe(
     //         map((res: any) => { return (res) })

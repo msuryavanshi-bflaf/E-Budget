@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { API_END_POINTS } from 'src/app/config/api_endpoint.config';
-import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
+import { SubCategoryData, SubCategoryDetails } from 'src/app/Model/sub-category/sub-category.module';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class SubCategoryService {
 
   constructor(private http: HttpClient) { }
 
-  createSubCategory(createSubCategoryRequest: SubCategoryData): Observable<SubCategoryData> {
+  createSubCategory(createSubCategoryRequest: SubCategoryDetails): Observable<SubCategoryData> {
     return this.http.post(environment.javaEndPoint + API_END_POINTS.SUBCATEGORY, createSubCategoryRequest).pipe(map((res: any) => {
       return res;
     }))
@@ -37,8 +37,13 @@ export class SubCategoryService {
   getBudgetType(){
     
   }
+
   public deleteSubCategory(id: any) {
     return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETESUBCATEGORY + id)
+  }
+
+  editSubCategory(id: String, createSubCategoryRequest: SubCategoryDetails): Observable<Object> {
+    return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITSUBCATEGORY + id, createSubCategoryRequest);
   }
 
 }

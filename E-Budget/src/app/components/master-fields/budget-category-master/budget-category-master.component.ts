@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { BudgetCategoryData, BudgetCategoryDetails } from 'src/app/Model/budget-category/budget-creation.module';
@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { environment } from 'src/environments/environment';
 import { API_END_POINTS } from 'src/app/config/api_endpoint.config';
 import { first } from 'rxjs/operators';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 
 
@@ -30,7 +31,7 @@ export class BudgetCategoryMasterComponent {
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
   event: any;
-value:any;
+  value: any;
   tableHead = ['Sr.No.', 'Budget Category Name', 'Remark', 'Created Date', 'Created By', 'Status', 'Edit', 'Delete'];
   constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute) { }
   data: any;
@@ -39,14 +40,13 @@ value:any;
   res: any;
   editMode: boolean = false;
   editBudgetCategoryId: any;
-  // loading = false;
-  // submitted = false;
+  currentId: any;
+
   ngOnInit() {
     this.getActiveCategory();
     this.initBudgetCategoryMasterForm();
     this.initBudgetCategotryNameList();
-    // this.id = this.route.snapshot.params['id'];
-    // this.editMode = !this.id;
+
   }
 
   initBudgetCategoryMasterForm() {
@@ -72,64 +72,56 @@ value:any;
   editBudgetCategoryMaster() {
     console.log('hhjhjhjhjhjj')
   }
+
   budgetCategoryMaster() {
-
-
     let createBudgetCategoryRequest: BudgetCategoryData = {
+      "id": this.currentId,
       "budgetCategoryName": this.budgetCategoryMasterForm.value.budgetCategoryName,
       "remark": this.budgetCategoryMasterForm.value.remark,
       "status": this.budgetCategoryMasterForm.value.status
     };
-    // if(this.budgetCategoryMasterForm.valid){
-    // if(this.editMode){
 
+    if (!this.editMode) {
+      this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
+        let StoredData = data.body;
 
-    //     this.budgetCategoryService.editBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
-    //       this.budgetCategoryData = data;
+        if (data.body.budgetCategoryName != "" && data.body.remark != "") {
 
-    //   });
-    // }
+          let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(StoredData);
 
-    // else
+          if (isBudgetCategoryNameExits == true) {
 
-    this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
-      let StoredData = data.body;
+            alert('user already exits...')
+            this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
 
-      if (data.body.budgetCategoryName != "" && data.body.remark != "") {
+          } else {
+            Swal.fire({
+              title: "<h1 style='color:green' , 'margin-top:100px'>Budget category created successfully..</h1>",
+              icon: 'success'
+            })
+            this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+          }
 
-        let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(StoredData);
-
-
-
-        if (isBudgetCategoryNameExits == true) {
-
-          alert('user already exits...')
-          this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
-
-        } else {
-          Swal.fire({
-            title: "<h1 style='color:green' , 'margin-top:100px'>Budget category created successfully..</h1>",
-            icon: 'success'
-          })
-          this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
         }
 
+        else {
 
-      }
+          Swal.fire({
+            title: "<h1 style='color:red'>Please fill all details</h1>",
+            icon: 'error',
 
-      else {
+          })
 
-        Swal.fire({
-          title: "<h1 style='color:red'>Please fill all details</h1>",
-          icon: 'error',
+        }
 
-        })
+      })
 
-      }
-
-    })
-
+    }
+    else {
+      this.updateCategory(this.currentId, createBudgetCategoryRequest);
+    }
   }
+
 
   checkBudgetCategoryNameExits(data: BudgetCategoryData): boolean {
 
@@ -145,56 +137,8 @@ value:any;
 
       }
     }
-
     return isBudgetCategoryNameExits;
-
   }
-
-
-  //   onSubmit() {
-  //     this.submitted = true;
-
-  //     if (this.budgetCategoryMasterForm.invalid) {
-  //         return;
-  //     }
-
-  //     this.loading = true;
-  //     if (this.editMode) {
-  //         this.createUser();
-  //     } else {
-  //         this.updateUser();
-  //     }
-  // }
-
-  // private createUser() {
-  //     this.budgetCategoryService.createBudgetCategory(this.budgetCategoryMasterForm.value)
-  //         .pipe(first())
-  //         .subscribe({
-  //             next: () => {
-  //                 // this.alertService.success('User added', { keepAfterRouteChange: true });
-  //                 // this.router.navigate(['../'], { relativeTo: this.route });
-  //             },
-  //             error: error => {
-  //                 // this.alertService.error(error);
-  //                 this.loading = false;
-  //             }
-  //         });
-  // }
-
-  // private updateUser() {
-  //     this.budgetCategoryService.editCategory(this.id, this.budgetCategoryMasterForm.value)
-  //         .pipe(first())
-  //         .subscribe({
-  //             next: () => {
-  //                 // this.alertService.success('User updated', { keepAfterRouteChange: true });
-  //                 this.router.navigate(['../../'], { relativeTo: this.route });
-  //             },
-  //             error: error => {
-  //                 // this.alertService.error(error);
-  //                 this.loading = false;
-  //             }
-  //         });
-  // }
 
   autogrow() {
     let textArea = document.getElementById("description")
@@ -243,27 +187,54 @@ value:any;
 
   }
 
-  editCategory(categoryId: any, index: number) {
-    this.editMode = true;
-    console.log(this.budgetCategoryData[index]);
-    // this.editBudgetCategoryId=categoryId;
+  editCategory(id: String) {
+    this.currentId = id;
+    let currentProduct = this.budgetCategoryData.find((data) => { return data.id === id });
     this.budgetCategoryMasterForm.setValue({
-      budgetCategoryName: this.budgetCategoryData[index].budgetCategoryName,
-      remark: this.budgetCategoryData[index].remark,
-      status: this.budgetCategoryData[index].status
-
-    })
-    // this.budgetCategoryService.editCategory(categoryId.id, index).subscribe((res: any) => {
-    // })
+      budgetCategoryName: currentProduct?.budgetCategoryName,
+      remark: currentProduct?.remark,
+      status: currentProduct?.status
+    });
+    this.editMode = true;
   }
 
 
-  updateCategory(data: any) {
-   
-   
-      this.budgetCategoryService.editCategory(data,data).subscribe((res: any) => {
-      })
-   
+  updateCategory(id: String, createBudgetCategoryRequest: BudgetCategoryData) {
+    this.budgetCategoryService.editCategory(id, createBudgetCategoryRequest).subscribe((res: any) => {
+      
+      let dataExist = res;
+
+      if (res.budgetCategoryName != "" && res.remark != "") {
+
+        let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(dataExist);
+
+        if (isBudgetCategoryNameExits == true) {
+
+          alert('user already exits...')
+          this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
+
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:green' , 'margin-top:100px'>Budget category updated successfully..</h1>",
+            icon: 'success'
+          })
+          this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+        }
+
+      }
+
+      else {
+
+        Swal.fire({
+          title: "<h1 style='color:red'>Please fill all details</h1>",
+          icon: 'error',
+
+        })
+
+      }
+
+    })
+
   }
 
   dataSource = new MatTableDataSource([]);
@@ -290,18 +261,6 @@ value:any;
       event.pageSize
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 

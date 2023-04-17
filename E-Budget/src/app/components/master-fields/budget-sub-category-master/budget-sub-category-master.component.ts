@@ -6,7 +6,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
+import { SubCategoryData, SubCategoryDetails } from 'src/app/Model/sub-category/sub-category.module';
 import Swal from 'sweetalert2';
 import { BudgetCategoryService } from '../../services/budget-category.service';
 import { SubCategoryService } from '../../services/sub-category.service';
@@ -32,7 +32,7 @@ export class BudgetSubCategoryMasterComponent {
   event:any;
   tableHead = ['Sr.No.','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Edit','Delete'];
   editMode:boolean=false;
-  
+  currentId: any;
   editBudgetSubCategoryId:any;
   constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder,private budgetSubCategoryService:SubCategoryService,private http: HttpClient, private route: ActivatedRoute) { }
 
@@ -59,22 +59,20 @@ export class BudgetSubCategoryMasterComponent {
 
       'status': [''],
 
-      'createdBy': [''],
-
-      'budgetType': [''],
+      'budgetType': ['']
     });
   }
   budgetSubCategoryMaster() {
-    let createSubCategoryRequest: SubCategoryData = {
-     "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
+    let createSubCategoryRequest: SubCategoryDetails = {
+      "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
       "status": this.budgetSubCategoryMasterForm.value.status,
-      "createdBy": this.budgetSubCategoryMasterForm.value.createdBy,
       "budgetType": this.budgetSubCategoryMasterForm.value.budgetType,
-      "id": this.budgetSubCategoryMasterForm.value.id,
-      "activation_date": this.budgetSubCategoryMasterForm.value.activation_date
+      // "id": this.budgetSubCategoryMasterForm.value.id,
+      "id": this.currentId
+     
     };
     this.budgetSubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
       if (data.body.budgetCode != "" && data.body.budgetSubCategoryName != "") {
@@ -104,6 +102,23 @@ export class BudgetSubCategoryMasterComponent {
 
     this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
 
+  }
+
+  checkBudgetCategoryNameExits(data: SubCategoryData): boolean {
+
+    let budgetSubCategoryData = this.budgetCategoryNameList;
+
+    let isBudgetCategoryNameExits = false;
+
+    for (let i = 0; i < budgetSubCategoryData.length; i++) {
+
+      if (budgetSubCategoryData[i] == data.budgetSubCategoryName) {
+
+        isBudgetCategoryNameExits = true;
+
+      }
+    }
+    return isBudgetCategoryNameExits;
   }
 
   autogrow() {
@@ -164,38 +179,60 @@ deleteCategory(data: any) {
   this.getActiveBudgetSubCategory()
 
   }
-  editCategory(data: any,index:number){
-    this.editMode=true;
+
+
+  editSubCategory(id: String) {
+    this.currentId = id;
+    let currentProduct = this.budgetSubCategoryData.find((data) => { return data.id === id });
+    this.budgetSubCategoryMasterForm.setValue({
+      budgetCategoryName: currentProduct?.budgetCategoryName,
+      budgetSubCategoryName: currentProduct?.budgetSubCategoryName,
+      budgetCode: currentProduct?.budgetCode,
+      remark: currentProduct?.remark,
+      status: currentProduct?.status,
+      budgetType:currentProduct?.budgetType,
+    });
     this.editMode = true;
-    console.log(data);
-    console.log(this.budgetSubCategoryData[index]);
-    this.editBudgetSubCategoryId = data;
-      // console.log(this.budgetSubCategoryData[index])
-      this.budgetSubCategoryMasterForm.setValue({
-        budgetCategoryName:this.budgetSubCategoryData[index].budgetCategoryName,
-        remark:this.budgetSubCategoryData[index].remark,
-        status:this.budgetSubCategoryData[index].status,
-        budgetSubCategoryName:this.budgetSubCategoryData[index].budgetSubCategoryName,
-        budgetCode:this.budgetSubCategoryData[index].budgetCode,
-        budgetType:this.budgetSubCategoryData[index].budgetType,
-        // createdBy:this.budgetSubCategoryData[index].createdBy
-      })
   }
 
 
-  //  searchCategory(event:any){
-  //   let filteredEmployees: BudgetCategoryDetails[] = [];
-  //   if (event === '') {
-  //     this.getActiveCategory = this.addBudgetCategory;
-  //   } else {
-  //     filteredEmployees = this.budgetCategoryData.filter((budgetCategoryData, index) => {
-  //       let targetKey = budgetCategoryData.budgetCategoryName.toLowerCase();
-  //       let searchKey = event.toLowerCase();
-  //       return targetKey.includes(searchKey)
-  //     })
-  //     this.budgetCategoryData = filteredEmployees;
-  //   }
-  // }
+  updateSubCategory(id: String, createSubCategoryRequest: SubCategoryDetails) {
+    this.budgetSubCategoryService.editSubCategory(id, createSubCategoryRequest).subscribe((res: any) => {
+      
+      let dataExist = res;
+
+      if (res.budgetSubCategoryName != "" && res.remark != "") {
+
+        let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(dataExist);
+
+        if (isBudgetCategoryNameExits == true) {
+
+          alert('user already exits...')
+          this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:green' , 'margin-top:100px'>Budget sub-category updated successfully..</h1>",
+            icon: 'success'
+          })
+          this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+        }
+
+      }
+
+      else {
+
+        Swal.fire({
+          title: "<h1 style='color:red'>Please fill all details</h1>",
+          icon: 'error',
+
+        })
+
+      }
+
+    })
+
+  }
 
 
 
@@ -223,7 +260,5 @@ pageChanged(event: PageEvent) {
     event.pageSize
   );
 }
-
-
 
 }
