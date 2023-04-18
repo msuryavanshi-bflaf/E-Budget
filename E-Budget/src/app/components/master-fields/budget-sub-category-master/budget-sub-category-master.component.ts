@@ -30,7 +30,7 @@ export class BudgetSubCategoryMasterComponent {
   id: number | undefined;
   budgetSubCategoryData: SubCategoryData[] = [];
   event:any;
-  tableHead = ['Sr.No.','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Edit','Delete'];
+  tableHead = ['Sr.No.','Budget Code','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Edit','Delete'];
   editMode:boolean=false;
   
   editBudgetSubCategoryId:any;

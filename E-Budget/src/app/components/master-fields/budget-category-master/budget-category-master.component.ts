@@ -30,7 +30,7 @@ export class BudgetCategoryMasterComponent {
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
   event: any;
-value:any;
+  value: any;
   tableHead = ['Sr.No.', 'Budget Category Name', 'Remark', 'Created Date', 'Created By', 'Status', 'Edit', 'Delete'];
   constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute) { }
   data: any;
@@ -80,17 +80,6 @@ value:any;
       "remark": this.budgetCategoryMasterForm.value.remark,
       "status": this.budgetCategoryMasterForm.value.status
     };
-    // if(this.budgetCategoryMasterForm.valid){
-    // if(this.editMode){
-
-
-    //     this.budgetCategoryService.editBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
-    //       this.budgetCategoryData = data;
-
-    //   });
-    // }
-
-    // else
 
     this.budgetCategoryService.createBudgetCategory(createBudgetCategoryRequest).subscribe((data: any) => {
       let StoredData = data.body;
@@ -98,8 +87,6 @@ value:any;
       if (data.body.budgetCategoryName != "" && data.body.remark != "") {
 
         let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(StoredData);
-
-
 
         if (isBudgetCategoryNameExits == true) {
 
@@ -151,51 +138,6 @@ value:any;
   }
 
 
-  //   onSubmit() {
-  //     this.submitted = true;
-
-  //     if (this.budgetCategoryMasterForm.invalid) {
-  //         return;
-  //     }
-
-  //     this.loading = true;
-  //     if (this.editMode) {
-  //         this.createUser();
-  //     } else {
-  //         this.updateUser();
-  //     }
-  // }
-
-  // private createUser() {
-  //     this.budgetCategoryService.createBudgetCategory(this.budgetCategoryMasterForm.value)
-  //         .pipe(first())
-  //         .subscribe({
-  //             next: () => {
-  //                 // this.alertService.success('User added', { keepAfterRouteChange: true });
-  //                 // this.router.navigate(['../'], { relativeTo: this.route });
-  //             },
-  //             error: error => {
-  //                 // this.alertService.error(error);
-  //                 this.loading = false;
-  //             }
-  //         });
-  // }
-
-  // private updateUser() {
-  //     this.budgetCategoryService.editCategory(this.id, this.budgetCategoryMasterForm.value)
-  //         .pipe(first())
-  //         .subscribe({
-  //             next: () => {
-  //                 // this.alertService.success('User updated', { keepAfterRouteChange: true });
-  //                 this.router.navigate(['../../'], { relativeTo: this.route });
-  //             },
-  //             error: error => {
-  //                 // this.alertService.error(error);
-  //                 this.loading = false;
-  //             }
-  //         });
-  // }
-
   autogrow() {
     let textArea = document.getElementById("description")
     this.textArea.style.overflow = 'hidden';
@@ -246,24 +188,23 @@ value:any;
   editCategory(categoryId: any, index: number) {
     this.editMode = true;
     console.log(this.budgetCategoryData[index]);
-    // this.editBudgetCategoryId=categoryId;
+
     this.budgetCategoryMasterForm.setValue({
       budgetCategoryName: this.budgetCategoryData[index].budgetCategoryName,
       remark: this.budgetCategoryData[index].remark,
       status: this.budgetCategoryData[index].status
 
     })
-    // this.budgetCategoryService.editCategory(categoryId.id, index).subscribe((res: any) => {
-    // })
+
   }
 
 
   updateCategory(data: any) {
-   
-   
-      this.budgetCategoryService.editCategory(data,data).subscribe((res: any) => {
-      })
-   
+
+
+    this.budgetCategoryService.editCategory(data, data).subscribe((res: any) => {
+    })
+
   }
 
   dataSource = new MatTableDataSource([]);

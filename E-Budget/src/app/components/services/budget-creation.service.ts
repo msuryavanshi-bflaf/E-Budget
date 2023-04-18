@@ -12,7 +12,7 @@ export class BudgetCreationService {
   constructor(private http: HttpClient) { }
 
   createBudget(createBudgetRequest: BudgetCreation): Observable<BudgetCreation> {
-    return this.http.post(environment.javaEndPoint + API_END_POINTS.CREATEBUDGET, createBudgetRequest).pipe(map((res: any) => {
+    return this.http.post(environment.javaEndPoint + API_END_POINTS. BUDGETCREATION, createBudgetRequest).pipe(map((res: any) => {
       return res;
     }))
   }

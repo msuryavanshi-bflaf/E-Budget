@@ -14,10 +14,17 @@
                         <td>
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCode">
+                                <!-- <mat-select formControlName="budgetCode" [(ngModel)]="budgetCodeSelected">
 
-                                    <mat-option *ngFor="let budgetCode of budgetCodeList"
-                                        value="budgetCodeList">{{budgetCode}}</mat-option>
+                                    <mat-option *ngFor="let budgetCode of budgetCodeList let i = index"
+                                        value="budgetCode">{{budgetCode}}</mat-option>
+
+
+                                </mat-select> -->
+                                <mat-select formControlName="budgetCode"[(ngModel)]="budgetCodeSelected">
+
+                                    <mat-option *ngFor="let budgetCode of budgetCodeList let i = index"
+                                    [value]="budgetCode">{{budgetCode}}</mat-option>
 
 
                                 </mat-select>
@@ -30,10 +37,10 @@
                         <td>
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="budgetCategoryName">
+                                <mat-select formControlName="budgetCategoryName"[(ngModel)]="budgetCategoryNameSelected">
 
-                                    <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList"
-                                        value="budgetCategoryNameList">{{budgetCategoryName}}</mat-option>
+                                    <mat-option *ngFor="let budgetCategoryName of budgetCategoryNameList let i = index"
+                                    [value]="budgetCategoryName">{{budgetCategoryName}}</mat-option>
 
 
                                 </mat-select>
@@ -50,14 +57,13 @@
                     <td>
                         <mat-form-field appearance="outline">
 
-                            <mat-select formControlName="budgetSubCategoryName">
+                            <mat-select formControlName="budgetSubCategoryName"[(ngModel)]="budgetSubCategoryNameSelected">
 
-                                <mat-option *ngFor="let budgetSubCategoryName of budgetSubCategoryNameList"
-                                    value="budgetSubCategoryNameList">{{budgetSubCategoryName}}</mat-option>
+                                <mat-option *ngFor="let budgetSubCategoryName of budgetSubCategoryNameList let i = index"
+                                [value]="budgetSubCategoryName">{{budgetSubCategoryName}}</mat-option>
 
 
                             </mat-select>
-
                         </mat-form-field>
                     </td>
                     
@@ -84,7 +90,7 @@
 
                         <mat-form-field appearance="outline">
                            
-                            <input matInput formControlName="amount" type="number" required>
+                            <input matInput formControlName="amount"type="number" [(ngModel)]="amounth" required>
                             
                         </mat-form-field>
 
@@ -97,10 +103,8 @@
                     <td>
 
                         <mat-form-field appearance="outline">
-
                             <input matInput formControlName="amountInWords" required>
-                            {{numberInWords}}
-                            <!-- <button type="button" (click)="convertToWord()">Convert to String</button> -->
+                           {{amounth | amountToWord}}
                         </mat-form-field>
 
                     </td>
@@ -114,11 +118,13 @@
                             </mat-form-field>
                         </td>
                     </tr>
-
+                    <!-- <input type="text" [(ngModel)]="amounth">
+                    <span>{{amounth | amountToWord}}</span> -->
                 </table>
             </form>
         </mat-card-content>
         <button mat-button style="color: rgb(255, 255, 255);" class="budgetCreation-button"
             (click)="budgetCreation()">Budget Creation</button>
+            
     </mat-card>
 </div>

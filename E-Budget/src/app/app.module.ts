@@ -18,7 +18,8 @@ import { VendorMasterComponent } from './components/master-fields/vendor-master/
 import { HttpClientModule } from '@angular/common/http';
 import { BudgetCategoryViewComponent } from './components/master-fields-view/budget-category-view/budget-category-view.component';
 import { SubCategoryViewComponent } from './components/master-fields-view/sub-category-view/sub-category-view.component';
-import { VendorViewComponent } from './components/master-fields-view/vendor-view/vendor-view.component'
+import { VendorViewComponent } from './components/master-fields-view/vendor-view/vendor-view.component';
+import { AmountToWordPipe } from './components/amount-to-word.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { VendorViewComponent } from './components/master-fields-view/vendor-view
     BudgetCategoryViewComponent,
     SubCategoryViewComponent,
     VendorViewComponent,
+    AmountToWordPipe,
    
 
   ],

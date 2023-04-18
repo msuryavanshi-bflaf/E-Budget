@@ -15,12 +15,12 @@ export const API_END_POINTS = {
     SUBCATEGORY:'/subCategory/subCategory',
     BUDGETCATEGORYLIST:'/budgetCategory/findAllBudgetCategory',
     BUDGETSUBCATEGORYLIST:'/subCategory/findAllBudgetSubCategory',
-    CREATEBUDGET:'/createbudget',
+    BUDGETCREATION:'/budgetCreation/createbudget',
     VENDORNAMELIST:'/vendor/findAllVendor',
     DELETEVENDOR:'/vendor/',
     BUDGETCATEGORYDETAILS:'/budgetCategoryDetails',
     DELETECATEGORY:'/budgetCategory/',
-    BUDGETCODELIST:'/findAllCodeList',
+    BUDGETCODELIST:'/subCategory/findAllBudgetSubCategory',
     DELETESUBCATEGORY:'/subCategory/',
     
 }

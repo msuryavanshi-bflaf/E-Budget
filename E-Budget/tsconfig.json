@@ -1,5 +1,16 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+
+  
+    "compilerOptions": {
+      "types": [
+        "node"
+      ],
+    },
+  
+
+
+
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -30,4 +41,5 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   }
+ 
 }
