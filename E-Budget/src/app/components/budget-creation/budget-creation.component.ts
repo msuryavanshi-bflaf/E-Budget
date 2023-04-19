@@ -11,10 +11,10 @@ import { SubCategoryService } from '../services/sub-category.service';
 
 import { transform } from 'typescript';
 import { Pipe, PipeTransform } from '@angular/core';
+import Swal from 'sweetalert2';
+import { BudgetCategoryData } from 'src/app/Model/budget-category/budget-creation.module';
+import { SubCategoryData } from 'src/app/Model/sub-category/sub-category.module';
 
-// @Pipe({
-//   name: 'amountToWord'
-// })
 @Component({
   selector: 'app-budget-creation',
   templateUrl: './budget-creation.component.html',
@@ -108,8 +108,6 @@ export class BudgetCreationComponent implements PipeTransform {
     }
   }
 
-  // export class BudgetCreationComponent 
-  // {
   amounth: any;
   selectedTeam = '';
   public createBudgetCreationForm !: FormGroup;
@@ -120,35 +118,20 @@ export class BudgetCreationComponent implements PipeTransform {
   isValidFileError: boolean = false;
   fileName: string = "";
   attachmentErrorMessage: string = "";
-  // budgetCategoryDescriptionList:String[]=undefined as any;
+
+
   budgetCategoryNameList: String[] = undefined as any;
   budgetSubCategoryNameList: String[] = undefined as any;
   budgetCodeList: String[] = undefined as any;
 
-  numberInWords!: string;
-  lang: SUPPORTED_LANGUAGE = 'en';
-  // amountValue: number = 0;
 
+  numberInWords!: string;
   budgetCodeSelected: any;
   budgetSubCategoryNameSelected: any;
   budgetCategoryNameSelected: any;
-  mynumber: number = 0;
-  outputWords: any = "";
-  require: any
-  //   convertToWord() {
-  //   this.outputWords = this.converter.toWords(this.mynumber);
-  // }
 
   constructor(private ngxNumToWordsService: NgxNumToWordsService, private router: Router, private fb: FormBuilder, private subCategoryService: SubCategoryService, private budgetCreationService: BudgetCreationService, private budgetCategoryService: BudgetCategoryService) { }
-  // transform(value: any, ...args: any[]) {
-  //   throw new Error('Method not implemented.');
-  // }
-
-  // converter = require('number-to-words');
-  // convertor1=this.converter.toWords(13);
-  //  numWords = this.require('num-words')
-
-  // amountInWords = this.numWords(12345)
+  // budgetCategoryName=this.budgetCategoryService.getActiveCategory();
 
   ngOnInit(): void {
     this.initCreateBudgetCreationForm();
@@ -156,15 +139,8 @@ export class BudgetCreationComponent implements PipeTransform {
     this.initBudgetSubCategotryNameList();
     this.initBudgetCodeList();
     this.initBudgetType();
-    // this.numberInWords = this.ngxNumToWordsService.inWords(this.amountValue, this.lang);
+
   }
-
-  // numToWord(num: { value: number; }){
-  //   console.log(num.value);
-  //   this.value=num.value;
-  //   this.numberInWords = this.ngxNumToWordsService.inWords(this.value, this.lang);
-
-  // }
 
   initCreateBudgetCreationForm() {
     this.createBudgetCreationForm = this.fb.group({
@@ -202,9 +178,61 @@ export class BudgetCreationComponent implements PipeTransform {
 
     };
     this.budgetCreationService.createBudget(createBudgetRequest).subscribe((data: any) => {
+      let StoredData = data.body;
+
+      if (data.body.budgetCode != "" && data.body.budgetCategoryName != "" && data.body.budgetSubCategoryName != "" && data.body.budgetType != "" && data.body.amount != "") {
+
+        let isBudgetCreationNameExits = this.checkBudgetCategoryNameExits(StoredData);
+
+        if (isBudgetCreationNameExits == true) {
+
+          alert(' budget code already exits...')
+          this.router.navigate([`/${AppConstant.BUDGETCREATION}`])
+
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:green' , 'margin-top:100px'>Budget creation added successfully..</h1>",
+            icon: 'success'
+          })
+          this.router.navigate([`/${AppConstant.GENERATEPO}`])
+        }
+
+
+      }
+
+      else {
+
+        Swal.fire({
+          title: "<h1 style='color:red'>Please fill all details</h1>",
+          icon: 'error',
+
+        })
+
+      }
 
     })
-    this.router.navigate([`/${AppConstant.GENERATEPO}`])
+
+
+  }
+
+
+
+  checkBudgetCategoryNameExits(data: BudgetCreation): boolean {
+
+    let budgetCreationData = this.budgetCodeList;
+
+    let isBudgetCreationNameExits = false;
+
+    for (let i = 0; i < budgetCreationData.length; i++) {
+
+      if (budgetCreationData[i] == data.budgetCode) {
+
+        isBudgetCreationNameExits = true;
+
+      }
+    }
+
+    return isBudgetCreationNameExits;
 
   }
 
@@ -217,6 +245,8 @@ export class BudgetCreationComponent implements PipeTransform {
     })
     this.budgetCategoryNameSelected = this.budgetCategoryNameList
   }
+
+
   initBudgetSubCategotryNameList() {
     this.subCategoryService.getActiveBudgetSubCategory().subscribe((res: any) => {
       this.budgetSubCategoryNameList = [];
@@ -227,6 +257,7 @@ export class BudgetCreationComponent implements PipeTransform {
     })
     this.budgetSubCategoryNameSelected = this.budgetSubCategoryNameList
   }
+
 
   initBudgetCodeList() {
     this.subCategoryService.getBudgetCodeList().subscribe((res: any) => {
@@ -239,15 +270,7 @@ export class BudgetCreationComponent implements PipeTransform {
   }
 
 
-
-
-
-
-
   initBudgetType() {
     this.subCategoryService.getBudgetType()
-
   }
-
-
 }
