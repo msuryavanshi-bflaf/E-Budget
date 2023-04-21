@@ -109,7 +109,7 @@ export class BudgetSubCategoryMasterComponent {
             title: "<h1 style='color:green' , 'margin-top:100px'>Budget category created successfully..</h1>",
             icon: 'success'
           })
-          this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+          this.router.navigate([`/${AppConstant.VENDORMASTER}`])
         }
 
 

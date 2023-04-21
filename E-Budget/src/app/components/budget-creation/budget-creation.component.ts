@@ -239,6 +239,7 @@ export class BudgetCreationComponent implements PipeTransform {
   initBudgetCategotryNameList() {
     this.budgetCategoryService.getBudgetCategoryList().subscribe((res: any) => {
       this.budgetCategoryNameList = [];
+      console.log("Budget category name list ",this.budgetCategoryNameList)
       for (const item in res) {
         this.budgetCategoryNameList.push(res[item].budgetCategoryName);
       }
@@ -250,18 +251,21 @@ export class BudgetCreationComponent implements PipeTransform {
   initBudgetSubCategotryNameList() {
     this.subCategoryService.getActiveBudgetSubCategory().subscribe((res: any) => {
       this.budgetSubCategoryNameList = [];
+      console.log("Budget Subcategory name list ",this.budgetSubCategoryNameList)
       for (const item in res) {
         this.budgetSubCategoryNameList.push(res[item].budgetSubCategoryName);
 
       }
     })
     this.budgetSubCategoryNameSelected = this.budgetSubCategoryNameList
+   
   }
 
 
   initBudgetCodeList() {
     this.subCategoryService.getBudgetCodeList().subscribe((res: any) => {
       this.budgetCodeList = [];
+      console.log("Budget Code list ",this.budgetCodeList)
       for (const item in res) {
         this.budgetCodeList.push(res[item].budgetCode);
       }
