@@ -27,7 +27,8 @@ export class BudgetCategoryMasterComponent {
   showMsg: boolean = false;
   budgetCategoryNameList: String[] = undefined as any;
   checked = true;
-
+  dataSource = new MatTableDataSource([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   id: number | undefined;
   budgetCategoryData: BudgetCategoryDetails[] = [];
   event: any;
@@ -39,7 +40,6 @@ export class BudgetCategoryMasterComponent {
   textArea: any;
   res: any;
   editMode: boolean = false;
-  editBudgetCategoryId: any;
   currentId: any;
 
   ngOnInit() {
@@ -47,6 +47,14 @@ export class BudgetCategoryMasterComponent {
     this.initBudgetCategoryMasterForm();
     this.initBudgetCategotryNameList();
 
+  }
+
+  ngAfterViewInit() {
+    this.pageChanged({
+      pageIndex: 10,
+      pageSize: 3,
+      length: this.budgetCategoryData.length
+    });
   }
 
   initBudgetCategoryMasterForm() {
@@ -92,7 +100,7 @@ export class BudgetCategoryMasterComponent {
           if (isBudgetCategoryNameExits == true) {
 
             alert('user already exits...')
-            this.router.navigate([`/${AppConstant.BUDGETCATEGORYMASTER}`])
+
 
           } else {
             Swal.fire({
@@ -123,15 +131,15 @@ export class BudgetCategoryMasterComponent {
   }
 
 
-  checkBudgetCategoryNameExits(data: BudgetCategoryData): boolean {
+  checkBudgetCategoryNameExits(data: BudgetCategoryDetails): boolean {
 
-    let budgetCategoryData = this.budgetCategoryNameList;
+    let budgetCategoryCheck = this.budgetCategoryData;
 
     let isBudgetCategoryNameExits = false;
 
-    for (let i = 0; i < budgetCategoryData.length; i++) {
+    for (let i = 0; i < budgetCategoryCheck.length; i++) {
 
-      if (budgetCategoryData[i] == data.budgetCategoryName) {
+      if (budgetCategoryCheck[i].budgetCategoryName == data.budgetCategoryName && budgetCategoryCheck[i].status == data.status && budgetCategoryCheck[i].remark == data.remark) {
 
         isBudgetCategoryNameExits = true;
 
@@ -151,7 +159,7 @@ export class BudgetCategoryMasterComponent {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
+    if (/^[\.a-zA-Z0-9,-/() ]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();
@@ -183,8 +191,6 @@ export class BudgetCategoryMasterComponent {
       })
     alert('Record deleted Successfully')
     this.getActiveCategory()
-
-
   }
 
   editCategory(id: String) {
@@ -201,7 +207,7 @@ export class BudgetCategoryMasterComponent {
 
   updateCategory(id: String, createBudgetCategoryRequest: BudgetCategoryData) {
     this.budgetCategoryService.editCategory(id, createBudgetCategoryRequest).subscribe((res: any) => {
-      
+
       let dataExist = res;
 
       if (res.budgetCategoryName != "" && res.remark != "") {
@@ -235,22 +241,6 @@ export class BudgetCategoryMasterComponent {
 
     })
 
-  }
-
-  dataSource = new MatTableDataSource([]);
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
-  ngAfterViewInit() {
-    // this should be moved in API CALL
-    this.pageChanged({
-      pageIndex: 1,
-      pageSize: 10,
-      length: this.budgetCategoryData.length
-    });
   }
 
   pageChanged(event: PageEvent) {

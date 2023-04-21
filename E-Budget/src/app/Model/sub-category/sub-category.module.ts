@@ -1,4 +1,4 @@
-export interface SubCategoryData {
+export interface SubCategoryDetails {
   id:String;
 	budgetSubCategoryName: String;
   budgetCategoryName:String;
@@ -10,7 +10,7 @@ export interface SubCategoryData {
   activation_date:String;
 }
 
-export interface SubCategoryDetails {
+export interface SubCategoryData {
   id:String;
 	budgetSubCategoryName: String;
   budgetCategoryName:String;

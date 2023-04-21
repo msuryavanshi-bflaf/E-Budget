@@ -5,7 +5,7 @@ import { AppConstant } from 'src/app/constants/app.constants';
 // import { VendorData } from 'src/app/Model/vendor/vendor.module';
 
 import { VendorService } from 'src/app/components/services/vendor.service';
-import { VendorData } from 'src/app/Model/vendor/vendor.module';
+import { VendorData, VendorDetails } from 'src/app/Model/vendor/vendor.module';
 import Swal from 'sweetalert2';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,23 +19,34 @@ export class VendorMasterComponent {
 
   public vendorMasterForm!: FormGroup;
   id: number | undefined;
-  vendorData: VendorData[] = [];
+  vendorData: VendorDetails[] = [];
   event: any;
+  currentId: any;
+  vendorCompanyNameList: String[] = undefined as any;
   tableHead = ['Sr.No.', 'Vendor Company Name', 'Email', 'Address', 'Person Contact Name', 'Mobile Number', 'created Date', 'Edit', 'Delete'];
   editMode: boolean = false;
   editBudgetVendorId: any;
-  // constructor(private router: Router, private http: HttpClient, private activeVendor: VendorService, private route: ActivatedRoute ) { }
+  vendorCompanyNameSelected: any;
+  dataSource = new MatTableDataSource([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
-
-
-  constructor(private router: Router, private fb: FormBuilder, private VendorService: VendorService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private fb: FormBuilder, private vendorService: VendorService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
     this.getActiveVendor();
     this.initVendorMasterForm();
+    this.initVendorNameList();
   }
 
+  ngAfterViewInit() {
+
+    this.pageChanged({
+      pageIndex: 1,
+      pageSize: 10,
+      length: this.vendorData.length
+    });
+  }
 
   initVendorMasterForm() {
 
@@ -52,30 +63,16 @@ export class VendorMasterComponent {
 
   }
 
-  numberOnly(event: any) {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
-
-  }
-  editCategory(vendorId: any, index: number) {
-    this.editMode = true;
-    console.log(vendorId);
-    console.log(this.vendorData[index]);
-    this.editBudgetVendorId = vendorId;
-    this.vendorMasterForm.setValue({
-      vendorCompanyName: this.vendorData[index].vendorCompanyName,
-      email: this.vendorData[index].email,
-      contactPersonName: this.vendorData[index].contactPersonName,
-      mobileNumber: this.vendorData[index].mobileNumber,
-      landLineNumber: this.vendorData[index].landLineNumber,
-      address: this.vendorData[index].address,
-      vendorSapCode: this.vendorData[index].vendorSapCode
-
+  initVendorNameList() {
+    this.vendorService.getVendorCompanyNameList().subscribe((res: any) => {
+      this.vendorCompanyNameList = [];
+      for (const item in res) {
+        this.vendorCompanyNameList.push(res[item].budgetCategoryName);
+      }
     })
+    this.vendorCompanyNameSelected = this.vendorCompanyNameList
   }
+
   vendorMaster() {
 
     let createVendorRequest: VendorData = {
@@ -86,17 +83,105 @@ export class VendorMasterComponent {
       "contactPersonName": this.vendorMasterForm.value.contactPersonName,
       "mobileNumber": this.vendorMasterForm.value.mobileNumber,
       "landLineNumber": this.vendorMasterForm.value.landLineNumber,
-      "id": this.vendorMasterForm.value.id,
-      "activation_date": this.vendorMasterForm.value.id,
+      "id": this.currentId,
+
     };
 
+    if (!this.editMode) {
+      this.vendorService.createVendor(createVendorRequest).subscribe((data: any) => {
 
-    this.VendorService.createVendor(createVendorRequest).subscribe((data: any) => {
+        let StoredData = data.body;
 
-      if (data.body.vendorCompanyName != "" && data.body.email != "" && data.body.address != "" && data.body.vendorSapCode != "" && data.body.contactPersonName != "" && data.body.mobileNumber != "") {
+        if (data.vendorCompanyName != "" && data.email != "" && data.contactPersonName != "" && data.address != "" && data.vendorSapCode != "" && data.mobileNumber != "" && data.landLineNumber != "") {
 
-        this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-        Swal.fire('Vendor added successfully')
+          let isVendorCompanyNameExits = this.checkVendorCompanyNameExits(StoredData);
+
+          if (isVendorCompanyNameExits == true) {
+
+            alert('user already exits...')
+            this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+
+          } else {
+            Swal.fire({
+              title: "<h1 style='color:green' , 'margin-top:100px'>Vendor added successfully..</h1>",
+              icon: 'success'
+            })
+            this.router.navigate([`/${AppConstant.BUDGETCREATION}`])
+          }
+
+        }
+
+        else {
+
+          Swal.fire({
+            title: "<h1 style='color:red'>Please fill all details</h1>",
+            icon: 'error',
+
+          })
+
+        }
+
+      })
+
+    }
+    else {
+      this.updateVendor(this.currentId, createVendorRequest);
+    }
+  }
+
+  checkVendorCompanyNameExits(data: VendorData): boolean {
+
+    let vendorData = this.vendorCompanyNameList;
+
+    let isVendorCompanyNameExits = false;
+
+    for (let i = 0; i < vendorData.length; i++) {
+
+      if (vendorData[i] == data.vendorCompanyName) {
+
+        isVendorCompanyNameExits = true;
+
+      }
+    }
+    return isVendorCompanyNameExits;
+  }
+
+  editVendor(id: String) {
+    this.currentId = id;
+    let currentProduct = this.vendorData.find((data) => { return data.id === id });
+    this.vendorMasterForm.setValue({
+      vendorCompanyName: currentProduct?.vendorCompanyName,
+      email: currentProduct?.email,
+      vendorSapCode: currentProduct?.vendorSapCode,
+      address: currentProduct?.address,
+      contactPersonName: currentProduct?.contactPersonName,
+      mobileNumber: currentProduct?.mobileNumber,
+      landLineNumber: currentProduct?.landLineNumber,
+    });
+    this.editMode = true;
+  }
+
+  updateVendor(id: String, createVendorRequest: VendorData) {
+
+    this.vendorService.editVendor(id, createVendorRequest).subscribe((res: any) => {
+      let dataExist = res;
+
+      if (res.vendorCompanyName != "" && res.email != "" && res.address != "" && res.vendorSapCode != "" && res.contactPersonName != "" && res.mobileNumber != "") {
+
+        let isVendorCompanyNameExits = this.checkVendorCompanyNameExits(dataExist);
+
+        if (isVendorCompanyNameExits == true) {
+
+          alert('user already exits...')
+          this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:green' , 'margin-top:100px'>Vendor updated successfully..</h1>",
+            icon: 'success'
+          })
+          this.router.navigate([`/${AppConstant.BUDGETCREATION}`])
+        }
 
       }
 
@@ -113,12 +198,19 @@ export class VendorMasterComponent {
 
   }
 
-
   back() {
     this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
 
   }
 
+  numberOnly(event: any) {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
 
   omit_special_char(event: { charCode: any; }) {
     var k;
@@ -126,12 +218,11 @@ export class VendorMasterComponent {
     return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
   }
 
-  // Only AlphaNumeric
   keyPressAlphanumeric(event: any) {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
+    if (/^[\.a-zA-Z0-9,-/() ]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();
@@ -139,65 +230,24 @@ export class VendorMasterComponent {
     }
   }
 
-
-
-
   addBudgetCategory() {
     this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
   }
 
-  // getbudgetCategoryDetails() {
-  //   this.budgetCategoryService.getAllBudgetCategoryList().subscribe((data: any) => {
-  //     this.vendorData = data;
-
-  //   });
-  // }
 
   getActiveVendor() {
-    this.VendorService.getActiveVendor().subscribe((data: any) => {
+    this.vendorService.getActiveVendor().subscribe((data: any) => {
       this.vendorData = data;
     });
   }
 
-  deleteCategory(data: any) {
+  deleteVendor(data: any) {
     if (confirm('Are You sure to Delete this record'))
-      this.VendorService.deleteVendor(data.id).subscribe((res: any) => {
+      this.vendorService.deleteVendor(data.id).subscribe((res: any) => {
       })
-    alert('Record deleted Successfully')
+    alert('Vendor deleted Successfully')
     this.getActiveVendor()
 
-
-
-    //  searchCategory(event:any){
-    //   let filteredEmployees: BudgetCategoryDetails[] = [];
-    //   if (event === '') {
-    //     this.getActiveCategory = this.addBudgetCategory;
-    //   } else {
-    //     filteredEmployees = this.budgetCategoryData.filter((budgetCategoryData, index) => {
-    //       let targetKey = budgetCategoryData.budgetCategoryName.toLowerCase();
-    //       let searchKey = event.toLowerCase();
-    //       return targetKey.includes(searchKey)
-    //     })
-    //     this.budgetCategoryData = filteredEmployees;
-    //   }
-    // }
-
-  }
-
-  dataSource = new MatTableDataSource([]);
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-
-  /**
-   * Set the paginator after the view init since this component will
-   * be able to query its view for the initialized paginator.
-   */
-  ngAfterViewInit() {
-    // this should be moved in API CALL
-    this.pageChanged({
-      pageIndex: 1,
-      pageSize: 10,
-      length: this.vendorData.length
-    });
   }
 
   pageChanged(event: PageEvent) {

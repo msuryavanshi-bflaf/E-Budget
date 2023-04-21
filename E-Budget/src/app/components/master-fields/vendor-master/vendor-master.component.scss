@@ -1,20 +1,21 @@
 @import '/src/scss/base';
+
 .vendorMaster-button {
 
     width: 215px !important;
 
-    margin: 15px 0 2rem 0;
+    margin: 15px 20px 2rem 5px;
 
     background-color: #004DA8;
 }
 
 
-mat-card-title{
+mat-card-title {
     margin-bottom: 25px;
 }
 
-.backbutton{
-    margin: 10px 20px  2rem 0;
+.backbutton {
+    margin: 10px 20px  2rem 240px;
     background-color: #004DA8;
 }
 
@@ -22,35 +23,32 @@ mat-card-title{
 .delete-icon {
     color: $c-primary-mandatory-field;
     font-size: 23px;
-   }
-   
-   .view-icon {
-        color: $c-primary-mandatory-field1;
-        font-size: 23px;
-      // margin-top: 2px;
-   }
-   .paginator{
-    width:80%;
+}
+
+.view-icon {
+    color: $c-primary-mandatory-field1;
+    font-size: 23px;
+}
+
+.paginator {
+    width: 80%;
     margin: 0 210px 0 130px;
- }
-   .view-table {
-      // margin: 0 3px 0 3px;
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 80%;
-       background-color: white;
-      margin: 0 210px 0 130px;
-   
-   
-      
-   td,
-   th {
-       border: 1px solid #dddddd;
-      text-align: left;
-      // padding: 2px;
-   }
-   
-   tr:nth-child(even) {
-       background-color: #dddddd;
-   }
-   }
+}
+
+.view-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: white;
+    margin: 0 210px 0 130px;
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+}

@@ -18,8 +18,22 @@ export class VendorService {
     }))
   }
 
+  getVendorCompanyNameList(): Observable<VendorData[]> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDOR_NAME_LIST).pipe(
+      map((res: any) => {
+        return (res)
+      })
+    )
+  }
+
+
+  
+  editVendor(id: String, createVendorRequest: VendorData): Observable<Object> {
+    return this.http.put(environment.javaEndPoint + API_END_POINTS.EDIT_VENDOR + id, createVendorRequest);
+  }
+
   getActiveVendor(): Observable<VendorData[]> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDORNAMELIST).pipe(
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDOR_NAME_LIST).pipe(
       map((res: any) => {
         return (res)
       })
@@ -27,6 +41,6 @@ export class VendorService {
   }
 
   public deleteVendor(id: any) {
-    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETEVENDOR + id)
+    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETE_VENDOR + id)
   }
 }

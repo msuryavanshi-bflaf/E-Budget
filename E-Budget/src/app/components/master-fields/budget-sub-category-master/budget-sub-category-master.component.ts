@@ -19,22 +19,23 @@ import { SubCategoryService } from '../../services/sub-category.service';
 export class BudgetSubCategoryMasterComponent {
 
   public budgetSubCategoryMasterForm !: FormGroup;
-   budgetCategoryNameList: String[] = undefined as any;
+  budgetSubCategoryNameList: String[] = undefined as any;
   selectedTeam = '';
   textArea: any;
   selectedValue: any;
   budgetCategoryNameSelected: any;
-  selectedType:string='';
-  budgetType:any=['Capital','Revenue'];
-
+  selectedType: string = '';
+  budgetType: any = ['Capital', 'Revenue'];
+  dataSource = new MatTableDataSource([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   id: number | undefined;
-  budgetSubCategoryData: SubCategoryData[] = [];
-  event:any;
-  tableHead = ['Sr.No.','Budget Category Name', 'Budget Sub Category Name','Created Date-time', 'Created By','Status','Edit','Delete'];
-  editMode:boolean=false;
+  budgetSubCategoryData: SubCategoryDetails[] = [];
+  event: any;
+  tableHead = ['Sr.No.', 'Budget Category Name','Budget Code', 'Budget Sub Category Name','Remark','Created Date-time', 'Created By', 'Status', 'Edit', 'Delete'];
+  editMode: boolean = false;
   currentId: any;
-  editBudgetSubCategoryId:any;
-  constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder,private budgetSubCategoryService:SubCategoryService,private http: HttpClient, private route: ActivatedRoute) { }
+  editBudgetSubCategoryId: any;
+  constructor(private router: Router, private budgetCategoryService: BudgetCategoryService, private fb: FormBuilder, private budgetSubCategoryService: SubCategoryService, private http: HttpClient, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -42,6 +43,14 @@ export class BudgetSubCategoryMasterComponent {
     this.initBudgetSubCategoryMasterForm();
     this.initBudgetCategotryNameList();
     this.getActiveBudgetSubCategory();
+  }
+
+  ngAfterViewInit() {
+    this.pageChanged({
+      pageIndex: 1,
+      pageSize: 10,
+      length: this.budgetSubCategoryData.length
+    });
   }
 
 
@@ -62,23 +71,41 @@ export class BudgetSubCategoryMasterComponent {
       'budgetType': ['']
     });
   }
+
   budgetSubCategoryMaster() {
-    let createSubCategoryRequest: SubCategoryDetails = {
+    let createSubCategoryRequest: SubCategoryData = {
       "budgetCategoryName": this.budgetSubCategoryMasterForm.value.budgetCategoryName,
       "budgetSubCategoryName": this.budgetSubCategoryMasterForm.value.budgetSubCategoryName,
       "remark": this.budgetSubCategoryMasterForm.value.remark,
       "budgetCode": this.budgetSubCategoryMasterForm.value.budgetCode,
       "status": this.budgetSubCategoryMasterForm.value.status,
       "budgetType": this.budgetSubCategoryMasterForm.value.budgetType,
-      // "id": this.budgetSubCategoryMasterForm.value.id,
       "id": this.currentId
-     
+
     };
+ 
+
+  if (!this.editMode) {
     this.budgetSubCategoryService.createSubCategory(createSubCategoryRequest).subscribe((data: any) => {
+      
+      let StoredData = data.body;
+
       if (data.body.budgetCode != "" && data.body.budgetSubCategoryName != "") {
 
-        this.router.navigate([`/${AppConstant.VENDORMASTER}`])
-        Swal.fire('Budget SubCategory added successfully')
+        let isBudgetSubCategoryNameExits = this.checkBudgetSubCategoryNameExits(StoredData);
+
+        if (isBudgetSubCategoryNameExits == true) {
+
+          alert('user already exits...')
+          this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
+
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:green' , 'margin-top:100px'>Budget Sub category created successfully..</h1>",
+            icon: 'success'
+          })
+          this.router.navigate([`/${AppConstant.VENDORMASTER}`])
+        }
 
       }
 
@@ -91,11 +118,33 @@ export class BudgetSubCategoryMasterComponent {
         })
 
       }
+
     })
 
-
-
   }
+  else {
+    this.updateSubCategory(this.currentId, createSubCategoryRequest);
+  }
+}
+
+
+checkBudgetSubCategoryNameExits(data: SubCategoryData): boolean {
+
+  let budgetSubCategoryData = this.budgetSubCategoryNameList;
+
+  let isBudgetSubCategoryNameExits = false;
+
+  for (let i = 0; i < budgetSubCategoryData.length; i++) {
+
+    if (budgetSubCategoryData[i] == data.budgetSubCategoryName) {
+
+      isBudgetSubCategoryNameExits = true;
+
+    }
+  }
+  return isBudgetSubCategoryNameExits;
+}
+
 
 
   back() {
@@ -104,22 +153,7 @@ export class BudgetSubCategoryMasterComponent {
 
   }
 
-  checkBudgetCategoryNameExits(data: SubCategoryData): boolean {
-
-    let budgetSubCategoryData = this.budgetCategoryNameList;
-
-    let isBudgetCategoryNameExits = false;
-
-    for (let i = 0; i < budgetSubCategoryData.length; i++) {
-
-      if (budgetSubCategoryData[i] == data.budgetSubCategoryName) {
-
-        isBudgetCategoryNameExits = true;
-
-      }
-    }
-    return isBudgetCategoryNameExits;
-  }
+  
 
   autogrow() {
     let textArea = document.getElementById("description")
@@ -127,21 +161,24 @@ export class BudgetSubCategoryMasterComponent {
     this.textArea.style.height = 'auto';
     this.textArea.style.height = this.textArea.scrollHeight + 'px';
   }
+
+  
   initBudgetCategotryNameList() {
     this.budgetCategoryService.getBudgetCategoryList().subscribe((res: any) => {
-      this.budgetCategoryNameList = [];
+      this.budgetSubCategoryNameList = [];
       for (const item in res) {
-        this.budgetCategoryNameList.push(res[item].budgetCategoryName);
+        this.budgetSubCategoryNameList.push(res[item].budgetCategoryName);
       }
     })
-    this.budgetCategoryNameSelected = this.budgetCategoryNameList
+    this.budgetCategoryNameSelected = this.budgetSubCategoryNameList
   }
-  // Only AlphaNumeric
+
+
   keyPressAlphanumeric(event: any) {
 
     var inp = String.fromCharCode(event.keyCode);
 
-    if (/^[a-z\d\-_\s]+$/i.test(inp)) {
+    if (/^[\.a-zA-Z0-9,-/() ]+$/i.test(inp)) {
       return true;
     } else {
       event.preventDefault();
@@ -150,33 +187,28 @@ export class BudgetSubCategoryMasterComponent {
   }
 
 
-selectedValues(event:any){
-  this.selectedType=event.target.value;
-}
+  selectedValues(event: any) {
+    this.selectedType = event.target.value;
+  }
 
-addBudgetCategory() {
-  this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
-}
+  addBudgetCategory() {
+    this.router.navigate([AppConstant.BUDGETCATEGORYMASTER]);
+  }
 
-getActiveBudgetSubCategory() {
-  this.budgetSubCategoryService.getActiveBudgetSubCategory().subscribe((data: any) => {
-    this.budgetSubCategoryData = data;
-    
-  });
-}
+  getActiveBudgetSubCategory() {
+    this.budgetSubCategoryService.getActiveBudgetSubCategory().subscribe((data: any) => {
+      this.budgetSubCategoryData = data;
 
-// getActiveCategory() {
-//   this.budgetSubCategoryService.getActiveCategory().subscribe((data: any) => {
-//     this.budgetCategoryData = data;
-//   });
-// }
+    });
+  }
 
-deleteCategory(data: any) {
-  if (confirm('Are You sure to Delete this record'))
-    this.budgetSubCategoryService.deleteSubCategory(data.id).subscribe((res: any) => {
-    })
-  alert('Record deleted Successfully')
-  this.getActiveBudgetSubCategory()
+
+  deleteCategory(data: any) {
+    if (confirm('Are You sure to Delete this record'))
+      this.budgetSubCategoryService.deleteSubCategory(data.id).subscribe((res: any) => {
+      })
+    alert('Record deleted Successfully')
+    this.getActiveBudgetSubCategory()
 
   }
 
@@ -190,22 +222,22 @@ deleteCategory(data: any) {
       budgetCode: currentProduct?.budgetCode,
       remark: currentProduct?.remark,
       status: currentProduct?.status,
-      budgetType:currentProduct?.budgetType,
+      budgetType: currentProduct?.budgetType,
     });
     this.editMode = true;
   }
 
 
-  updateSubCategory(id: String, createSubCategoryRequest: SubCategoryDetails) {
+  updateSubCategory(id: String, createSubCategoryRequest: SubCategoryData) {
     this.budgetSubCategoryService.editSubCategory(id, createSubCategoryRequest).subscribe((res: any) => {
-      
+
       let dataExist = res;
 
-      if (res.budgetSubCategoryName != "" && res.remark != "") {
+      if (res.budgetCode != "" && res.budgetSubCategoryName != "") {
 
-        let isBudgetCategoryNameExits = this.checkBudgetCategoryNameExits(dataExist);
+        let isBudgetSubCategoryNameExits = this.checkSubBudgetCategoryNameExits(dataExist);
 
-        if (isBudgetCategoryNameExits == true) {
+        if (isBudgetSubCategoryNameExits == true) {
 
           alert('user already exits...')
           this.router.navigate([`/${AppConstant.BUDGETSUBCATEGORYMASTER}`])
@@ -234,31 +266,31 @@ deleteCategory(data: any) {
 
   }
 
+  checkSubBudgetCategoryNameExits(data: SubCategoryData): boolean {
+
+    let budgetSubCategoryData = this.budgetSubCategoryNameList;
+
+    let isSubBudgetCategoryNameExits = false;
+
+    for (let i = 0; i < budgetSubCategoryData.length; i++) {
+
+      if (budgetSubCategoryData[i] == data.budgetSubCategoryName) {
+
+        isSubBudgetCategoryNameExits = true;
+
+      }
+    }
+    return isSubBudgetCategoryNameExits;
+  }
 
 
-dataSource = new MatTableDataSource([]);
-@ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-
-/**
- * Set the paginator after the view init since this component will
- * be able to query its view for the initialized paginator.
- */
-ngAfterViewInit() {
-  // this should be moved in API CALL
-  this.pageChanged({
-    pageIndex: 1,
-    pageSize: 10,
-    length: this.budgetSubCategoryData.length
-  });
-}
-
-pageChanged(event: PageEvent) {
-  event.length;
-  const budgetSubCategoryData = [...this.budgetSubCategoryData];
-  let dataSource= this.budgetSubCategoryData.splice(
-    (event.pageIndex - 1) * event.pageSize,
-    event.pageSize
-  );
-}
+  pageChanged(event: PageEvent) {
+    event.length;
+    const budgetSubCategoryData = [...this.budgetSubCategoryData];
+    let dataSource = this.budgetSubCategoryData.splice(
+      (event.pageIndex - 1) * event.pageSize,
+      event.pageSize
+    );
+  }
 
 }

@@ -8,6 +8,7 @@ export class AppConstant {
     public static GENERATEINVOICE: string = 'generateInvoice';
     public static BUDGETCREATION: string = 'budgetCreation';
     public static EDITCATEGORY:string='editBudgetCategory';
+    public static EDITVENDOR:string='editVendor';
     public static BUDGETCATEGORYMASTER: string = 'budgetCategoryMaster';
     public static BUDGETSUBCATEGORYMASTER: string = 'budgetSubCategoryMaster';
     public static VENDORMASTER: string = 'vendorMaster';

@@ -8,35 +8,13 @@
 
    background-color: #004DA8;
 
-
-
 }
 
-
-// mat-card-title {
-//     margin-bottom: 25px;
-// }
-
-//  .error-msg{
-//     margin-top:0px;
-//  }
-//  .success{
-//     font-size: 20px;
-//     color:green;
-//     position: absolute;
-
-//     display: none;
-
-//  }
-//  .danger{
-// color:red;
-//  }
 .budget-sub-category-master-button {
 
    width: 215px !important;
 
    margin: 15px 0 2rem 0;
-
 
    background-color: #004DA8;
 }
@@ -68,8 +46,6 @@ mat-card-title {
 
 }
 
-
-
 .delete-category {
    background-color: $c-cyan-azure;
 }
@@ -79,14 +55,6 @@ mat-card-title {
    width: 400px;
 }
 
-// .matInput {
-//    margin-top: 10px;
-// }
-
-// .mat-icon {
-//    font-size: large;
-// }
-
 .delete-icon {
    color: $c-primary-mandatory-field;
    font-size: 23px;
@@ -95,7 +63,6 @@ mat-card-title {
 .view-icon {
    color: $c-primary-mandatory-field1;
    font-size: 23px;
-   // margin-top: 2px;
 }
 
 .paginator {
@@ -104,7 +71,6 @@ mat-card-title {
 }
 
 .view-table {
-   // margin: 0 3px 0 3px;
    font-family: arial, sans-serif;
    border-collapse: collapse;
    width: 80%;
@@ -116,7 +82,6 @@ mat-card-title {
    th {
       border: 1px solid #dddddd;
       text-align: left;
-      // padding: 2px;
    }
 
    tr:nth-child(even) {

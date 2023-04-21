@@ -12,22 +12,22 @@ export class SubCategoryService {
 
   constructor(private http: HttpClient) { }
 
-  createSubCategory(createSubCategoryRequest: SubCategoryDetails): Observable<SubCategoryData> {
-    return this.http.post(environment.javaEndPoint + API_END_POINTS.SUBCATEGORY, createSubCategoryRequest).pipe(map((res: any) => {
+  createSubCategory(createSubCategoryRequest: SubCategoryData): Observable<SubCategoryData> {
+    return this.http.post(environment.javaEndPoint + API_END_POINTS.SUB_CATEGORY, createSubCategoryRequest).pipe(map((res: any) => {
       return res;
     }))
   }
 
-  getActiveBudgetSubCategory(): Observable<SubCategoryData[]> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETSUBCATEGORYLIST).pipe(
+  getActiveBudgetSubCategory(): Observable<SubCategoryDetails[]> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGET_SUB_CATEGORY_LIST).pipe(
       map((res: any) => {
         return (res)
       })
     )
   }
 
-  getBudgetCodeList():Observable<SubCategoryData[]> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCODELIST).pipe(
+  getBudgetCodeList():Observable<SubCategoryDetails[]> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGET_CODE_LIST).pipe(
       map((res: any) => {
         return (res)
       })
@@ -39,11 +39,11 @@ export class SubCategoryService {
   }
 
   public deleteSubCategory(id: any) {
-    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETESUBCATEGORY + id)
+    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETE_SUB_CATEGORY + id)
   }
 
-  editSubCategory(id: String, createSubCategoryRequest: SubCategoryDetails): Observable<Object> {
-    return this.http.put(environment.javaEndPoint + API_END_POINTS.EDITSUBCATEGORY + id, createSubCategoryRequest);
+  editSubCategory(id: String, createSubCategoryRequest: SubCategoryData): Observable<Object> {
+    return this.http.put(environment.javaEndPoint + API_END_POINTS.EDIT_SUB_CATEGORY + id, createSubCategoryRequest);
   }
 
 }
