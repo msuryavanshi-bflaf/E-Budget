@@ -17,6 +17,8 @@ import { BudgetSubCategoryMasterComponent } from './components/master-fields/bud
 import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
+import { AmountToWordPipe } from './components/pipe/amount-in-words.pipe';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { FooterComponent } from './components/footer/footer.component';
     BudgetSubCategoryMasterComponent,
     VendorMasterComponent,
     FooterComponent,
+    AmountToWordPipe
 
 
   ],
