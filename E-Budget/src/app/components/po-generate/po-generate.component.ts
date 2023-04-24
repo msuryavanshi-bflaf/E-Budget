@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { Router } from '@angular/router';
 import { AppConfig } from 'src/app/config/app.config';
 import { AppConstant } from 'src/app/constants/app.constants';
 import { Messages } from 'src/app/constants/message.constants';
+import { Router } from '@angular/router';
 import { VendorService } from '../services/vendor.service';
 
 @Component({
