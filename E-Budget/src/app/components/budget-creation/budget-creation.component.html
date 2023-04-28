@@ -91,21 +91,7 @@
 
                     </td>
                
-                    <td>
 
-                        <mat-label>Amount In-words</mat-label>
-
-                    <td>
-
-                        <mat-form-field appearance="outline">
-
-                            <input matInput formControlName="amountInWords" required>
-                            {{amounth | amountToWord}}
-                            <!-- <button type="button" (click)="convertToWord()">Convert to String</button> -->
-                        </mat-form-field>
-
-                    </td>
-                    <tr>
                         <td>
                             <mat-label>Remark</mat-label>
                         </td>
@@ -113,6 +99,22 @@
                             <mat-form-field appearance="outline">
                                 <input matInput formControlName="remark" required>
                             </mat-form-field>
+                        </td> 
+                    <tr>
+                       
+                        <td>
+
+                            <mat-label>Amount In-words</mat-label>
+    
+                        <td>
+    
+                            <!-- <mat-form-field appearance="outline">
+     -->
+                                <!-- <input matInput formControlName="amountInWords" required> -->
+                                {{amounth | amountToWord}}
+
+                            <!-- </mat-form-field> -->
+    
                         </td>
                     </tr>
 
@@ -122,4 +124,7 @@
         <button mat-button style="color: rgb(255, 255, 255);" class="budgetCreation-button"
             (click)="budgetCreation()">Budget Creation</button>
     </mat-card>
+</div>
+<div class="footer">
+    <app-footer></app-footer>
 </div>

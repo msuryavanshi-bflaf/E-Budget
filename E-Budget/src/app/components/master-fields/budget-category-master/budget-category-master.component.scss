@@ -70,21 +70,53 @@ mat-card-title {
    margin: 0 210px 0 130px;
 }
 
+// .view-table {
+//    font-family: arial, sans-serif;
+//    border-collapse: collapse;
+//    width: 80%;
+//    background-color: white;
+//    margin: 0 210px 0 130px;
+
+
+//    td,
+//    th {
+//       border: 1px solid #dddddd;
+//       text-align: left;
+//    }
+
+//    tr:nth-child(even) {
+//       background-color: #dddddd;
+//    }
+// }
 .view-table {
-   font-family: arial, sans-serif;
+   border: 1px solid rgb(26, 25, 25);
    border-collapse: collapse;
-   width: 80%;
-   background-color: white;
    margin: 0 210px 0 130px;
-
-
-   td,
-   th {
-      border: 1px solid #dddddd;
-      text-align: left;
-   }
+   width: 80%;
+   background-color: rgb(220, 238, 250);
 
    tr:nth-child(even) {
-      background-color: #dddddd;
+       background-color: #c2e1f7;
+   }
+
+   th,
+   td {
+       padding-top: 2px;
+       padding-bottom: 2px;
+       padding-left: 30px;
+       padding-right: 10px;
+
+   }
+
+   th {
+       padding: 20px 7px;
+       font-size: 15px;
+       color: #0e0d0d;
+       background: #296cbd;
+   }
+
+   td {
+       padding: 5px 10px;
+       height: 35px;
    }
 }

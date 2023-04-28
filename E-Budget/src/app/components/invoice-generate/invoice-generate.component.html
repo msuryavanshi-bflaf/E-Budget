@@ -58,7 +58,7 @@
                         <td>
                             <mat-form-field appearance="outline" class="date-picker">
                                 <input matInput [matDatepicker]="pickers" placeholder="Choose a date"
-                                    formControlName="createdDate" required>
+                                    formControlName="invoiceDate" required>
                                 <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
                                 <mat-datepicker #pickers></mat-datepicker>
                             </mat-form-field>
@@ -86,7 +86,7 @@
                         <td>
                             <mat-form-field appearance="outline" class="date-picker">
                                 <input matInput [matDatepicker]="pickers" placeholder="Choose a date"
-                                    formControlName="createdDate" required>
+                                    formControlName="invoiceReceivedDate">
                                 <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
                                 <mat-datepicker #pickers></mat-datepicker>
                             </mat-form-field>
@@ -99,7 +99,7 @@
 
                             <mat-form-field appearance="outline">
 
-                                <input matInput formControlName="taxAmount" required>
+                                <input matInput formControlName="tax" required>
                                 <mat-error>Please enter tax</mat-error>
                             </mat-form-field>
 
@@ -161,4 +161,23 @@
 
     </mat-card>
 
+</div>
+<br>
+<br>
+<table class="view-table">
+    <tr>
+        <th *ngFor="let tableHead of tableHead;">{{ tableHead }}</th>
+    </tr>
+    <tr *ngFor="let data of invoiceData;">
+        <td>{{ data.invoiceNumber }}</td>
+        <td>{{ data.poNumber }}</td>
+        <td>{{ data.invoiceAmount }}</td>
+        <td>{{ data.tax }}</td>
+        <td>{{ data.invoiceDate }}</td>
+        <td>{{ data.invoiceReceivedDate }}</td>
+        <td>{{ data.remark }}</td>
+    </tr>
+</table>
+<div class="footer">
+    <app-footer></app-footer>
 </div>

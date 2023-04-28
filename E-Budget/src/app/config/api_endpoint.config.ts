@@ -2,7 +2,7 @@ export const API_END_POINTS = {
     BUDGET_CATEGORY:'/budgetCategory/budgetCategory',
     SUB_CATEGORY:'/subCategory/subCategory',
     VENDOR:'/vendor/vendor',
-    CREATE_BUDGET:'/createbudget',
+    CREATE_BUDGET:'/budgetCreation/createbudget',
     BUDGET_CATEGORY_DETAILS:'/budgetCategoryDetails',
     BUDGET_CATEGORY_LIST:'/budgetCategory/findAllBudgetCategory',
     BUDGET_SUB_CATEGORY_LIST:'/subCategory/findAllBudgetSubCategory',
@@ -14,4 +14,9 @@ export const API_END_POINTS = {
     DELETE_CATEGORY:'/budgetCategory/',
     DELETE_SUB_CATEGORY:'/subCategory/',
     DELETE_VENDOR:'/vendor/',
+    POGENERATION:'/poGeneration/generatePO',
+    POLIST:'/poGeneration/findAllPO',
+    BUDGETCREATION:'/budgetCreation/findAllBudgetCreation',
+    INVOICE:'/invoice/addInvoice',
+    FINDINVOICE:'/invoice/findAllInvoice'
 }

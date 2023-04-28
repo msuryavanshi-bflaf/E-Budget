@@ -8,7 +8,8 @@ import { AppConfig } from 'src/app/config/app.config';
 
 import { AppConstant } from 'src/app/constants/app.constants';
 import { Messages } from 'src/app/constants/message.constants';
-
+import { InvoiceData } from 'src/app/Model/invoice/invoice.module';
+import { InvoiceService } from 'src/app/components/services/invoice.service';
 @Component({
   selector: 'app-invoice-generate',
   templateUrl: './invoice-generate.component.html',
@@ -24,14 +25,17 @@ export class InvoiceGenerateComponent {
   isValidFileError: boolean = false;
   fileName: string = "";
   attachmentErrorMessage: string = "";
+   invoiceData: InvoiceData[] = [];
+  // invoiceData:any;
+  tableHead = ['invoiceNumber', 'poNumber','invoiceAmount', 'tax','invoiceDate','invoiceReceivedDate', 'remark'];
 
-
-  constructor(private router: Router, private fb: FormBuilder) { }
-
+  constructor(private router: Router, private fb: FormBuilder,private invoiceService:InvoiceService) { }
 
   ngOnInit() {
 
     this.initGenerateInvoiceForm();
+    this.initInvoiceData();
+   
   }
 
 
@@ -47,23 +51,11 @@ export class InvoiceGenerateComponent {
 
       'invoiceReceivedDate': [''],
 
-      'createdBy': ['', [Validators.minLength(4)]],
-
       'invoiceAmount': [''],
 
-      'modifyBy': ['', [Validators.minLength(4)]],
-
-      'modifyDate': [''],
-
       'remark': [''],
-
-      'file':[''],
-
-      'taxAmount': [''],
-
-      'createdDate':['']
-
-
+      
+      'tax': [''],
 
     });
 
@@ -112,9 +104,40 @@ export class InvoiceGenerateComponent {
 
   generateInvoice() {
 
-    this.router.navigate([`/${AppConstant.GENERATEINVOICE}`])
+    let createInvoice: InvoiceData = {
+     
+      "id": this.generateInvoiceForm.value.id,
+      "poNumber": this.generateInvoiceForm.value.poNumber,
+      "invoiceNumber": this.generateInvoiceForm.value.invoiceNumber,
+      "invoiceDate": this.generateInvoiceForm.value.invoiceDate,
+      "invoiceAmount": this.generateInvoiceForm.value.invoiceAmount,
+      "invoiceReceivedDate": this.generateInvoiceForm.value.invoiceReceivedDate,
+      "tax":this.generateInvoiceForm.value.tax,
+      "remark":this.generateInvoiceForm.value.remark,
+      "sendEmail":this.generateInvoiceForm.value.sendEmail,
+    };
+    this.invoiceService.generateInvoice(createInvoice).subscribe((data: any) => {
+    //  this.lastElement=this.lastElement-data.body.poAmount;
+    
+    //  console.log("minus recent amount into availabe amount",this.lastElement)
+    // if(data.body.poDate > data.body.poExpiryDate)
+    // {
+    //   Swal.fire({
+    //     title: "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
+    //     icon: 'error',
 
+    //   })
+    //   this.router.navigate([`/${AppConstant.GENERATEPO}`])
+    // }
+    // else
+    this.router.navigate([`/${AppConstant.GENERATEINVOICE}`])
+    })
+    
   }
 
-
+  initInvoiceData(){
+    this.invoiceService.getInvoiceList().subscribe((data: any) => {
+      this.invoiceData = data;
+    });
+  }
 }

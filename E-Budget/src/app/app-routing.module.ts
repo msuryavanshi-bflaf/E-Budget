@@ -9,11 +9,13 @@ import { PoGenerateComponent } from './components/po-generate/po-generate.compon
 import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
 import { BudgetSubCategoryMasterComponent } from './components/master-fields/budget-sub-category-master/budget-sub-category-master.component';
 import { VendorMasterComponent } from './components/master-fields/vendor-master/vendor-master.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: AppConstant.LANDINGPAGE, pathMatch: 'full' },
   { path: AppConstant.LANDINGPAGE, component: LandingPageComponent },
+  {path:AppConstant.HOME,component:HomeComponent},
   { path: AppConstant.NAVBAR, component: NavbarComponent },
   { path: AppConstant.BUDGETCREATION, component: BudgetCreationComponent },
   { path: AppConstant.GENERATEINVOICE, component: InvoiceGenerateComponent },

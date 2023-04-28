@@ -28,11 +28,11 @@
 
                                 <mat-select formControlName="poStage">
 
-                                    <mat-option value="option">PO to be Issue</mat-option>
+                                    <mat-option value="PO to be Issue">PO to be Issue</mat-option>
 
-                                    <mat-option value="option">PO Issue</mat-option>
+                                    <mat-option value="PO Issue">PO Issue</mat-option>
 
-                                    <mat-option value="option">PO on hold </mat-option>
+                                    <mat-option value="PO on hold">PO on hold </mat-option>
 
                                 </mat-select>
                                 <mat-error>Please select PO Stage</mat-error>
@@ -71,7 +71,7 @@
                         <td>
                             <mat-form-field appearance="outline" class="date-picker">
                                 <input matInput [matDatepicker]="pickers" placeholder="Choose a date"
-                                    formControlName="createdDate" required>
+                                    formControlName="poDate">
                                 <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
                                 <mat-datepicker #pickers></mat-datepicker>
                             </mat-form-field>
@@ -88,19 +88,28 @@
 
                             <mat-form-field appearance="outline">
 
-                                <mat-select formControlName="vendorName" minlength="4">
-                                    <mat-option *ngFor="let vendorName of vendorNameList"
+                                <!-- <mat-select formControlName="vendorName" minlength="4">
+                                    <mat-option *ngFor="let vendorName of vendorNameList let i = index"
                                     value="vendorNameList">{{vendorName}}</mat-option>
-                                </mat-select>
-                                <mat-error>Please select vendor name.</mat-error>
+                                </mat-select> -->
+                                <mat-select formControlName="vendorCompanyName"
+                                [(ngModel)]="vendorNameSelected">
+
+                                <mat-option *ngFor="let vendorCompanyName of vendorNameList let i = index"
+                                    [value]="vendorCompanyName">{{vendorCompanyName}}</mat-option>
+
+
+                            </mat-select>
+                               
                             </mat-form-field>
 
                         </td>
-
-                    
-
-
-
+                        <!-- <div *ngFor="let amount of budgetCreationList;let last = last;let first = first;let index = index">
+                        
+                            last:{{last}}
+                            </div> -->
+                            <!-- <div *ngFor="let amount of budgetCreationList; let last = last;"[checked]="last"> </div> -->
+                           
                     </tr>
 
                     <tr>
@@ -130,14 +139,11 @@
                         <td>
 
                             <mat-form-field appearance="outline">
-
-                                <input matInput formControlName="poAmount" required>
+                               
+                                <input matInput formControlName="poAmount"required (keyup)="onKeyUp($event)">{{updatedAmount}}{{updatedBalance}}{{lastElement}}{{balance}}
                                 <mat-error>Please enter PO Amount</mat-error>
                             </mat-form-field>
-
                         </td>
-
-
                     </tr>
                     <tr>
                         <td>
@@ -164,7 +170,7 @@
                             <mat-form-field appearance="outline" class=date-picker>
 
                                 <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
-                                    formControlName="poExpiryDate" required>
+                                    formControlName="poExpiryDate">
                                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                 <mat-datepicker #picker2></mat-datepicker>
 
@@ -203,3 +209,22 @@
     </mat-card>
 
 </div>
+<br>
+<br>
+<br>
+<table class="view-table">
+    <tr>
+        <th *ngFor="let tableHead of tableHead">{{ tableHead }}</th>
+    </tr>
+    <tr *ngFor="let data of poData;">
+        <td>{{ data.poStage }}</td>
+        <td>{{ data.poNumber}}</td>
+        <td>{{ data.budgetCode}}</td>
+        <td>{{ data.vendorCompanyName}}</td>
+        <td>{{ data.poDate}}</td>
+        <td>{{ data.poExpiryDate}}</td>
+        <!-- <td><mat-icon class="view-icon" (click)="editSubCategory(data.id)">create</mat-icon></td>
+        <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td> -->
+    </tr>
+</table>
+<div class="footer"><app-footer></app-footer></div>

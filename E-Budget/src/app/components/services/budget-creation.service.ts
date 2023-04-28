@@ -17,4 +17,12 @@ export class BudgetCreationService {
     }))
   }
 
+  getBudgetCreation(): Observable<BudgetCreation[]> {
+    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCREATION).pipe(
+      map((res: any) => {
+        return (res)
+      })
+    )
+  }
+
 }

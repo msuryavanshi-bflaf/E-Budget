@@ -13,7 +13,6 @@ import { SubCategoryService } from '../services/sub-category.service';
   selector: 'app-budget-creation',
   templateUrl: './budget-creation.component.html',
   styleUrls: ['./budget-creation.component.scss'],
-  providers: [Pipe]
 })
 
 
@@ -175,8 +174,8 @@ export class BudgetCreationComponent implements PipeTransform  {
       "budgetSubCategoryName":this.createBudgetCreationForm.value.budgetSubCategoryName,
       "budgetCode":this.createBudgetCreationForm.value.budgetCode,
       "budgetType":this.createBudgetCreationForm.value.budgetType,
-      "amount":this.createBudgetCreationForm.value.capitalAmount,
-      "amountInWords":this.createBudgetCreationForm.value.revenueAmount,
+      "amount":this.createBudgetCreationForm.value.amount,
+      "amountInWords":this.createBudgetCreationForm.value.amountInWords,
       "remark" :this.createBudgetCreationForm.value.remark
       
 
