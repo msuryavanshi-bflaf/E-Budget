@@ -1,62 +1,73 @@
 @import '/src/scss/base';
 
-.add-category {
-    //   background-color: $c-cyan-azure;
-    // margin-left: 550px;
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
 
-    width: 215px !important;
+// .add-category {
+//     //   background-color: $c-cyan-azure;
+//     // margin-left: 550px;
 
-    margin: 28px 0 2rem 250px;
+//     width: 215px !important;
 
-    background-color: #004DA8;
-}
+//     margin: 28px 0 2rem 250px;
 
-.delete-category {
-    background-color: $c-cyan-azure;
-}
-
-.search {
-    margin: 0px 0 0 10px;
-    width: 400px;
-}
-
-// .matInput {
-//     margin-top: 10px;
+//     background-color: #004DA8;
 // }
 
-// .mat-icon {
-//     font-size: large;
+// .delete-category {
+//     background-color: $c-cyan-azure;
 // }
 
-.delete-icon {
-    color: $c-primary-mandatory-field;
-    font-size: $h4-font-size;
-}
+// .search {
+//     margin: 0px 0 0 10px;
+//     width: 400px;
+// }
 
-.view-icon {
-    color: $c-primary-mandatory-field1;
-    font-size: $h3-font-size;
-    margin-top: 1px;
-}
+// // .matInput {
+// //     margin-top: 10px;
+// // }
 
-table {
+// // .mat-icon {
+// //     font-size: large;
+// // }
 
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-     width: 50%;
-    background-color: white;
-     margin: 0 25px 0 310px;
-   ;
+// .delete-icon {
+//     color: $c-primary-mandatory-field;
+//     font-size: $h4-font-size;
+// }
 
-}
+// .view-icon {
+//     color: $c-primary-mandatory-field1;
+//     font-size: $h3-font-size;
+//     margin-top: 1px;
+// }
 
-td,
-th {
-    border: 1px solid #dddddd;
-    text-align: align;
+// table {
 
-}
+//     font-family: arial, sans-serif;
+//     border-collapse: collapse;
+//      width: 50%;
+//     background-color: white;
+//      margin: 0 25px 0 310px;
+//    ;
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
+// }
+
+// td,
+// th {
+//     border: 1px solid #dddddd;
+//     text-align: align;
+
+// }
+
+// tr:nth-child(even) {
+//     background-color: #dddddd;
+// }

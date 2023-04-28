@@ -1,27 +1,45 @@
  <app-navbar></app-navbar>
- <mat-paginator #paginator
-  [pageSize]="10"
-  [pageSizeOptions]="[5, 10, 20]"
-   (page)="pageChanged($event)" [length]="budgetCategoryData?.length">
-</mat-paginator>
+<!-- <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div> -->
 
-  <table class="mat-elevation-z8">
-    <tr>
-      <th *ngFor="let tableHead of tableHead">{{ tableHead}}</th>
-    </tr>
-    <tr *ngFor="let data of budgetCategoryData">
-      <td>{{ data.id}}</td>
-      <!-- <td>{{ data.budgetCategoryName}}</td> -->
-      <td>{{ data.remark}}</td>
-      <!-- <td>{{ data.activation_date}}</td>
-      <td>{{ data.createdBy}}</td>
-      <td>{{ data.status}}</td> -->
-      <td><mat-icon class="view-icon">create</mat-icon></td>
-      <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
-     
-    </tr>
-  </table>
+ <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
   
-
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      </ng-container>
   
-
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+  <button mat-raised-button color="warn" download (click)="saveData()">Warn</button>

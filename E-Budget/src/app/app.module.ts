@@ -18,6 +18,7 @@ import { VendorMasterComponent } from './components/master-fields/vendor-master/
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { AmountToWordPipe } from './components/pipe/amount-in-words.pipe';
+import { ExcelSheetComponent } from './components/excel-sheet/excel-sheet.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AmountToWordPipe } from './components/pipe/amount-in-words.pipe';
     BudgetSubCategoryMasterComponent,
     VendorMasterComponent,
     FooterComponent,
-    AmountToWordPipe
+    AmountToWordPipe,
+    ExcelSheetComponent
 
 
   ],
