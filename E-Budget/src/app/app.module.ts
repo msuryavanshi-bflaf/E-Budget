@@ -9,7 +9,6 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { BudgetCreationComponent } from './components/budget-creation/budget-creation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
 import { PoGenerateComponent } from './components/po-generate/po-generate.component';
 import { InvoiceGenerateComponent } from './components/invoice-generate/invoice-generate.component';
 import { BudgetCategoryMasterComponent } from './components/master-fields/budget-category-master/budget-category-master.component';
@@ -28,7 +27,6 @@ import { ExcelSheetComponent } from './components/excel-sheet/excel-sheet.compon
     LandingPageComponent,
     BudgetCreationComponent,
     NavbarComponent,
-    HomeComponent,
     PoGenerateComponent,
     InvoiceGenerateComponent,
     BudgetCategoryMasterComponent,
