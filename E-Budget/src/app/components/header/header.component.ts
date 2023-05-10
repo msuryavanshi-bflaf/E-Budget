@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy  {
 constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig:MsalGuardConfiguration,
 private msalBoardCastService:MsalBroadcastService,
 private authService:MsalService,private azureAdDemoService:AzureAdDemoService){}
+
 ngOnInit(): void {
   this.msalBoardCastService.inProgress$.pipe(filter((interactionStatus:InteractionStatus)=>
   interactionStatus==InteractionStatus.None),
