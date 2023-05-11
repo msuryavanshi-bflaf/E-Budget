@@ -85,10 +85,10 @@
                         </td>
                         <td>
                             <mat-form-field appearance="outline" class="date-picker">
-                                <input matInput [matDatepicker]="pickers" placeholder="Choose a date"
+                                <input matInput [matDatepicker]="pickers2" placeholder="Choose a date"
                                     formControlName="invoiceReceivedDate">
-                                <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
-                                <mat-datepicker #pickers></mat-datepicker>
+                                <mat-datepicker-toggle matSuffix [for]="pickers2"></mat-datepicker-toggle>
+                                <mat-datepicker #pickers2></mat-datepicker>
                             </mat-form-field>
                         </td>
                         <td>
@@ -127,9 +127,9 @@
                             <mat-label>Do yo want to send email?</mat-label>
                         </td>
                         <td>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1">Yes</mat-radio-button>
-                                <mat-radio-button value="2">No</mat-radio-button>
+                            <mat-radio-group  formControlName="sendEmail" aria-label="Select an option">
+                                <mat-radio-button value ="yes">Yes</mat-radio-button>
+                                <mat-radio-button value ="No">No</mat-radio-button>
                             </mat-radio-group>
                         </td>
                     </tr>

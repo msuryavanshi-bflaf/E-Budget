@@ -190,6 +190,11 @@ export class PoGenerateComponent {
       this.router.navigate([`/${AppConstant.GENERATEPO}`])
     }
     else
+    Swal.fire({
+      title: "<h1 style='color:green'>PO Generated successfully</h1>",
+      icon: 'success',
+
+    })
     this.router.navigate([`/${AppConstant.GENERATEPO}`])
     })
     

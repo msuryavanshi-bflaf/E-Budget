@@ -27,6 +27,9 @@ export class InvoiceGenerateComponent {
   attachmentErrorMessage: string = "";
    invoiceData: InvoiceData[] = [];
   // invoiceData:any;
+ 
+  sendMail: any = ['Yes', 'No'];
+  selectedValue: any;
   tableHead = ['invoiceNumber', 'poNumber','invoiceAmount', 'tax','invoiceDate','invoiceReceivedDate', 'remark'];
 
   constructor(private router: Router, private fb: FormBuilder,private invoiceService:InvoiceService) { }
@@ -56,6 +59,8 @@ export class InvoiceGenerateComponent {
       'remark': [''],
       
       'tax': [''],
+
+      'sendEmail':[''],
 
     });
 
@@ -95,7 +100,7 @@ export class InvoiceGenerateComponent {
       return true;
     }
   }
-
+ 
   removeSelectedFile() {
     this.attachResume?.slice;
     this.isValidFile = false;
@@ -122,11 +127,10 @@ export class InvoiceGenerateComponent {
     //  console.log("minus recent amount into availabe amount",this.lastElement)
     // if(data.body.poDate > data.body.poExpiryDate)
     // {
-    //   Swal.fire({
-    //     title: "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
-    //     icon: 'error',
-
-    //   })
+      // Swal.fire({
+      //   title: "<h1 style='color:success'>Invoice Generate dSuccessfully</h1>",
+      //   icon: 'success',
+      // })
     //   this.router.navigate([`/${AppConstant.GENERATEPO}`])
     // }
     // else
