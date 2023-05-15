@@ -1,0 +1,145 @@
+<app-navbar></app-navbar>
+
+<div class="center_div top">
+
+    <mat-card class="container">
+
+        <mat-card-header>
+
+            <mat-card-title>Budget Sub-Category Master</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <form [formGroup]="budgetSubCategoryMasterForm" (ngSubmit)="budgetSubCategoryMaster()">
+
+                <table>
+
+                    <tr>
+
+                        <td>
+
+                            <mat-label>Budget category name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <mat-select formControlName="budgetCategoryName"
+                                    [(ngModel)]="budgetCategoryNameSelected">
+
+                                    <mat-option *ngFor="let budgetCategoryName of budgetSubCategoryNameList let i = index"
+                                        [value]="budgetCategoryName">{{budgetCategoryName}}</mat-option>
+
+
+                                </mat-select>
+
+                            </mat-form-field>
+
+                        </td>
+
+                        <td>
+
+                            <mat-label>BudgetCode</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetCode" minlength="4" required>
+
+                            </mat-form-field>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Budget Sub Category Name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="budgetSubCategoryName"
+                                    (keypress)="keyPressAlphanumeric($event)" required>
+                                <mat-error>Please enter the sub caterory.</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                        <td>
+
+                            <mat-label>Remark</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+                                <textarea matInput style="resize:vertical" formControlName="remark"
+                                    (keypress)="keyPressAlphanumeric($event)" (keyup)="autogrow()" rows="2"
+                                    (click)="autogrow()" minlength="4" required></textarea>
+
+                                <mat-error>Minimum 4 characters required</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+
+                    <td> <mat-checkbox formControlName="status" checked>Active</mat-checkbox></td>
+
+                    <td>
+
+                        <mat-label>Budget Type</mat-label>
+
+                    </td>
+                    <td *ngFor="let budget of budgetType">
+                        <input type="radio" formControlName="budgetType" name="budgetType" value="{{budget}}"
+                            (change)="selectedValues($event)">{{budget}}
+                    </td>
+
+                </table>
+                <button mat-button class="backbutton" (click)="back()">back</button>
+                <button mat-button class="budget-sub-category-master-button" type="submit">{{editMode ? 'Update
+                    SubCategory' : 'Create SubCategory'}}</button>
+
+            </form>
+
+        </mat-card-content>
+
+    </mat-card>
+
+</div>
+<br><br>
+<mat-paginator #paginator class="paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" (page)="pageChanged($event)"
+    [length]="budgetSubCategoryData?.length">
+</mat-paginator>
+
+<table class="view-table">
+    <tr>
+        <th *ngFor="let tableHead of tableHead">{{ tableHead }}</th>
+    </tr>
+    <tr *ngFor="let data of budgetSubCategoryData">
+        <td>{{ data.id }}</td>
+        <td>{{ data.budgetCategoryName }}</td>
+        <td>{{ data.budgetCode }}</td>
+        <td>{{ data.budgetSubCategoryName }}</td>
+        <td>{{ data.remark }}</td>
+        <td>{{ data.activation_date }}</td>
+        <td>{{ data.createdBy }}</td>
+        <td>{{ data.status }}</td>
+        <td><mat-icon class="view-icon" (click)="editSubCategory(data.id)">create</mat-icon></td>
+        <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td>
+    </tr>
+</table>
+<app-footer></app-footer>

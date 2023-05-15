@@ -1,12 +1,10 @@
-import { Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {  MsalBroadcastService, MsalGuardConfiguration, MsalService, MSAL_GUARD_CONFIG} from '@azure/msal-angular';
-import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
-import { filter, Subject, takeUntil } from 'rxjs';
 
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
+import { InteractionStatus, PopupRequest } from '@azure/msal-browser';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { ASSET_IMAGE } from 'src/app/config/asset.config';
-import { AzureAdDemoService } from 'src/app/services/azure-ad-demo.service';
-
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -14,42 +12,62 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy  {
-  private readonly _destroy=new Subject<void>();
-  isUserLoggedIn:boolean=false;
+  title = 'msal-angular-tutorial';
   appLogo = ASSET_IMAGE.LOGO_IMG;
   bajajLogo = ASSET_IMAGE.BAJAJ_LOGO_IMG;
-  
-constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig:MsalGuardConfiguration,
-private msalBoardCastService:MsalBroadcastService,
-private authService:MsalService,private azureAdDemoService:AzureAdDemoService){}
+  isIframe = false;
+  loginDisplay = false;
+  private readonly _destroying$ = new Subject<void>();
 
-ngOnInit(): void {
-  this.msalBoardCastService.inProgress$.pipe(filter((interactionStatus:InteractionStatus)=>
-  interactionStatus==InteractionStatus.None),
-  takeUntil(this._destroy))
-  
-  .subscribe(x=>
-    {
-      this.isUserLoggedIn=this.authService.instance.getAllAccounts().length>0
-     this.azureAdDemoService.isUserLoggedIn.next(this.isUserLoggedIn);
+  constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration, private broadcastService: MsalBroadcastService, private authService: MsalService) { }
+
+  ngOnInit() {
+    this.isIframe = window !== window.parent && !window.opener;
+
+    this.broadcastService.inProgress$
+    .pipe(
+      filter((status: InteractionStatus) => status === InteractionStatus.None),
+      takeUntil(this._destroying$)
+    )
+    .subscribe(() => {
+      this.setLoginDisplay();
     })
-}
-ngOnDestroy(): void {
-  this._destroy.next(undefined);
-  this._destroy.complete();
-}
+  }
 
-login(){
-  if(this.msalGuardConfig.authRequest){
-    this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest)
+  login() {
+    if (this.msalGuardConfig.authRequest){
+      this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
+        .subscribe({
+          next: (result) => {
+            console.log(result);
+            this.setLoginDisplay();
+          },
+          error: (error) => console.log(error)
+        });
+    } else {
+      this.authService.loginPopup()
+        .subscribe({
+          next: (result) => {
+            console.log(result);
+            this.setLoginDisplay();
+          },
+          error: (error) => console.log(error)
+        });
+    }
   }
-  else
-  {
-    this.authService.loginRedirect();
+
+  logout() { // Add log out function here
+    this.authService.logoutPopup({
+      mainWindowRedirectUri: "/"
+    });
   }
-}
-logout(){
-  this.authService.logoutRedirect({postLogoutRedirectUri:environment.postLogoutUrl});
-}
-  
+
+  setLoginDisplay() {
+    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next(undefined);
+    this._destroying$.complete();
+  }
 }

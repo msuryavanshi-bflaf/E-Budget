@@ -1,0 +1,88 @@
+.attachment {
+    display: inline-flex;
+
+
+    .select-file-name {
+        margin: 0 10px;
+        display: block;
+        width: 175px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.approvalButton {
+    background-color: #004DA8;
+
+}
+
+.generateInvoice-button {
+
+    width: 215px !important;
+
+    margin: 20px 0 2rem 0;
+
+    background-color: #004DA8;
+}
+
+.invalid-file-error {
+    color: red;
+    width: 235px;
+    padding-left: 10px;
+}
+
+.date-picker {
+    width: 212px;
+    height: 65px;
+}
+
+.titlecard {
+    margin-bottom: 20px;
+}
+
+
+
+
+.view-table {
+    border: 1px solid rgb(26, 25, 25);
+    border-collapse: collapse;
+     margin: 0 100px 0 60px;
+    width: 90%;
+    background-color: rgb(220, 238, 250);
+
+    tr:nth-child(even) {
+        background-color: #c2e1f7;
+    }
+
+    th,
+    td {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-left: 30px;
+        padding-right: 10px;
+
+    }
+
+    th {
+        padding: 20px 7px;
+        font-size: 15px;
+        color: #0e0d0d;
+        background: #296cbd;
+    }
+
+    td {
+        padding: 5px 10px;
+        height: 35px;
+    }
+}
+
+
+
+.footer {
+    margin-top: 380px;
+}
+
+.footer {
+    margin-top: 10px
+}

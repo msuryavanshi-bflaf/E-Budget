@@ -1,0 +1,183 @@
+<app-navbar></app-navbar>
+
+<div class="center_div top">
+
+    <mat-card class="container">
+
+        <mat-card-header>
+            <!-- title -->
+            <mat-card-title>Vendor Master</mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <form [formGroup]="vendorMasterForm" id="invoiceForm" (ngSubmit)="vendorMaster()">
+
+                <table>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Vendor Company Name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="vendorCompanyName"
+                                    (keypress)="omit_special_char($event)" (keypress)="keyPressAlphanumeric($event)"
+                                    required>
+                                <mat-error>please fill the field.</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                        <td>
+
+                            <mat-label>Email</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="email" type="email" required>
+                                <mat-error>Please enter valid email</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Vendor SAP Code</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="vendorSapCode" (keypress)="numberOnly($event)"
+                                    required>
+                                <mat-error>please enter Sap code.</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                        <td>
+
+                            <mat-label>Address</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="address" (keypress)="omit_special_char($event)"
+                                    required>
+                                <mat-error>Please entewr address</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <mat-label>Contact Person Name</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="contactPersonName"
+                                    (keypress)="omit_special_char($event)" (keypress)="keyPressAlphanumeric($event)"
+                                    required>
+                                <mat-error>Enter the contact person name</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                        <td>
+
+                            <mat-label>Mobile Number</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="mobileNumber" (keypress)="numberOnly($event)"
+                                    maxlength="10" required>
+                                <mat-error>Please enter valid contact number</mat-error>
+                            </mat-form-field>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <mat-label>Land Line Number</mat-label>
+
+                        </td>
+
+                        <td>
+
+                            <mat-form-field appearance="outline">
+
+                                <input matInput formControlName="landLineNumber" (keypress)="numberOnly($event)"
+                                    maxlength="10" required>
+                                <mat-error>Please enter valid contact number</mat-error>
+                            </mat-form-field>
+
+                        </td>
+                    </tr>
+
+                </table>
+                <button mat-button class="backbutton" (click)="back()">back</button>
+                <button mat-button class="vendorMaster-button" type="submit">{{editMode ? 'Update
+                    Vendor' : 'Add Vendor'}}</button>
+
+            </form>
+
+        </mat-card-content>
+        <div>
+
+
+        </div>
+    </mat-card>
+
+</div>
+<br>
+<br>
+
+<mat-paginator #paginator class="paginator" [pageSize]="10" [pageSizeOptions]="[5, 8, 10]" (page)="pageChanged($event)"
+    [length]="vendorData?.length">
+</mat-paginator>
+
+<table class="view-table">
+    <tr>
+        <th *ngFor="let tableHead of tableHead;">{{ tableHead }}</th>
+    </tr>
+    <tr *ngFor="let data of vendorData;">
+        <td>{{ data.id }}</td>
+        <td>{{ data.vendorCompanyName }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.address }}</td>
+        <td>{{ data.contactPersonName }}</td>
+        <td>{{ data.mobileNumber }}</td>
+        <td>{{ data.activation_date }}</td>
+        <td><mat-icon class="view-icon" (click)="editVendor(data.id)">create</mat-icon></td>
+        <td><mat-icon class="delete-icon" (click)="deleteVendor(data)">delete_forever</mat-icon></td>
+    </tr>
+</table>
+<app-footer></app-footer>

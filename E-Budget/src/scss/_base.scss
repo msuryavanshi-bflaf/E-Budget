@@ -1,12 +1,39 @@
+// //font-size
+// $base-font-size: 1rem;
+// $h1-font-size: 2rem;
+// $h3-font-size: 1.2rem;
+// $h5-font-size: 1.15rem;
+// $h6-font-size: 0.875rem;
+
+
 //font-size
-$base-font-size: 1rem;
-$h1-font-size: 2rem;
-$h3-font-size: 1.2rem;
-$h5-font-size: 1.15rem;
-$h6-font-size: 0.875rem;
-
-
-
+// $small-font-size: 0.875rem;
+// $base-font-size: 1rem;
+// $H2-font-size: 1.25rem;
 
 //color codes
-$c-white: #ffffff;
+$c-white: #FFFFFF;
+$c-dialog-card-background: #d3e1ea;
+$c-dialog-card-border: #EEEEEE;
+$c-dialog-card-shadow: #6a749a40;
+$c-dialog-card-link: #457eff;
+$c-card-border: #00000080;
+$c-horizontal-separator: #eaf1f5;
+$c-sub-heading: #8292b4;
+$c-sub-heading-count: #1b2437;
+
+//buttons
+//  $c-primary-btn-bg-disable: #EEEEEE;
+$c-dialog-button-link: #004DA8;
+
+//font-sizes
+$h1-font-size: 0.9375em;
+$h2-font-size: 1.0rem;
+$h3-font-size:1.70rem;
+$h4-font-size:1.875rem;
+$h5-font-size:1.25rem;
+$h6-font-size:3.125rem;
+//color code
+$c-cyan-azure: #4f7cb8;
+$c-primary-mandatory-field: #800000;
+$c-primary-mandatory-field1: #056008;

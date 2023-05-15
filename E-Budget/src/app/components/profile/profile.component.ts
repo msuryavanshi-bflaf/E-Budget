@@ -1,38 +1,35 @@
-import { Component } from '@angular/core';
-import { MsalService } from '@azure/msal-angular';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+const GRAPH_ENDPOINT = 'Enter_the_Graph_Endpoint_Here/v1.0/me';
+
+type ProfileType = {
+  givenName?: string,
+  surname?: string,
+  userPrincipalName?: string,
+  id?: string
+};
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-  title = 'msal-angular-tutorial';
-  isIframe = false;
-  loginDisplay = false;
-  
-  constructor(private authService: MsalService) { }
-  
+export class ProfileComponent implements OnInit {
+  profile!: ProfileType;
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
   ngOnInit() {
-    this.isIframe = window !== window.parent && !window.opener;
+    this.getProfile();
   }
-  
-  login() {
-    
-    this.authService.loginPopup()
-      .subscribe({
-        next: (result) => {
-          console.log(result);
-          this.setLoginDisplay();
-        },
-        error: (error) => console.log(error)
+
+  getProfile() {
+    this.http.get(GRAPH_ENDPOINT)
+      .subscribe(profile => {
+        this.profile = profile;
       });
   }
-  
-  setLoginDisplay() {
-    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
-  }
-  
-  
-  
 }

@@ -13,6 +13,8 @@ export class AppComponent {
 
   
 
+  title = 'E-Budget';
+  
 }
 
 

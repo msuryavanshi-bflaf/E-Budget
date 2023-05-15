@@ -1,0 +1,77 @@
+@import '/src/scss/base';
+
+
+/*--------  Editable Cells  --------*/
+.selected {
+  border: 1px solid #698ad8;
+}
+
+.unselected {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+/*---- Remove default browser behaviour after selecting cells ----*/
+.selected,
+.unselected {
+  -webkit-user-select: none;
+  /* Webkit  */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE 10   */
+  -o-user-select: none;
+  /* Currently not supported in Opera but will be soon */
+  user-select: none;
+}
+
+/*--------End Editable Cells--------*/
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  text-align: center;
+  overflow: auto;
+  // height: calc(100vh - 32px);
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+  border: 2px solid gray;
+}
+
+.mat-row:nth-child(even) {
+  background-color: white;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: rgba(161, 156, 156, 0.12);
+}
+
+.mat-header-cell {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+
+}
+
+.ng-container,
+th,
+td {
+  border: 1px solid rgba(107, 101, 101, 0.12);
+}
+
+.table {
+  width: 240%;
+  table-layout: fixed;
+}
+
+.table td,
+th {
+  word-wrap: break-word;
+  text-align: center;
+  
+}
