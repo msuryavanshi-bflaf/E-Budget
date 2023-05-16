@@ -9,6 +9,7 @@ import { AppConstant } from 'src/app/constants/app.constants';
 import { Messages } from 'src/app/constants/message.constants';
 import { InvoiceData } from 'src/app/Model/invoice/invoice.module';
 import { InvoiceService } from 'src/app/components/services/invoice.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-invoice-generate',
   templateUrl: './invoice-generate.component.html',
@@ -120,6 +121,10 @@ export class InvoiceGenerateComponent {
     this.invoiceService
       .generateInvoice(createInvoice)
       .subscribe((data: any) => {
+        Swal.fire({
+          title: "<h1 style='color:green'>Invoice Generated successfully</h1>",
+          icon: 'success',
+        });
         this.router.navigate([`/${AppConstant.GENERATEINVOICE}`]);
       });
   }

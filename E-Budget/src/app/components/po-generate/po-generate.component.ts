@@ -186,15 +186,34 @@ export class PoGenerateComponent {
       this.lastElement = this.lastElement - data.body.poAmount;
 
       console.log('minus recent amount into availabe amount', this.lastElement);
-      if (data.body.poDate > data.body.poExpiryDate) {
-        Swal.fire({
-          title:
-            "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
-          icon: 'error',
-        });
-        this.router.navigate([`/${AppConstant.GENERATEPO}`]);
-      } else this.router.navigate([`/${AppConstant.GENERATEPO}`]);
-    });
+    //   if (data.body.poDate > data.body.poExpiryDate) {
+    //     Swal.fire({
+    //       title:
+    //         "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
+    //       icon: 'error',
+    //     });
+    //     this.router.navigate([`/${AppConstant.GENERATEPO}`]);
+
+    //   } else this.router.navigate([`/${AppConstant.GENERATEPO}`]);
+    // });
+    if(data.body.poDate > data.body.poExpiryDate)
+    {
+      Swal.fire({
+        title: "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
+        icon: 'error',
+
+      })
+      this.router.navigate([`/${AppConstant.GENERATEPO}`])
+    }
+    else
+    Swal.fire({
+      title: "<h1 style='color:green'>PO Generated successfully</h1>",
+      icon: 'success',
+
+    })
+    this.router.navigate([`/${AppConstant.GENERATEPO}`])
+    })
+    
   }
 
   onKeyUp(event: any) {
