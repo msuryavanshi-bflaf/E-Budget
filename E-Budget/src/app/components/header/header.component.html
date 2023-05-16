@@ -1,31 +1,14 @@
 <mat-toolbar color="primary">
-  <span><img [src]="appLogo.PATH" id="logo" [alt]="appLogo.ALT_TEXT" class="logo" /></span> 
-   <span class="budget"> E-Budget</span>
+  <span><img [src]="appLogo.PATH" id="logo" [alt]="appLogo.ALT_TEXT" class="logo" /></span>
+  <span class="budget"> E-Budget</span>
 
   <div class="toolbar-spacer"></div>
-
-  <!-- <a mat-button [routerLink]="['profile']">Profile</a> -->
 
   <a mat-button *ngIf="!loginDisplay" class="loginButton" (click)="login()">Login</a>
   <a mat-button *ngIf="loginDisplay" class="loginButton" (click)="logout()">Logout</a>
   <span><img [src]="bajajLogo.PATH" id="bajajlogo" [alt]="appLogo.ALT_TEXT" class="bajajlogo" /></span>
 </mat-toolbar>
+
 <div class="container">
-  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   <router-outlet *ngIf="!isIframe"></router-outlet>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

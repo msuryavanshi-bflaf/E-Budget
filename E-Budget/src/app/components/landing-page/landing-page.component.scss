@@ -12,17 +12,18 @@ section {
     .landing_page_heading {
         position: relative;
         margin: 5rem;
+
         button {
             margin-top: 150px;
-            width: 210px;
-            height: 60px;
-             border-radius: 50px;
-            font-size: $h3-font-size;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            font-size: 17px;
             background-color: #004DA8;
             color: white;
             border-color: white;
         }
     }
-    
-    
-   }
+
+
+}

@@ -6,23 +6,33 @@ import { BudgetCreation } from 'src/app/Model/budget-creation/budget-creation.mo
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BudgetCreationService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  createBudget(createBudgetRequest: BudgetCreation): Observable<BudgetCreation> {
-    return this.http.post(environment.javaEndPoint + API_END_POINTS.CREATE_BUDGET, createBudgetRequest).pipe(map((res: any) => {
-      return res;
-    }))
+  createBudget(
+    createBudgetRequest: BudgetCreation
+  ): Observable<BudgetCreation> {
+    return this.http
+      .post(
+        environment.javaEndPoint + API_END_POINTS.CREATE_BUDGET,
+        createBudgetRequest
+      )
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 
   getBudgetCreation(): Observable<BudgetCreation[]> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.BUDGETCREATION).pipe(
-      map((res: any) => {
-        return (res)
-      })
-    )
+    return this.http
+      .get(environment.javaEndPoint + API_END_POINTS.BUDGETCREATION)
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
-
 }

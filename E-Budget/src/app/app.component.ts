@@ -11,8 +11,6 @@ export class AppComponent {
   
   constructor() {}
 
-  
-
   title = 'E-Budget';
   
 }

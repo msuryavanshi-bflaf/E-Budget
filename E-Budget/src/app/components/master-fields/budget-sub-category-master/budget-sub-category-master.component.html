@@ -31,7 +31,8 @@
                                 <mat-select formControlName="budgetCategoryName"
                                     [(ngModel)]="budgetCategoryNameSelected">
 
-                                    <mat-option *ngFor="let budgetCategoryName of budgetSubCategoryNameList let i = index"
+                                    <mat-option
+                                        *ngFor="let budgetCategoryName of budgetSubCategoryNameList let i = index"
                                         [value]="budgetCategoryName">{{budgetCategoryName}}</mat-option>
 
 

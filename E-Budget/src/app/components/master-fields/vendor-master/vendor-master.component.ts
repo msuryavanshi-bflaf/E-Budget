@@ -2,8 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConstant } from 'src/app/constants/app.constants';
-// import { VendorData } from 'src/app/Model/vendor/vendor.module';
-
 import { VendorService } from 'src/app/components/services/vendor.service';
 import { VendorData, VendorDetails } from 'src/app/Model/vendor/vendor.module';
 import Swal from 'sweetalert2';

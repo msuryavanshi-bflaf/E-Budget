@@ -22,6 +22,7 @@
     "@angular/router": "^15.2.0",
     "@azure/msal-angular": "^2.5.7",
     "@azure/msal-browser": "^2.37.0",
+    "msal": "^1.4.18",
     "ngx-num-to-words": "^1.0.0",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",

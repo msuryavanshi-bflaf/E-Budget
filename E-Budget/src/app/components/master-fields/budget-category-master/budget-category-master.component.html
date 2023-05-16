@@ -83,7 +83,7 @@
 <mat-paginator #paginator class="paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" (page)="pageChanged($event)"
     [length]="budgetCategoryData?.length">
 </mat-paginator>
-
+<!-- View Table -->
 <table class="view-table">
     <tr>
         <th *ngFor="let tableHead of tableHead">{{ tableHead }}</th>

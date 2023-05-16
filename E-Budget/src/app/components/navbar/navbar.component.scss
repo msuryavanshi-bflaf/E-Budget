@@ -1,105 +1,32 @@
-
-// .budget {
-//    color: white;
-//    font-size: 25px;
-//    text-align: left;
-// }
-
-
-// #bajajlogo {
-//    width: 120px;
-//    height: 34px;
-//    margin: 7px 0 0 650px;
-
-// }
-
-
-
-
-
-// 8**********************
-// .menu-bar {
-//    text-align: center;
-//    background-color: #004DA8;
-// }
-
-// ul {
-//    list-style-type: none;
-//    margin-left: 10px;
-//    padding: 0;
-//    color: #fff;
-//  }
- 
-//  li {
-//    display: inline;
-//  }
-// **************
-
-
-
-
-
-
-
-
-
-
-
 ul {
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-   background-color: #004DA8;
- }
- 
- li {
-   float: left;
-   border-right:1px solid #bbb;
- }
- 
- li:last-child {
-   border-right: none;
- }
- 
- li a {
-   display: block;
-   color: white;
-   text-align: center;
-   padding: 14px 16px;
-   text-decoration: none;
- }
- 
- li a:hover:not(.active) {
-   background-color: #122e50;
- }
- 
- .active {
-   background-color: #04AA6D;
- }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #004DA8;
+}
 
+li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
 
+li:last-child {
+  border-right: none;
+}
 
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
+li a:hover:not(.active) {
+  background-color: #122e50;
+}
 
-
-
-
-// .menu-bar ul {
-// display: inline-flex;
-// list-style: none;
-// color: #fff;
-  
-// }
-
-// .menu-bar ul li {
-//    width: 100px;
-//    margin: 7px;
-//    padding: 12px;
-// }
-
-// .menu-bar ul li a {
-//    text-decoration: none;
-//    color: #fff;
-// }
-
+.active {
+  background-color: #04AA6D;
+}

@@ -87,33 +87,20 @@
                         <td>
 
                             <mat-form-field appearance="outline">
+                                <mat-select formControlName="vendorCompanyName" [(ngModel)]="vendorNameSelected">
 
-                                <!-- <mat-select formControlName="vendorName" minlength="4">
-                                    <mat-option *ngFor="let vendorName of vendorNameList let i = index"
-                                    value="vendorNameList">{{vendorName}}</mat-option>
-                                </mat-select> -->
-                                <mat-select formControlName="vendorCompanyName"
-                                [(ngModel)]="vendorNameSelected">
+                                    <mat-option *ngFor="let vendorCompanyName of vendorNameList let i = index"
+                                        [value]="vendorCompanyName">{{vendorCompanyName}}</mat-option>
+                                </mat-select>
 
-                                <mat-option *ngFor="let vendorCompanyName of vendorNameList let i = index"
-                                    [value]="vendorCompanyName">{{vendorCompanyName}}</mat-option>
-
-
-                            </mat-select>
-                               
                             </mat-form-field>
 
                         </td>
-                        <!-- <div *ngFor="let amount of budgetCreationList;let last = last;let first = first;let index = index">
-                        
-                            last:{{last}}
-                            </div> -->
-                            <!-- <div *ngFor="let amount of budgetCreationList; let last = last;"[checked]="last"> </div> -->
-                           
+
                     </tr>
 
                     <tr>
-                   
+
                         <td>
 
                             <mat-label>Budget Code</mat-label>
@@ -131,7 +118,7 @@
                             </mat-form-field>
 
                         </td>
-                  
+
                         <td>
 
                             <mat-label> PO Amount</mat-label>
@@ -139,8 +126,9 @@
                         <td>
 
                             <mat-form-field appearance="outline">
-                               
-                                <input matInput formControlName="poAmount"required (keyup)="onKeyUp($event)">{{updatedAmount}}{{updatedBalance}}{{lastElement}}{{balance}}
+
+                                <input matInput formControlName="poAmount" required
+                                    (keyup)="onKeyUp($event)">{{updatedAmount}}{{updatedBalance}}{{lastElement}}{{balance}}
                                 <mat-error>Please enter PO Amount</mat-error>
                             </mat-form-field>
                         </td>
@@ -196,7 +184,6 @@
                         </td>
                     </tr>
 
-
                 </table>
 
             </form>
@@ -212,6 +199,8 @@
 <br>
 <br>
 <br>
+
+<!-- Table view -->
 <table class="view-table">
     <tr>
         <th *ngFor="let tableHead of tableHead">{{ tableHead }}</th>
@@ -223,8 +212,7 @@
         <td>{{ data.vendorCompanyName}}</td>
         <td>{{ data.poDate}}</td>
         <td>{{ data.poExpiryDate}}</td>
-        <!-- <td><mat-icon class="view-icon" (click)="editSubCategory(data.id)">create</mat-icon></td>
-        <td><mat-icon class="delete-icon" (click)="deleteCategory(data)">delete_forever</mat-icon></td> -->
+
     </tr>
 </table>
 <div class="footer"><app-footer></app-footer></div>

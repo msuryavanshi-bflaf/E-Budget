@@ -1,11 +1,11 @@
 const imageBasePath = 'assets/images';
 export const ASSET_IMAGE = {
   LOGO_IMG: {
-    PATH:imageBasePath + '/logof.png',
+    PATH: imageBasePath + '/logof.png',
     ALT_TEXT: ' E-Budget logo not found',
   },
   BAJAJ_LOGO_IMG: {
-    PATH:imageBasePath + '/bajaj_logo.png',
+    PATH: imageBasePath + '/bajaj_logo.png',
     ALT_TEXT: ' Bajaj logo not found',
   },
   SYSTEM_ERROR_IMG: {

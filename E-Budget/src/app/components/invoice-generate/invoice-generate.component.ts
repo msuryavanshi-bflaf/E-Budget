@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,52 +12,54 @@ import { InvoiceService } from 'src/app/components/services/invoice.service';
 @Component({
   selector: 'app-invoice-generate',
   templateUrl: './invoice-generate.component.html',
-  styleUrls: ['./invoice-generate.component.scss']
+  styleUrls: ['./invoice-generate.component.scss'],
 })
 export class InvoiceGenerateComponent {
-
-  public generateInvoiceForm !: FormGroup;
+  public generateInvoiceForm!: FormGroup;
   hide: boolean = true;
-  //attachment
   attachResume: File | undefined;
   isValidFile: boolean = false;
   isValidFileError: boolean = false;
-  fileName: string = "";
-  attachmentErrorMessage: string = "";
-   invoiceData: InvoiceData[] = [];
-  // invoiceData:any;
-  tableHead = ['invoiceNumber', 'poNumber','invoiceAmount', 'tax','invoiceDate','invoiceReceivedDate', 'remark'];
+  fileName: string = '';
+  attachmentErrorMessage: string = '';
+  invoiceData: InvoiceData[] = [];
+  tableHead = [
+    'invoiceNumber',
+    'poNumber',
+    'invoiceAmount',
+    'tax',
+    'invoiceDate',
+    'invoiceReceivedDate',
+    'remark',
+  ];
 
-  constructor(private router: Router, private fb: FormBuilder,private invoiceService:InvoiceService) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private invoiceService: InvoiceService
+  ) {}
 
   ngOnInit() {
-
     this.initGenerateInvoiceForm();
     this.initInvoiceData();
-   
   }
 
-
   initGenerateInvoiceForm() {
-
     this.generateInvoiceForm = this.fb.group({
+      poNumber: ['', [Validators.minLength(4)]],
 
-      'poNumber': ['', [Validators.minLength(4)]],
+      invoiceNumber: ['', [Validators.minLength(4)]],
 
-      'invoiceNumber': ['', [Validators.minLength(4)]],
+      invoiceDate: [''],
 
-      'invoiceDate': [''],
+      invoiceReceivedDate: [''],
 
-      'invoiceReceivedDate': [''],
+      invoiceAmount: [''],
 
-      'invoiceAmount': [''],
+      remark: [''],
 
-      'remark': [''],
-      
-      'tax': [''],
-
+      tax: [''],
     });
-
   }
 
   readFile(fileEvent: any) {
@@ -82,10 +83,13 @@ export class InvoiceGenerateComponent {
 
   validateResume(file: File) {
     const fileExtension = file.name.split('.').pop();
-    console.log("attachResume extensions : " + fileExtension);
-    console.log("attachResume size : " + file.size);
+    console.log('attachResume extensions : ' + fileExtension);
+    console.log('attachResume size : ' + file.size);
 
-    if (fileExtension != undefined && !AppConfig.FILE_EXTENSION.includes(fileExtension)) {
+    if (
+      fileExtension != undefined &&
+      !AppConfig.FILE_EXTENSION.includes(fileExtension)
+    ) {
       this.attachmentErrorMessage = Messages.SUPPORTED_FILE_EXTENSIONS;
       return false;
     } else if (file.size > AppConfig.FILE_SIZE) {
@@ -101,41 +105,26 @@ export class InvoiceGenerateComponent {
     this.isValidFile = false;
   }
 
-
   generateInvoice() {
-
     let createInvoice: InvoiceData = {
-     
-      "id": this.generateInvoiceForm.value.id,
-      "poNumber": this.generateInvoiceForm.value.poNumber,
-      "invoiceNumber": this.generateInvoiceForm.value.invoiceNumber,
-      "invoiceDate": this.generateInvoiceForm.value.invoiceDate,
-      "invoiceAmount": this.generateInvoiceForm.value.invoiceAmount,
-      "invoiceReceivedDate": this.generateInvoiceForm.value.invoiceReceivedDate,
-      "tax":this.generateInvoiceForm.value.tax,
-      "remark":this.generateInvoiceForm.value.remark,
-      "sendEmail":this.generateInvoiceForm.value.sendEmail,
+      id: this.generateInvoiceForm.value.id,
+      poNumber: this.generateInvoiceForm.value.poNumber,
+      invoiceNumber: this.generateInvoiceForm.value.invoiceNumber,
+      invoiceDate: this.generateInvoiceForm.value.invoiceDate,
+      invoiceAmount: this.generateInvoiceForm.value.invoiceAmount,
+      invoiceReceivedDate: this.generateInvoiceForm.value.invoiceReceivedDate,
+      tax: this.generateInvoiceForm.value.tax,
+      remark: this.generateInvoiceForm.value.remark,
+      sendEmail: this.generateInvoiceForm.value.sendEmail,
     };
-    this.invoiceService.generateInvoice(createInvoice).subscribe((data: any) => {
-    //  this.lastElement=this.lastElement-data.body.poAmount;
-    
-    //  console.log("minus recent amount into availabe amount",this.lastElement)
-    // if(data.body.poDate > data.body.poExpiryDate)
-    // {
-    //   Swal.fire({
-    //     title: "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
-    //     icon: 'error',
-
-    //   })
-    //   this.router.navigate([`/${AppConstant.GENERATEPO}`])
-    // }
-    // else
-    this.router.navigate([`/${AppConstant.GENERATEINVOICE}`])
-    })
-    
+    this.invoiceService
+      .generateInvoice(createInvoice)
+      .subscribe((data: any) => {
+        this.router.navigate([`/${AppConstant.GENERATEINVOICE}`]);
+      });
   }
 
-  initInvoiceData(){
+  initInvoiceData() {
     this.invoiceService.getInvoiceList().subscribe((data: any) => {
       this.invoiceData = data;
     });

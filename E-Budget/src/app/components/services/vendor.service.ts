@@ -6,41 +6,54 @@ import { API_END_POINTS } from '../../config/api_endpoint.config';
 import { VendorData } from '../../Model/vendor/vendor.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VendorService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createVendor(createVendorRequest: VendorData): Observable<VendorData> {
-    return this.http.post(environment.javaEndPoint + API_END_POINTS.VENDOR, createVendorRequest).pipe(map((res: any) => {
-      return res;
-    }))
+    return this.http
+      .post(
+        environment.javaEndPoint + API_END_POINTS.VENDOR,
+        createVendorRequest
+      )
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 
   getVendorCompanyNameList(): Observable<VendorData[]> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDOR_NAME_LIST).pipe(
-      map((res: any) => {
-        return (res)
-      })
-    )
+    return this.http
+      .get(environment.javaEndPoint + API_END_POINTS.VENDOR_NAME_LIST)
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 
-
-  
   editVendor(id: String, createVendorRequest: VendorData): Observable<Object> {
-    return this.http.put(environment.javaEndPoint + API_END_POINTS.EDIT_VENDOR + id, createVendorRequest);
+    return this.http.put(
+      environment.javaEndPoint + API_END_POINTS.EDIT_VENDOR + id,
+      createVendorRequest
+    );
   }
 
   getActiveVendor(): Observable<VendorData[]> {
-    return this.http.get(environment.javaEndPoint + API_END_POINTS.VENDOR_NAME_LIST).pipe(
-      map((res: any) => {
-        return (res)
-      })
-    )
+    return this.http
+      .get(environment.javaEndPoint + API_END_POINTS.VENDOR_NAME_LIST)
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 
   public deleteVendor(id: any) {
-    return this.http.delete(environment.javaEndPoint + API_END_POINTS.DELETE_VENDOR + id)
+    return this.http.delete(
+      environment.javaEndPoint + API_END_POINTS.DELETE_VENDOR + id
+    );
   }
 }
