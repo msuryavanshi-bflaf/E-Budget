@@ -127,11 +127,18 @@ export class InvoiceGenerateComponent {
         });
         this.router.navigate([`/${AppConstant.GENERATEINVOICE}`]);
       });
+      
   }
 
   initInvoiceData() {
     this.invoiceService.getInvoiceList().subscribe((data: any) => {
       this.invoiceData = data;
     });
+  }
+  
+  back() {
+
+    this.router.navigate([`/${AppConstant.GENERATEPO}`])
+
   }
 }

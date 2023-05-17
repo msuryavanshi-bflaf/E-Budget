@@ -8,6 +8,8 @@
 
    background-color: #004DA8;
 
+   color: white;
+
 }
 
 .budget-sub-category-master-button {
@@ -17,6 +19,7 @@
    margin: 15px 0 2rem 0;
 
    background-color: #004DA8;
+   color: white;
 }
 
 
@@ -43,6 +46,7 @@ mat-card-title {
 .backbutton {
    margin: 10px 20px 2rem 0;
    background-color: #004DA8;
+   color: white;
 
 }
 
@@ -74,7 +78,7 @@ mat-card-title {
    border: 1px solid rgb(26, 25, 25);
    border-collapse: collapse;
    margin: 0 100px 0 60px;
-    width: 90%;
+   width: 90%;
    background-color: rgb(220, 238, 250);
 
    tr:nth-child(even) {

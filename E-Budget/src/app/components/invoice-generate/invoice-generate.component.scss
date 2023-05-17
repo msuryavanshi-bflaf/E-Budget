@@ -17,14 +17,21 @@
 
 }
 
-.generateInvoice-button {
+.invoice-button {
 
     width: 215px !important;
-
     margin: 20px 0 2rem 0;
-
+    color: white;
     background-color: #004DA8;
 }
+
+.backbutton {
+    margin: 20px 7px 2rem 30px;
+    color: white;
+    background-color: #004DA8;
+
+}
+
 
 .invalid-file-error {
     color: red;
@@ -41,13 +48,10 @@
     margin-bottom: 20px;
 }
 
-
-
-
 .view-table {
     border: 1px solid rgb(26, 25, 25);
     border-collapse: collapse;
-     margin: 0 100px 0 60px;
+    margin: 0 100px 0 60px;
     width: 90%;
     background-color: rgb(220, 238, 250);
 

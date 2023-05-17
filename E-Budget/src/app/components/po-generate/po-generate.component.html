@@ -189,10 +189,11 @@
             </form>
 
         </mat-card-content>
-
-        <button mat-button style="color: white;" class="budgetCreation-button" (click)="generatePO()">Create
-            Budget</button>
-
+        <div>
+            <button mat-button class="backbutton" (click)="back()">back</button>
+            <button mat-button style="color: white;" class="po-button" (click)="generatePO()">Create
+                Budget</button>
+        </div>
     </mat-card>
 
 </div>

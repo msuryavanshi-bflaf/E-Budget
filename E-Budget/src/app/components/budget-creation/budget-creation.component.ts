@@ -8,6 +8,7 @@ import { BudgetCreation } from 'src/app/Model/budget-creation/budget-creation.mo
 import { BudgetCategoryService } from '../services/budget-category.service';
 import { BudgetCreationService } from '../services/budget-creation.service';
 import { SubCategoryService } from '../services/sub-category.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-budget-creation',
@@ -231,8 +232,31 @@ export class BudgetCreationComponent implements PipeTransform {
     };
     this.budgetCreationService
       .createBudget(createBudgetRequest)
-      .subscribe((data: any) => {});
-    this.router.navigate([`/${AppConstant.GENERATEPO}`]);
+      .subscribe((data: any) => {
+        let StoredData = data.body;
+
+        if (
+          data.body.budgetCategoryName != '' &&
+          data.body.remark != '' &&
+          data.body.budgetSubCategoryName != '' &&
+          data.body.budgetCode != '' &&
+          data.body.budgetType != '' &&
+          data.body.amount != ''
+        ) {
+          Swal.fire({
+            title: "<h1 style='color:green'>Budget Creation Succesfully..</h1>",
+            icon: 'success',
+          });
+          this.router.navigate([`/${AppConstant.GENERATEPO}`]);
+        } else {
+          Swal.fire({
+            title: "<h1 style='color:red'>Please fill all details</h1>",
+            icon: 'error',
+          });
+        }
+      });
+
+    this.router.navigate([`/${AppConstant.BUDGETCREATION}`]);
   }
 
   initBudgetCategotryNameList() {
@@ -270,5 +294,9 @@ export class BudgetCreationComponent implements PipeTransform {
 
   initBudgetType() {
     this.subCategoryService.getBudgetType();
+  }
+
+  back() {
+    this.router.navigate([`/${AppConstant.VENDORMASTER}`]);
   }
 }

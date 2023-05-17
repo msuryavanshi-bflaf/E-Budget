@@ -155,9 +155,12 @@
             </form>
 
         </mat-card-content>
-
-        <button mat-button style="color: white;" class="generateInvoice-button" (click)="generateInvoice()">Generate
-            Invoice</button>
+<div>
+    <button mat-button class="backbutton" (click)="back()">back</button>
+    <button mat-button style="color: white;" class="invoice-button" (click)="generateInvoice()">Generate
+        Invoice</button>
+</div>
+        
 
     </mat-card>
 

@@ -186,29 +186,40 @@ export class PoGenerateComponent {
       this.lastElement = this.lastElement - data.body.poAmount;
 
       console.log('minus recent amount into availabe amount', this.lastElement);
-    //   if (data.body.poDate > data.body.poExpiryDate) {
-    //     Swal.fire({
-    //       title:
-    //         "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
-    //       icon: 'error',
-    //     });
-    //     this.router.navigate([`/${AppConstant.GENERATEPO}`]);
-
-    //   } else this.router.navigate([`/${AppConstant.GENERATEPO}`]);
-    // });
-    if(data.body.poDate > data.body.poExpiryDate)
+ 
+    
+      if( data.body.poNumber != '' &&
+          data.body.remark != '' &&
+          data.body.budgetSubCategoryName != '' &&
+          data.body.budgetCode != '' &&
+          data.body.poStage != '' &&
+          data.body.vendorCompanyName != '' &&
+          data.body.poDescription != '' &&
+          data.body.poAmount != '' 
+          )
     {
+      if(data.body.poDate > data.body.poExpiryDate)
+{
       Swal.fire({
         title: "<h1 style='color:red'>PO Expiry date should be greater than PO Date</h1>",
         icon: 'error',
 
       })
       this.router.navigate([`/${AppConstant.GENERATEPO}`])
-    }
-    else
+      }
+      else
     Swal.fire({
       title: "<h1 style='color:green'>PO Generated successfully</h1>",
       icon: 'success',
+
+    })
+    this.router.navigate([`/${AppConstant.GENERATEINVOICE}`])
+    }
+
+    else
+    Swal.fire({
+      title: "<h1 style='color:red'>Please fill all fields.</h1>",
+      icon: 'error',
 
     })
     this.router.navigate([`/${AppConstant.GENERATEPO}`])
@@ -219,4 +230,10 @@ export class PoGenerateComponent {
   onKeyUp(event: any) {
     this.updatedAmount = this.generatePOForm.value.poAmount - this.lastElement;
   }
+
+  
+  back() {
+    this.router.navigate([`/${AppConstant.BUDGETCREATION}`]);
+  }
+
 }
