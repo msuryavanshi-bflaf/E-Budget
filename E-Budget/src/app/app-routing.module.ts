@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: AppConstant.NAVBAR, component: NavbarComponent },
   { path: AppConstant.HOME,component: HomeComponent},
   { path: 'profile',component: ProfileComponent,canActivate:[MsalGuard]},
-  { path: '',component: HomeComponent},
+  // { path: '',component: HomeComponent},
   { path: AppConstant.BUDGETCREATION, component: BudgetCreationComponent },
   { path: AppConstant.GENERATEINVOICE, component: InvoiceGenerateComponent },
   { path: AppConstant.GENERATEPO, component: PoGenerateComponent },
