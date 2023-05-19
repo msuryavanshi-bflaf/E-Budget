@@ -15,7 +15,8 @@ export class ExcelSheetComponent {
   @ViewChild('TABLE')
   table!: ElementRef;
   tableHead = ['id', 'budgetCategoryName', 'originalCapital', 'originalRevenue', 'poToBeIssuedCaptial', 'poToBeIssuedRevenue', 'poIssuedCaptial', 'poIssuedRevenue', 'invoicesInHandCapital', 'invoicesInHandRevenue', 'invoicesPaidCapital', 'invoicesPaidRevenue', 'balanceCapital', 'balanceRevenue', 'team', 'remark'];
-
+  tableHead2 = ['total', 'amount1', 'amount2', 'amount3', 'amount4', 'amount5', 'amount6', 'amount7', 'amount8', 'amount9', 'amount'];
+  tableHead3 = ['total1', 'amount11', 'amount21', 'amount31', 'amount41', 'amount51', 'amount61', 'amount71', 'amount81', 'amount91', 'amount10'];
   budgetCategoryData: SubCategoryData[] = [];
 
   constructor(private router: Router, private http: HttpClient, private budgetSubCategoryService: SubCategoryService, private budgetCategoryService: BudgetCategoryService, private route: ActivatedRoute) { }

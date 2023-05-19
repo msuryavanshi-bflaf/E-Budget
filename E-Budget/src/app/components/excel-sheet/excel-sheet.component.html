@@ -84,6 +84,132 @@
       <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
     </ng-container>
 
+
+
+
+
+
+
+
+
+    <ng-container matColumnDef="total" sticky>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount1" sticky>
+      <th mat-header-cell *matHeaderCellDef> Total (including taxes @ 9%)</th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCategoryName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount2" sticky>
+      <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount3" sticky>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount4">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount5">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount6">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount7">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount8">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount9">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+
+
+
+    <ng-container matColumnDef="total1" sticky>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount11" sticky>
+      <th mat-header-cell *matHeaderCellDef> Total (excluding taxes)</th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCategoryName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount21" sticky>
+      <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount31" sticky>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount41">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount51">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount61">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount71">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount81">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount91">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount10">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> {{element.budgetCode}} </td>
+    </ng-container>
+
+
+
+
+
+
+
+
     <ng-container matColumnDef="header-row-first-group" sticky>
       <th mat-header-cell *matHeaderCellDef>Code</th>
     </ng-container>
@@ -127,7 +253,10 @@
       *matHeaderRowDef="['header-row-first-group', 'header-row-second-group','header-row-third-group','header-row-four-group','header-row-five-group','header-row-six-group','header-row-seven-group','header-row-eight-group','header-row-nine-group','header-row-ten-group']">
     </tr>
     <tr mat-header-row *matHeaderRowDef="tableHead"></tr>
-    <tr mat-row *matRowDef="let row; columns: tableHead;"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableHead;"></tr> 
+    <tr mat-header-row *matHeaderRowDef="tableHead2"></tr> 
+    <tr mat-header-row *matHeaderRowDef="tableHead3"></tr> 
+    
   </table>
 </div>
 <div>
