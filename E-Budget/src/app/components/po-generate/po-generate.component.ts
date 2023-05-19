@@ -228,7 +228,7 @@ export class PoGenerateComponent {
   }
 
   onKeyUp(event: any) {
-    this.updatedAmount = this.generatePOForm.value.poAmount - this.lastElement;
+    this.updatedAmount = this.lastElement - this.generatePOForm.value.poAmount ;
   }
 
   
